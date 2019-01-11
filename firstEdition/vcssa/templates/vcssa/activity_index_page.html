@@ -12,7 +12,8 @@
 {% block content %}
 
     <div class="container-fluid">
-        <img src="https://www.solodev.com/assets/hero/hero.jpg" alt="Notebook" style="width:100%;">
+        {% image page.background_image original as background %}
+        <img src="{{ background.url }}" alt="{{ background.alt }}" style="width: 100%; height: 500px;"/>
         <div class="content">
             <h1>{{ page.title }}</h1>
             <p>{{ page.intro|richtext }}</p>
@@ -20,24 +21,20 @@
     </div>
     <br>
     <div class="container">
-        <div class="card-columns">
-            {% for item in page.activity_index_images.all %}
-                <div class="card" style="width: 20rem;">
-                    {% image item.image fill-300x200 as tmp_photo %}
-                    <img class="card-img-top" src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">See Detail</a>
+        <div class="row">
+            {% for activity in activities %}
+                <div class="col-md-4 col-xs-6">
+                    <div class="card shadow" style="margin-bottom:10px;">
+                        {% image activity.specific.background_image fill-600x400 as tmp_photo %}
+                        <img class="card-img-top img-fluid" src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}"/>
+                        <div class="card-block">
+                            <h5 class="card-title" style="margin: 10px">{{ activity.specific.name }}</h5>
+                            <p class="card-text" style="margin: 10px">  {{ activity.specific.date }}</p>
+                            <p class="card-text" style="margin: 10px">  {{ activity.specific.intro }}</p>
+                        </div>
+                        <div class="card-text" style="margin: 10px;">
+                            <a href="{% pageurl activity %}" class="card-link">See Detail</a>
+                        </div>
                     </div>
                 </div>
             {% endfor %}

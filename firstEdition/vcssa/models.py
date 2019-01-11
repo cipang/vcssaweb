@@ -3,12 +3,10 @@ from modelcluster.fields import ParentalKey
 from wagtail.core.models import Page, Orderable
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.search import index
+import datetime
 
 NUM_OF_SUBUNIONS = 8
-
-
-class Fields:
-    pass
 
 
 class AboutPage(Page):
@@ -32,20 +30,21 @@ class AboutPageGalleryImage(Orderable):
 
 class SubUnionIndexPage(Page):
     intro = models.CharField(max_length=500, blank=True)
-    content_panels = Page.content_panels + [FieldPanel('intro'), ]
+    background_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    content_panels = Page.content_panels + [
+        FieldPanel('intro'), ImageChooserPanel('background_image'), ]
 
+    # get all published pages created by SubUnionHomePage template
     def get_context(self, request):
         context = super().get_context(request)
-        subunion_names = []
-        subunion_intros = []
-        subunion_logos = []
-
-        for i in range(NUM_OF_SUBUNIONS):
-            subunion_names.append(getattr(self, 'subunion_' + str(i + 1) + '_name'))
-            subunion_intros.append(getattr(self, 'subunion_' + str(i + 1) + '_intro'))
-            subunion_logos.append(getattr(self, 'subunion_' + str(i + 1) + '_logo'))
-
-        context['subunions'] = zip(subunion_names, subunion_intros, subunion_logos)
+        subpages = SubUnionHomePage.objects.live()
+        print(subpages)
+        context['subunions'] = subpages
         return context
 
 
@@ -59,48 +58,53 @@ class SubUnionIndexPageGalleryImage(Orderable):
     ]
 
 
-def add_field(sender, **subunion):
-    namefield = models.CharField(subunion.get('attrname_name'), max_length=30, default=subunion.get('default_name'))
-    namefield.contribute_to_class(sender, subunion.get('attrname_name'))
-    introfield = models.CharField(subunion.get('attrname_intro'), max_length=200, default=subunion.get('default_intro'))
-    introfield.contribute_to_class(sender, subunion.get('attrname_intro'))
-    logofield = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL,
-                                  related_name=subunion.get('related_name'))
-    logofield.contribute_to_class(sender, subunion.get('attrname_logo'))
-
-
-def add_parameters(self):
-    default_name_list = ["Deakin University", "La Trobe University", "Monash University",
-                         "RMIT University", "Swinburne University", "The University of Melbourne",
-                         "University of Tasmania", "Victoria University"]
-    default_intro = "Please add some intro to your union here"
-    for i in range(NUM_OF_SUBUNIONS):
-        subunion = {'attrname_name': "subunion_" + str(i + 1) + "_name",
-                    'attrname_intro': "subunion_" + str(i + 1) + "_intro",
-                    'attrname_logo': "subunion_" + str(i + 1) + "_logo",
-                    'default_name': default_name_list[i],
-                    'default_intro': default_intro,
-                    'related_name': "subunion_" + str(i + 1) + "_logo"}
-        add_field(SubUnionIndexPage, **subunion)
-        SubUnionIndexPage.content_panels = SubUnionIndexPage.content_panels + [MultiFieldPanel([
-            FieldPanel("subunion_" + str(i + 1) + "_name"),
-            FieldPanel("subunion_" + str(i + 1) + "_intro"),
-            ImageChooserPanel("subunion_" + str(i + 1) + "_logo"),
-        ], heading="Sub Union " + str(i + 1) + " Info"), ]
-
-
-add_parameters(SubUnionIndexPage)
-
-
-class ActivityIndexPage(Page):
-    intro = models.CharField(max_length=500, blank=True)
-
+# page for a single sub union
+class SubUnionHomePage(Page):
+    # sub union name to be displayed on index page
+    name = models.CharField(max_length=100)
+    intro = models.CharField(max_length=500)
+    logo = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    search_fields = Page.search_fields + [
+        index.SearchField('intro'),
+    ]
     content_panels = Page.content_panels + [
+        FieldPanel('name'),
         FieldPanel('intro'),
-        InlinePanel('activity_index_images', label="Activity images"),
+        ImageChooserPanel('logo'),
     ]
 
 
+# activity index page (used to show all activities)
+class ActivityIndexPage(Page):
+    intro = models.CharField(max_length=500, blank=True)
+
+    background_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname="full"),
+        ImageChooserPanel('background_image'),
+        InlinePanel('activity_index_images', label="Activity images"),
+    ]
+
+    def get_context(self, request):
+        # Update context to include only published posts, ordered by reverse-chron
+        context = super().get_context(request)
+        activities = self.get_children().live().order_by('-first_published_at')
+        context['activities'] = activities
+        return context
+
+
+# activity index page images
 class ActivityIndexPageGalleryImage(Orderable):
     page = ParentalKey(ActivityIndexPage, on_delete=models.CASCADE, related_name='activity_index_images')
     image = models.ForeignKey(
@@ -108,4 +112,26 @@ class ActivityIndexPageGalleryImage(Orderable):
     )
     panels = [
         ImageChooserPanel('image'),
+    ]
+
+
+# activity page for a single activity
+class ActivityPage(Page):
+    name = models.CharField(max_length=100)
+    intro = models.CharField(max_length=500)
+    date = models.DateField(("Date"), default=datetime.date.today)
+    background_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    search_fields = Page.search_fields + [
+        index.SearchField('intro'),
+    ]
+    content_panels = Page.content_panels + [
+        FieldPanel('name'),
+        FieldPanel('intro'),
+        FieldPanel('date'),
+        ImageChooserPanel('background_image'),
     ]

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags%}
 
 {% block body_class %}template-activityindexpage{% endblock %}
 
@@ -10,6 +10,21 @@
 {% endblock %}
 
 {% block content %}
+    <!--nav bar-->
+{#    <div id="mySidenav" class=" sidenav">#}
+{#        <a href=" " class="closebtn" onclick="closeNav()">&times;</a>#}
+{#        {% for menu in menuitems %}#}
+{#            <a href=" {{menu.url}} ">{{menu.title}}</a>#}
+{#        {% endfor %}#}
+{##}
+{#    </div>#}
+
+    {#menu is here#}
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            {% load_menu %}
+        </div>
+    </nav>
 
     <div class="container-fluid">
         {% image page.background_image original as background %}

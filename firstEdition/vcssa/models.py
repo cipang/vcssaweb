@@ -1,3 +1,5 @@
+import pathlib
+
 from django.db import models
 from modelcluster.fields import ParentalKey
 from wagtail.core.models import Page, Orderable
@@ -6,10 +8,17 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 import datetime
 
+from home.models import HomePage
+
 NUM_OF_SUBUNIONS = 8
+ANCESTOR_LEVEL = 2
+
+class ContactUsPage(Page):
+    pass
 
 
 class AboutPage(Page):
+    show_in_menus_default = True
     intro = models.CharField(max_length=500, blank=True)
 
     content_panels = Page.content_panels + [
@@ -29,6 +38,8 @@ class AboutPageGalleryImage(Orderable):
 
 
 class SubUnionIndexPage(Page):
+    parent_page_types = ['home.HomePage']
+    show_in_menus_default = True
     intro = models.CharField(max_length=500, blank=True)
     background_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -60,6 +71,7 @@ class SubUnionIndexPageGalleryImage(Orderable):
 
 # page for a single sub union
 class SubUnionHomePage(Page):
+    parent_page_types = ['home.HomePage']
     # sub union name to be displayed on index page
     name = models.CharField(max_length=100)
     intro = models.CharField(max_length=500)
@@ -81,6 +93,8 @@ class SubUnionHomePage(Page):
 
 # activity index page (used to show all activities)
 class ActivityIndexPage(Page):
+    parent_page_types = ['ActivityPage']
+    show_in_menus_default = True
     intro = models.CharField(max_length=500, blank=True)
 
     background_image = models.ForeignKey(
@@ -117,6 +131,7 @@ class ActivityIndexPageGalleryImage(Orderable):
 
 # activity page for a single activity
 class ActivityPage(Page):
+    parent_page_types = ['home.HomePage', 'vcssa.SubUnionHomePage']
     name = models.CharField(max_length=100)
     intro = models.CharField(max_length=500)
     date = models.DateField(("Date"), default=datetime.date.today)

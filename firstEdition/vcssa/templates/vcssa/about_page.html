@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags%}
 
 {% block body_class %}template-aboutpage{% endblock %}'
 
@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../static/css/about/about.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+    {#menu is here#}
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            {% load_menu %}
+        </div>
+    </nav>
+
+
+
     <div class="ct-pageWrapper" id="ct-js-wrapper">
         <section class="company-heading intro-type" id="parallax-one">
             <div class="container">
@@ -24,15 +36,14 @@
         <section class="story-section company-sections ct-u-paddingBoth100 paddingBothHalf noTopMobilePadding"
                  id="section">
             <div class="container-fluid text-center">
-                <h2 class="display-4">Victoria Chinese Student Scholarship Association</h2>
+                <h2 class="display-4">Victoria Chinese Student and Scholar Association</h2>
                 <div class="container">
                     <div class="red-border"></div>
                     <br>
                     <br>
                     <div class="col-md-6">
                         <p class="ct-u-size22 ct-u-fontWeight300 marginTop40">
-                            {{ page.intro }}
-                        </p>
+                            {{ page.intro }} </p>
                     </div>
                     <div class="col-md-6">
                         {% for item in page.about_images.all %}

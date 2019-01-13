@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93cd3b80-6259-40d8-8876-d695fe45a780" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/vcssa/migrations/0011_subunionindexpage_background_image.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/firstEdition.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/firstEdition.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/migrations/0002_auto_20190111_1141.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/migrations/0003_auto_20190111_1327.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/migrations/0004_auto_20190111_1349.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vcssa/migrations/0012_contactuspage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstEdition/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/firstEdition/settings/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstEdition/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/firstEdition/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/home/home_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/home_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcssa/migrations/0002_auto_20190105_1748.py" beforeDir="false" afterPath="$PROJECT_DIR$/vcssa/migrations/0010_auto_20190110_1600.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcssa/migrations/0003_auto_20190107_0048.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcssa/migrations/0004_auto_20190107_0102.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/vcssa/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/vcssa/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcssa/templates/vcssa/about_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/vcssa/templates/vcssa/about_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcssa/templates/vcssa/activity_index_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/vcssa/templates/vcssa/activity_index_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_index_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_index_page.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,58 +75,55 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-402837439">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="css" value="1" />
+          <entry key="html" value="1409" />
+          <entry key="py" value="3753" />
+          <entry key="py@firstEdition" value="81" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="CSS" value="1" />
+          <entry key="CommandLine" value="81" />
+          <entry key="HTML" value="1409" />
+          <entry key="Python" value="3753" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="css" value="2" />
+          <entry key="html" value="50" />
+          <entry key="py" value="26" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CSS" value="2" />
+          <entry key="HTML" value="50" />
+          <entry key="Python" value="26" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vcssa/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="43" column="15" lean-forward="true" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_index_page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vcssa/static/css/sub_union/sub_union.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_home_page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="Python Script" />
         <option value="HTML File" />
       </list>
     </option>
@@ -133,6 +132,10 @@
     <findStrings>
       <find>cls</find>
       <find>post</find>
+      <find>img</find>
+      <find>get_co</find>
+      <find>/</find>
+      <find>get_context</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -141,23 +144,36 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/firstEdition/settings/base.py" />
         <option value="$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_page.html" />
         <option value="$PROJECT_DIR$/vcssa/views.py" />
-        <option value="$PROJECT_DIR$/firstEdition/templates/base.html" />
-        <option value="$PROJECT_DIR$/home/templates/home/home_page.html" />
         <option value="$PROJECT_DIR$/vcssa/templates/vcssa/test.html" />
         <option value="$PROJECT_DIR$/vcssa/static/flex.css" />
         <option value="$PROJECT_DIR$/vcssa/templates/vcssa/flex.html" />
-        <option value="$PROJECT_DIR$/vcssa/templates/vcssa/about_page.html" />
         <option value="$PROJECT_DIR$/vcssa/static/css/activity_index/activity_index.css" />
         <option value="$PROJECT_DIR$/vcssa/templates/activity.html" />
-        <option value="$PROJECT_DIR$/vcssa/templates/vcssa/activity_page.html" />
-        <option value="$PROJECT_DIR$/vcssa/templates/vcssa/activity_index_page.html" />
         <option value="$PROJECT_DIR$/vcssa/static/css/sub_union/sub_union.css" />
         <option value="$PROJECT_DIR$/vcssa/templates/sub_union_home_page.html" />
-        <option value="$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_home_page.html" />
+        <option value="$PROJECT_DIR$/home/static/home.css" />
+        <option value="$USER_HOME$/Downloads/Programs/Wagtail/env/Lib/site-packages/wagtail/core/models.py" />
+        <option value="$PROJECT_DIR$/vcssa/templates/vcssa/menu/custom_main_menu.html" />
+        <option value="$PROJECT_DIR$/vcssa/templates/vcssa/menus/custom_main_menu.html" />
+        <option value="$PROJECT_DIR$/vcssa/templates/vcssa/menus/custom_sub_menu.html" />
+        <option value="$PROJECT_DIR$/firstEdition/templates/base.html" />
+        <option value="$PROJECT_DIR$/firstEdition/settings/base.py" />
+        <option value="$PROJECT_DIR$/firstEdition/templates/menus/custom_sub_menu.html" />
+        <option value="$PROJECT_DIR$/home/models.py" />
+        <option value="$PROJECT_DIR$/firstEdition/templatetags/global_tags.py" />
+        <option value="$PROJECT_DIR$/firstEdition/templates/menus/load_menu.html" />
+        <option value="$PROJECT_DIR$/firstEdition/templates/menus/load_vcssa_menu.html" />
+        <option value="$PROJECT_DIR$/firstEdition/templates/menus/load_subunion_menu.html" />
         <option value="$PROJECT_DIR$/vcssa/models.py" />
+        <option value="$PROJECT_DIR$/vcssa/templatetags/global_tags.py" />
+        <option value="$PROJECT_DIR$/home/templates/home/home_page.html" />
+        <option value="$PROJECT_DIR$/firstEdition/templates/menus/custom_main_menu.html" />
+        <option value="$PROJECT_DIR$/vcssa/templates/vcssa/activity_index_page.html" />
+        <option value="$PROJECT_DIR$/vcssa/templates/vcssa/about_page.html" />
+        <option value="$PROJECT_DIR$/vcssa/templates/vcssa/activity_page.html" />
+        <option value="$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_home_page.html" />
         <option value="$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_index_page.html" />
       </list>
     </option>
@@ -168,10 +184,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="536" />
-    <option name="width" value="904" />
-    <option name="height" value="900" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="341" />
+    <option name="width" value="725" />
+    <option name="height" value="720" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -187,6 +203,58 @@
             <path>
               <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
               <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="menus" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="search" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
@@ -216,9 +284,7 @@
               <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
               <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
               <item name="vcssa" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="vcssa" type="462c0819:PsiDirectoryNode" />
-              <item name="testImages" type="462c0819:PsiDirectoryNode" />
+              <item name="templatetags" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -231,7 +297,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Backup/firstEdition" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -239,6 +305,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dlt\Documents\Work\VCSSA\Git\firstEdition\vcssa" />
+      <recent name="C:\Users\dlt\Documents\Work\VCSSA\Git\firstEdition\firstEdition\templates" />
       <recent name="C:\Users\dlt\Documents\Work\VCSSA\VCSSA\firstEdition\vcssa\templates\vcssa" />
       <recent name="C:\Users\dlt\Documents\Work\VCSSA\VCSSA\firstEdition\vcssa\templates\vcssa\testImages" />
       <recent name="$PROJECT_DIR$/vcssa/templates/vcssa" />
@@ -299,9 +367,35 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.28877887" visible="true" weight="0.27144772" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.28877887" visible="true" weight="0.2546917" />
+      <window_info id="Structure" order="1" sideWeight="0.7112211" side_tool="true" weight="0.18967828" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.089361705" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" weight="0.32907802" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5033512" side_tool="true" weight="0.7531915" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.38297874" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.5687943" />
+      <window_info anchor="bottom" id="Database Console" order="13" sideWeight="0.49932975" weight="0.32907802" />
+      <window_info anchor="bottom" id="manage.py@firstEdition" order="14" sideWeight="0.4966488" weight="0.114893615" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="R Graphics" order="4" />
+      <window_info anchor="right" id="R Packages" order="5" />
+      <window_info anchor="right" id="Database" order="6" weight="0.17761394" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.28877887" visible="true" weight="0.25134048" />
       <window_info id="Structure" order="1" sideWeight="0.7112211" side_tool="true" weight="0.18967828" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -314,11 +408,11 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" weight="0.32907802" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5020107" side_tool="true" weight="0.764539" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3243243" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5033512" side_tool="true" weight="0.7531915" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.38297874" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.5687943" />
       <window_info anchor="bottom" id="Database Console" order="13" sideWeight="0.49932975" weight="0.32907802" />
-      <window_info active="true" anchor="bottom" id="manage.py@firstEdition" order="14" sideWeight="0.49798927" visible="true" weight="0.35460994" />
+      <window_info anchor="bottom" id="manage.py@firstEdition" order="14" sideWeight="0.4966488" visible="true" weight="0.1716312" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -326,7 +420,7 @@
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="right" id="R Packages" order="5" />
       <window_info anchor="right" id="Database" order="6" weight="0.17761394" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -335,29 +429,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://054e64ea-afec-477b-9eb4-75ae95e21ef1/schema/main/table/taggit_taggeditem" />
-    <entry file="das://054e64ea-afec-477b-9eb4-75ae95e21ef1/schema/main/table/vcssa_aboutpage" />
-    <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_page.html" />
-    <entry file="file://$PROJECT_DIR$/search/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/wagtail/core/models.py" />
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/forms/models.py" />
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/db/models/base.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/wagtail/core/query.py" />
     <entry file="file://$PROJECT_DIR$/vcssa/migrations/0003_subunionindexpage_subunion1.py" />
     <entry file="file://$PROJECT_DIR$/vcssa/migrations/0003_auto_20190106_2258.py" />
-    <entry file="file://$PROJECT_DIR$/vcssa/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/wagtail/admin/forms/models.py" />
-    <entry file="file://$PROJECT_DIR$/vcssa/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/home/migrations/0001_initial.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -381,59 +456,10 @@
     <entry file="file://$PROJECT_DIR$/firstEdition/settings/production.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/firstEdition/settings/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="164" selection-start-line="164" selection-end-line="164" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/templates/home/home_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/firstEdition/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="22" column="118" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="22" selection-end-column="118" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/test.html" />
-    <entry file="file://$PROJECT_DIR$/vcssa/static/flex.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/wagtail/images/edit_handlers.py" />
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/wagtail/admin/edit_handlers.py" />
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/django/db/models/fields/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/activity_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="39" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/about_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/flex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vcssa/static/css/activity_index/activity_index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -441,45 +467,192 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vcssa/static/css/sub_union/sub_union.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1600">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/firstEdition/templates/404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/static/home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2151">
+          <caret line="98" column="26" selection-start-line="98" selection-start-column="26" selection-end-line="98" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Programs/Wagtail/env/Lib/site-packages/django/db/backends/sqlite3/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="295" selection-start-line="295" selection-end-line="295" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Programs/Wagtail/env/Lib/site-packages/condensedinlinepanel/edit_handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="215" selection-start-line="215" selection-end-line="215" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Programs/Wagtail/env/Lib/site-packages/wagtailmenus/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Programs/Wagtail/env/Lib/site-packages/django/core/handlers/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="155" selection-start-line="155" selection-end-line="155" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Programs/Wagtail/env/Lib/site-packages/django/template/defaulttags.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="1019" selection-start-line="1019" selection-end-line="1019" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vcssa/static/flex.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-403">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/firstEdition/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/firstEdition/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/firstEdition/settings/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vcssa/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vcssa/tests.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vcssa/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vcssa/admin.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vcssa/apps.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Programs/Wagtail/env/Lib/site-packages/wagtail/core/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="701" lean-forward="true" selection-start-line="701" selection-end-line="701" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/firstEdition/templates/menus/custom_sub_menu.html" />
+    <entry file="file://$PROJECT_DIR$/firstEdition/templates/menus/load_menu.html" />
+    <entry file="file://$PROJECT_DIR$/firstEdition/templates/menus/load_vcssa_menu.html" />
+    <entry file="file://$PROJECT_DIR$/firstEdition/templates/menus/load_subunion_menu.html" />
+    <entry file="file://$PROJECT_DIR$/firstEdition/templates/menus/custom_main_menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/activity_index_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-191">
-          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        <state relative-caret-position="75">
+          <caret line="21" column="14" selection-start-line="21" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/about_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/activity_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/flex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="566">
+          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_home_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="400">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vcssa/static/css/sub_union/sub_union.css">
+    <entry file="file://$PROJECT_DIR$/home/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+        <state relative-caret-position="575">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vcssa/models.py">
+    <entry file="file://$PROJECT_DIR$/vcssa/templatetags/global_tags.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="43" column="15" lean-forward="true" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="217">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_index_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="675">
+          <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home/templates/home/home_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vcssa/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-625">
+          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
         </state>
       </provider>
     </entry>

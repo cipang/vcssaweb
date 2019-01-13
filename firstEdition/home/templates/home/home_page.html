@@ -1,12 +1,63 @@
 {% extends "base.html" %}
-
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags%}
 {% block body_class %}template-homepage{% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="../../static/home.css">
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript">
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+        var imageUrl = document.getElementById('background').title;
+
+        document.getElementById('background').style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))," + "url(" + imageUrl + ")";
+    </script>
+{% endblock %}
+
+
 {% block content %}
-    <div class="container text-center">
-        <h1>Victoria Chinese Student Scholarship Association</h1>
-        <h2><em>This is the introduction</em></h2>
+    {% image page.background_image original as background %}
+    <!--https://www.solodev.com/assets/hero/hero.jpg-->
+    <!--background image-->
+    <div class="hero-image" id="background" title="{{background.url}}">
+        <!--style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)); ">-->
+        <div class="hero-text">
+            {# load introduction from model#}
+            <h1 style="font-size:50px">Victoria Chinese Student and Scholar Association</h1>
+            <p>Victoria Chinese Student and Scholar Association</p >
+            <div>
+                <button style="opacity: 0.5;  font-family:Arial; font-size:16px; font-weight: bold">Know about us</button>
+            </div>
+        </div>
     </div>
 
+
+    <!--logo-->
+    {% image page.logo_image original as logo %}
+    <img class="topleft" src="{{ logo.url }}" alt="logo"
+         style="height: 100px; width: 100px; border-radius: 50%;" href="#"/>
+
+
+    <!--nav bar-->
+    <div id="mySidenav" class=" sidenav">
+        <a href=" " class="closebtn" onclick="closeNav()">&times;</a>
+        {#    {% for menu in menuitems %}#}
+        {#        <a href=" {{menu.url}} ">{{menu.title}}</a>#}
+        {#    {% endfor %}#}
+        {% load_menu %}
+
+    </div>
+
+
+    <span class="topright" style="font-size:50px;cursor:pointer; color: #dddddd"
+          onclick="openNav()">&#9776;</span>
 
 {% endblock %}

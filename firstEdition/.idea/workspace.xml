@@ -2,19 +2,119 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93cd3b80-6259-40d8-8876-d695fe45a780" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/home/migrations/0002_auto_20190111_1141.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/migrations/0003_auto_20190111_1327.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/migrations/0004_auto_20190111_1349.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vcssa/migrations/0012_contactuspage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/firstEdition/templates/menus/custom_main_menu.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/static/home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/LTA.2e16d0ba.fill-275x275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/LTA.2e16d0ba.fill-300x275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/LTA.2e16d0ba.fill-300x300.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/LTA.2e16d0ba.fill-320x240.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/LTA.2e16d0ba.fill-320x320.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/LTA.2e16d0ba.fill-400x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/LTA.2e16d0ba.fill-500x500.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/LTA.2e16d0ba.fill-600x600.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/LTA.max-165x165.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/Monash.2e16d0ba.fill-275x275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/Monash.2e16d0ba.fill-300x275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/Monash.2e16d0ba.fill-300x300.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/Monash.2e16d0ba.fill-320x240.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/Monash.2e16d0ba.fill-320x320.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/Monash.2e16d0ba.fill-400x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/Monash.2e16d0ba.fill-500x500.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/Monash.2e16d0ba.fill-600x600.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/Monash.max-165x165.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/RMIT.2e16d0ba.fill-275x275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/RMIT.2e16d0ba.fill-300x275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/RMIT.2e16d0ba.fill-300x300.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/RMIT.2e16d0ba.fill-320x240.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/RMIT.2e16d0ba.fill-320x320.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/RMIT.2e16d0ba.fill-400x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/RMIT.2e16d0ba.fill-500x500.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/RMIT.2e16d0ba.fill-600x600.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/RMIT.max-165x165.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/SU.2e16d0ba.fill-275x275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/SU.2e16d0ba.fill-300x275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/SU.2e16d0ba.fill-300x300.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/SU.2e16d0ba.fill-320x240.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/SU.2e16d0ba.fill-320x320.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/SU.2e16d0ba.fill-400x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/SU.2e16d0ba.fill-500x500.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/SU.2e16d0ba.fill-600x600.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/SU.max-165x165.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UM.2e16d0ba.fill-275x275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UM.2e16d0ba.fill-300x275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UM.2e16d0ba.fill-300x300.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UM.2e16d0ba.fill-320x240.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UM.2e16d0ba.fill-320x320.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UM.2e16d0ba.fill-400x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UM.2e16d0ba.fill-500x500.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UM.2e16d0ba.fill-600x600.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UM.max-165x165.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UTAS.2e16d0ba.fill-275x275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UTAS.2e16d0ba.fill-300x275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UTAS.2e16d0ba.fill-300x300.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UTAS.2e16d0ba.fill-320x240.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UTAS.2e16d0ba.fill-320x320.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UTAS.2e16d0ba.fill-400x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UTAS.2e16d0ba.fill-500x500.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UTAS.2e16d0ba.fill-600x600.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/UTAS.max-165x165.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/VU.2e16d0ba.fill-275x275.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/VU.2e16d0ba.fill-300x300.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/VU.2e16d0ba.fill-320x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/VU.2e16d0ba.fill-320x320.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/VU.2e16d0ba.fill-400x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/VU.2e16d0ba.fill-500x500.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/VU.2e16d0ba.fill-600x600.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/VU.max-165x165.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/VU_EUjyQQb.2e16d0ba.fill-275x275.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/VU_EUjyQQb.2e16d0ba.fill-300x275.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/VU_EUjyQQb.2e16d0ba.fill-300x300.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/VU_EUjyQQb.max-165x165.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/chris-lawton-475897-unsplash.2e16d0ba.fill-400x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/chris-lawton-475897-unsplash.2e16d0ba.fill-600x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/chris-lawton-475897-unsplash.original.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/deakin.2e16d0ba.fill-275x275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/deakin.2e16d0ba.fill-300x275.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/deakin.2e16d0ba.fill-300x300.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/deakin.2e16d0ba.fill-320x240.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/deakin.2e16d0ba.fill-320x320.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/deakin.2e16d0ba.fill-400x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/deakin.2e16d0ba.fill-500x500.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/deakin.2e16d0ba.fill-600x600.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/deakin.max-165x165.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/logo_wyuB8YV.2e16d0ba.fill-300x300.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/logo_wyuB8YV.2e16d0ba.fill-320x240.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/logo_wyuB8YV.max-165x165.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/logo_wyuB8YV.original.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/mark-eder-310600-unsplash.2e16d0ba.fill-400x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/mark-eder-310600-unsplash.2e16d0ba.fill-600x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/mark-eder-310600-unsplash.max-800x600.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/mark-eder-310600-unsplash.original.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/matthew-kane-278419-unsplash_rHaJm.2e16d0ba.fill-400x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/matthew-kane-278419-unsplash_rHaJm.2e16d0ba.fill-600x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/matthew-kane-278419-unsplash_rHaJmDY.original.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/nasa-43566-unsplash_yNHyXGJ.2e16d0ba.fill-400x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/nasa-43566-unsplash_yNHyXGJ.2e16d0ba.fill-600x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/nitish-meena-37745-unsplash_DC6e8K.2e16d0ba.fill-400x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/images/nitish-meena-37745-unsplash_DC6e8K.2e16d0ba.fill-600x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/original_images/LTA.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/original_images/Monash.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/original_images/RMIT.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/original_images/SU.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/original_images/UM.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/original_images/UTAS.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/original_images/VU.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/original_images/VU_EUjyQQb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/original_images/deakin.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/original_images/logo_wyuB8YV.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vcssa/static/flex.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vcssa/templates/vcssa/activity_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vcssa/templates/vcssa/flex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_home_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vcssa/templatetags/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vcssa/templatetags/global_tags.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firstEdition/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/firstEdition/settings/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firstEdition/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/firstEdition/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/home_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/home_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcssa/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/vcssa/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcssa/templates/vcssa/about_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/vcssa/templates/vcssa/about_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcssa/templates/vcssa/activity_index_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/vcssa/templates/vcssa/activity_index_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_index_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_index_page.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,8 +180,9 @@
         <counts>
           <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -103,21 +204,31 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="2" />
-          <entry key="html" value="50" />
+          <entry key="html" value="51" />
           <entry key="py" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="2" />
-          <entry key="HTML" value="50" />
+          <entry key="HTML" value="51" />
           <entry key="Python" value="26" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/flex.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="316">
+              <caret line="19" column="28" lean-forward="true" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -184,8 +295,8 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="341" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="340" />
     <option name="width" value="725" />
     <option name="height" value="720" />
   </component>
@@ -213,6 +324,32 @@
               <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
               <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
               <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="settings" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -226,6 +363,12 @@
               <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
               <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
               <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
@@ -250,6 +393,18 @@
               <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
               <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
               <item name="media" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firstEdition" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="original_images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="firstEdition" type="b2602c69:ProjectViewProjectNode" />
@@ -366,9 +521,9 @@
     <option name="totallyTimeSpent" value="20520000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.28877887" visible="true" weight="0.2546917" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.28877887" visible="true" weight="0.2580429" />
       <window_info id="Structure" order="1" sideWeight="0.7112211" side_tool="true" weight="0.18967828" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -607,13 +762,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/flex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/sub_union_home_page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -653,6 +801,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-625">
           <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vcssa/templates/vcssa/flex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="19" column="28" lean-forward="true" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
         </state>
       </provider>
     </entry>

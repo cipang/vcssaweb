@@ -1,0 +1,24 @@
+{% load wagtailcore_tags menu_tags global_tags%}
+
+<ul class="navbar-nav">
+    {% vcssa_home as homemenu%}
+    <a href="{% pageurl homemenu %}" class="nav-link" >{{ homemenu.title }}</a>
+
+    {#if the page is under subunion, load subunion home page menu#}
+    {% is_child_of_subunion as is_child %}
+    {%  if is_child %}
+        {% subunion_home as subunion_homemenu%}
+        <a href="{% pageurl subunion_homemenu %}" class="nav-link" >{{ subunion_homemenu.title }}</a>
+    {% endif %}
+
+    {% for item in menu_items %}
+        <li class="nav-item">
+            {# first level menu#}
+            <a href="{{ item.href }}" class="nav-link" >{{ item.text }}
+                {% if item.has_children_in_menu %}
+                    {# second level menu#}
+                    <span class="sr-only"> {% sub_menu item %}</span>
+                {% endif %}</a>
+        </li>
+    {% endfor %}
+</ul>

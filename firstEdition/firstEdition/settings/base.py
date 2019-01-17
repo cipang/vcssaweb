@@ -30,6 +30,7 @@ INSTALLED_APPS = [
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
+    'wagtail.contrib.settings',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
@@ -52,8 +53,7 @@ INSTALLED_APPS = [
 
     'wagtail.contrib.modeladmin',
     'wagtailmenus',
-    # 'condensedinlinepanel',
-
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
@@ -93,6 +93,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'wagtail.contrib.settings.context_processors.settings',
                 'wagtailmenus.context_processors.wagtailmenus',
+                'wagtail.contrib.settings.context_processors.settings',
             ],
         },
     },

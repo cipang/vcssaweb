@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags%}
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static%}
 
 {% block body_class %}template-activityindexpage{% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="../../static/css/activity_index/activity_index.css">
+    <link rel="stylesheet" href="{% static 'css/activity_index/activity_index.css' %}">
 
 {% endblock %}
 
@@ -20,13 +20,11 @@
 {#    </div>#}
 
     {#menu is here#}
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            {% load_menu %}
-        </div>
-    </nav>
+    <div class="topnav" id="myTopnav">
+        {% load_menu %}
+    </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding: 0">
         {% image page.background_image original as background %}
         <img src="{{ background.url }}" alt="{{ background.alt }}" style="width: 100%; height: 500px;"/>
         <div class="content">
@@ -44,15 +42,15 @@
                         <img class="card-img-top img-fluid" src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}"/>
                         <div class="card-block">
                             <h5 class="card-title" style="margin: 10px">{{ activity.specific.name }}</h5>
-                            <p class="card-text" style="margin: 10px">  {{ activity.specific.date }}</p>
-                            <p class="card-text" style="margin: 10px">  {{ activity.specific.intro }}</p>
+                            <p class="card-text" style="margin: 10px"> {{ activity.specific.date }}</p >
+                            <p class="card-text" style="margin: 10px"> {{ activity.specific.intro }}</p >
                         </div>
                         <div class="card-text" style="margin: 10px;">
-                            <a href="{% pageurl activity %}" class="card-link">See Detail</a>
-                        </div>
+                            <a href={% pageurl activity %} class="card-link">See Detail</a>
                     </div>
                 </div>
+                </div>
             {% endfor %}
-        </div>
+    </div>
     </div>
 {% endblock %}

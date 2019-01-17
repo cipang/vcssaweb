@@ -1,0 +1,35 @@
+body {
+    font-family: Arial;
+}
+
+.coupon {
+    border: 6px dotted #bbb;
+    width: 100%;
+    border-radius: 10px;
+    margin: 100px auto;
+}
+
+.flex-container {
+    padding: 2px 16px;
+    background-color: #f1f1f1;
+    width: 100%;
+    bottom: 0;
+}
+
+.flex-container .p{
+    font-size: 16px;
+}
+
+.promo {
+    background: #ccc;
+    padding: 3px;
+    bottom: 0;
+}
+
+.expire {
+    color: #0e8bff;
+}
+
+.flex-container .img {
+    width: 100%;
+}

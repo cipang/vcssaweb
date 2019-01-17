@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags%}
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
 
 {% block body_class %}template-subunionindexpage{% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="../../static/css/sub_union/sub_union.css">
+    <link rel="stylesheet" href="{% static 'css/sub_union/sub_union.css' %}">
 
 {% endblock %}
 
@@ -22,11 +22,9 @@
 
 
     {#menu is here#}
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            {% load_menu %}
-        </div>
-    </nav>
+    <div class="topnav" id="myTopnav">
+        {% load_menu %}
+    </div>
 
 
 
@@ -44,17 +42,14 @@
         <div class="row">
             {% for subunion in subunions %}
                 <div class="col-md-4 col-xs-6">
-                    <div class="card shadow" style="margin-bottom:10px;">
-                        {% with subunion.logo as temp_photo %}
+                    <div class="card" style="margin-bottom:10px;">
                             {% if subunion.logo != None %}
-                                {#                                {% image subunion.logo fill-300x300 as temp_photo%}#}
-                                <a href="{% pageurl subunion %}">{% image temp_photo fill-300x300 %}</a>
+                                {% image subunion.logo fill-300x300 as temp_photo  %}
                             {% endif %}
-                            <img class="card-img-top img-fluid" src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}"/>
+                            <img class="card-img-top img-fluid" src="{{ temp_photo.url }}" alt="{{ temp_photo.alt }}"/>
                             <div class="middle">
-                                <div class="text">{{ subunion.name }}</div>
+                                <a href="{% pageurl subunion %}"><div class="text">{{ subunion.name }}</div></a>
                             </div>
-                        {% endwith %}
                     </div>
                 </div>
             {% endfor %}

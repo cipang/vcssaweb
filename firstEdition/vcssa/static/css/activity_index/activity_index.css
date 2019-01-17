@@ -10,11 +10,11 @@ body {
 .container-fluid {
     position: relative;
     margin: 0;
+    padding: 0;
 }
 
 .container-fluid img {
     vertical-align: middle;
-    width: 100%;
 }
 
 .container-fluid .content {
@@ -26,10 +26,3 @@ body {
     width: 100%;
     padding: 20px;
 }
-
-.row > div[class*='col-'] {
-    display: flex;
-    flex: 1 0 auto;
-}
-
-

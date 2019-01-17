@@ -1,31 +1,42 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags%}
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static%}
 
 {% block body_class %}template-activitypage{% endblock %}
 
 {% block extra_css %}
-
+    <link rel="stylesheet" href="{% static 'css/activity/activity.css' %}">
 
 {% endblock %}
 
 {% block content %}
 
-
     {#menu is here#}
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            {% load_menu %}
+    <div class="topnav" id="myTopnav">
+        {% load_menu %}
+    </div>
+
+    <div class="container">
+        <div class="coupon">
+            <div class="flex-container">
+                <h3>Activity Details</h3>
+            </div>
+            {% image page.background_image original as activity_image %}
+            <div class="flex-container">
+                <img src="{{activity_image.url}}" alt="activity_image" style="width: 100%">
+            </div>
+            <div class="flex-container" style="background-color:white;">
+                <h2><b>{{page.name}}</b></h2>
+                <p>{{page.intro}}</p >
+            </div>
+            <div class="flex-container" style="background-color:white;">
+                <p>{{page.detail | richtext }}</p>
+            </div>
+            <div class="flex-container">
+                <p>Apply Link:<a class="promo" target="_blank" href=" ">{{page.link}}</a></p>
+                <p class="expire">Expire Date: {{page.date}}</p>
+            </div>
         </div>
-    </nav>
-
-
-
-    <h1>{{ page.title }}</h1>
-    <p class="meta">{{ page.date }}</p>
-
-    <div class="intro">{{ page.intro }}</div>
-
-    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+    </div>
 
 {% endblock %}

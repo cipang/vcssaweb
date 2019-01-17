@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static%}
+
+{% block body_class %}template-contactuspage{% endblock %}'
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact_us/contact.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% endblock %}
+{% block extra_js %}
+<script type="text/javascript">
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("wechat_btn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "block";
+    };
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+    var imageUrl = document.getElementById('background').title;
+    document.getElementById('background').style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))," + "url(" + imageUrl + ")";
+</script>
+{% endblock %}
+
+
+{% block content %}
+
+{#menu is here#}
+<div class="topnav" id="myTopnav">
+{% load_menu %}
+</div>
+<!--background image and introduction-->
+{% image page.background_image original as background %}
+<div class="hero-image" id="background" title="{{background.url}}">
+    <div class="hero-text">
+        <h1 style="font-size:50px">Contact Us</h1>
+        <p>Information All the information is here just write something</p>
+{#        <form action="{% pageurl page %}" method="POST">#}
+{#            {% csrf_token %}#}
+{#            {{ form.as_p }}#}
+{#            <input type="submit">#}
+{#        </form>#}
+
+{#        <form action="{% pageurl page %}" method="POST">#}
+{#            {% csrf_token %}#}
+{#            {% if form.non_field_errors %}#}
+{#                <div class="alert alert-danger" role="alert">#}
+{#                    {% for error in form.non_field_errors %}#}
+{#                        {{ error }}#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            {% endif %}#}
+{#            {% for field in form.visible_fields %}#}
+{#                <div class="form-group">#}
+{#                    {{ field.label_tag }}#}
+{#                    {{ field }}#}
+{#                </div>#}
+{#            {% endfor %}#}
+{##}
+{#            <button type="submit" class="btn btn-primary" >Submit</button>#}
+{#        </form>#}
+    </div>
+</div>
+<br>
+<div class="icon-bar">
+    <a href="{{ page.facebook }}" class="facebook"><i class="fa fa-facebook"></i></a>
+    <a href="{{ page.weibo }}" class="weibo"><i class="fa fa-weibo"></i></a>
+    <a href="#" class="wechat" id="wechat_btn"><i class="fa fa-wechat"></i>
+        <span class="tooltiptext">Scan QR Code</span></a>
+    <a href="{{ page.instagram }}" class="instagram"><i class="fa fa-instagram"></i></a>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="form-popup">
+{#                <form class="form-container">#}
+{#                    <h1>{{ page.title }}</h1>#}
+{#                    <label><b>First Name</b></label>#}
+{#                    <input type="text" placeholder="First Name" name="firstName" required>#}
+{#                    <label><b>Last Name</b></label>#}
+{#                    <input type="text" placeholder="Last Name" name="lastName" required>#}
+{#                    <label><b>Email</b></label>#}
+{#                    <input type="text" placeholder="Enter Email" name="email" required>#}
+{#                    <button type="submit" class="btn">Submit</button>#}
+{#                </form>#}
+                <form action="{% pageurl page %}" method="POST" class="form-container">
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% for field in form.visible_fields %}
+                        <div class="form-group">
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="btn" >Submit</button>
+                </form>
+
+            </div>
+        </div>
+        <div class="col-lg-7">
+            {% image page.intro_image original as side_image %}
+            <img src="{{ side_image.url }}" alt="{{ side_image.alt }}" style="width: 100%; height: 461px;"/>
+        </div>
+    </div>
+</div>
+
+
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Scan QR code to know more details.</p>
+        {% image page.weChat original as side_image %}
+        <img src="{{ side_image.url }}" alt="{{ side_image.alt }}" style="width: 100%; height: 100%;"/>
+    </div>
+</div>
+
+{% endblock %}

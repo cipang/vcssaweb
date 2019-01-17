@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags%}
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags wagtailsettings_tags static%}
 
 {% block body_class %}template-subunionhomepage{% endblock %}
 
@@ -7,15 +7,21 @@
 
 
     {#menu is here#}
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            {% load_menu %}
-        </div>
-    </nav>
+    <div class="topnav" id="myTopnav">
+        {% load_menu %}
+    </div>
 
 
 
     <h1>{{ page.title }}</h1>
     <p>{{ page.intro }}</p>
     {% image page.logo fill-320x240 %}
+
+{#    {% load wagtailsettings_tags %}#}
+{#    {% get_settings %}#}
+{#    {% for socialmedia in settings.vcssa.SocialMediaSettings %}#}
+{#    <a href="{{ socialmedia }}" class="nav-link" ></a>#}
+{#{% endfor %}#}
+{#    {% flat_menu 'test' max_levels=1 show_menu_heading=False  use_specific=USE_SPECIFIC_TOP_LEVEL  fall_back_to_default_site_menus=True %}#}
+
 {% endblock %}

@@ -6,7 +6,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 HOME_PAGE_URL_PATH = '/home/homepage/'
 
 class HomePage(Page):
-    parent_page_types = ['HomePage']
+    # parent_page_types = ['HomePage']
     welcome = models.CharField(max_length=200, default="Welcome to VCSSA!")
     background_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
     logo_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')

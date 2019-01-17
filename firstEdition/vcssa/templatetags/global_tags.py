@@ -6,7 +6,7 @@ from vcssa.models import SubUnionHomePage
 
 HOME_PAGE_LEVEL = 1
 SUBUNION_HOME_LEVEL = 2
-VCSSA_MENU_TEMPLATE = '{% load menu_tags %}{% section_menu max_levels=2 use_specific=USE_SPECIFIC_TOP_LEVEL template="menus/custom_main_menu.html" %}'
+VCSSA_MENU_TEMPLATE = '{% load menu_tags %}{% section_menu max_levels=3 use_specific=USE_SPECIFIC_TOP_LEVEL template="menus/custom_main_menu.html" %}'
 SUBUNION_MENU_TEMPLATE = '{% load menu_tags global_tags %}{% subunion_home as rootpage%}{% children_menu parent_page=rootpage max_levels=2 use_specific=USE_SPECIFIC_TOP_LEVEL template="menus/custom_main_menu.html" %}'
 
 

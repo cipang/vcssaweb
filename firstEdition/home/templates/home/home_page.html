@@ -40,8 +40,22 @@
         <!--style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)); ">-->
         <div class="hero-text">
             {# load introduction from model#}
-            <h1 style="font-size:50px">Victoria Chinese Student and Scholar Association</h1>
-            <p>Victoria Chinese Student and Scholar Association</p>
+            <h1 style="font-size:50px">{{ page.title }}</h1>
+            <p>{{ page.intro }}</p>
+
+
+
+            <!--News Index-->
+            {% for block in page.news_pages %}
+                <h2>{% include_block block.value.title %}</h2>
+                {% image block.value.cover_image fill-600x400 as coverimage %}
+                <img src="{{ coverimage.url }}" alt="{{ coverimage.alt }}"/>
+                <section>{{ block.value.body | richtext }}</section>
+                <a href={% pageurl block.value %}>See Detail</a>
+            {% endfor %}
+
+
+
             <div>
                 <button style="opacity: 0.5;  font-family:Arial; font-size:16px; font-weight: bold">Know about us</button>
             </div>
@@ -60,6 +74,9 @@
         <a href=" " class="closebtn" onclick="closeNav()">&times;</a>
         {% load_menu %}
     </div>
+
+
+
 
 
     <span class="topright" style="font-size:50px;cursor:pointer; color: #dddddd"

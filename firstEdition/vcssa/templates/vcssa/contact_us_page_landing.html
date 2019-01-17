@@ -1,9 +1,20 @@
 {% extends "base.html" %}
 
-{% load static wagtailcore_tags  wagtailimages_tags menu_tags static%}
+{% load static wagtailcore_tags  wagtailimages_tags menu_tags  global_tags static%}
 
 {% block content %}
 
     <h2>{{ page.thank_you_text | richtext }}</h2>
 
+
+
+{% endblock %}
+
+{% block extrahead %}{{ block.super }}
+    <script type="text/javascript">
+        setTimeout(function() {
+            {% vcssa_home as home %}
+            window.location.href = {% pageurl home %};
+        }, 200);
+    </script>
 {% endblock %}

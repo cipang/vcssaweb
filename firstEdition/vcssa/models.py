@@ -3,9 +3,11 @@ import smtplib
 
 from django import forms
 from django.db import models
+from django.utils import timezone
 from django.utils.datetime_safe import date
 from modelcluster.fields import ParentalKey
 from wagtail.admin.utils import send_mail
+from wagtail.core import blocks
 from wagtail.core.models import Page, Orderable
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, TabbedInterface, ObjectList, \
     FieldRowPanel
@@ -13,19 +15,37 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 import datetime
 
+from wagtail.users.views.users import User
+from wagtail.embeds.blocks import EmbedBlock
+
+
+
 from firstEdition.settings import dev
 from home.models import HomePage
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 
 from modelcluster.fields import ParentalKey
 
-from wagtail.core.fields import RichTextField
+from wagtail.core.fields import RichTextField, StreamField
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.contrib.forms.edit_handlers import FormSubmissionsPanel
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.images.blocks import ImageChooserBlock
+
+from django.utils.translation import ugettext_lazy as _
+
 
 #
 # NUM_OF_SUBUNIONS = 8
 # ANCESTOR_LEVEL = 2
+
+CONTACT_PAGE_FORM_FIELD_CHOICES = (
+    ('singleline', _('Single line text')),
+    ('multiline', _('Multi-line text')),
+    ('email', _('Email')),
+    ('number', _('Number')),
+    ('url', _('URL')),
+)
 
 
 class AboutPage(Page):
@@ -126,6 +146,7 @@ class ActivityIndexPage(Page):
         # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
         activities = self.get_children().live().order_by('-first_published_at')
+        print(type(activities))
         context['activities'] = activities
         return context
 
@@ -193,6 +214,15 @@ class SocialMediaSettings(BaseSetting):
 
 class FormField(AbstractFormField):
     page = ParentalKey('ContactUsPage', related_name='form_fields')
+    field_type = models.CharField(verbose_name=_('field type'), max_length=16, choices=CONTACT_PAGE_FORM_FIELD_CHOICES)
+    panels = [
+        FieldPanel('label'),
+        FieldPanel('help_text'),
+        FieldPanel('required'),
+        FieldPanel('field_type', classname="formbuilder-type"),
+        # FieldPanel('choices', classname="formbuilder-choices"),
+        FieldPanel('default_value', classname="formbuilder-default"),
+    ]
 
 
 class ContactUsPage(AbstractEmailForm):
@@ -202,7 +232,10 @@ class ContactUsPage(AbstractEmailForm):
         'wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
     intro = RichTextField(blank=True, default="Please contact us through our WeChat, or leave a message")
     thank_you_text = RichTextField(blank=True, default="Thank you for contacting us! We will get back to you soon.")
-    email_password = models.CharField(max_length=16,default=None)
+    # email_password = models.CharField(max_length=16, default=None)
+    address = models.CharField(max_length=100, blank=True)
+    phone = models.CharField(max_length=100, blank=True)
+    email = models.CharField(max_length=100, blank=True)
 
     facebook = models.URLField(blank=True, null=True, help_text='Your Facebook page URL')
     instagram = models.URLField(blank=True, max_length=255, help_text='Your Instagram page URL', null=True)
@@ -216,6 +249,9 @@ class ContactUsPage(AbstractEmailForm):
         FieldPanel('intro', classname="full"),
         ImageChooserPanel('background_image'),
         ImageChooserPanel('intro_image'),
+        FieldPanel('address'),
+        FieldPanel('phone'),
+        FieldPanel('email'),
         FieldPanel('facebook'),
         FieldPanel('instagram'),
         FieldPanel('weibo'),
@@ -225,8 +261,8 @@ class ContactUsPage(AbstractEmailForm):
         FieldPanel('thank_you_text', classname="full"),
         MultiFieldPanel(
             [
-                FieldPanel('from_address', help_text="Please enter an email to send the message"),
-                FieldPanel('email_password'),
+                # FieldPanel('from_address', help_text="Please enter an email to send the message"),
+                # FieldPanel('email_password'),
                 FieldPanel('to_address', help_text='Please enter an email to receive notifications'),
                 FieldPanel('subject'),
             ],
@@ -235,10 +271,8 @@ class ContactUsPage(AbstractEmailForm):
     ]
 
     def send_mail(self, form):
-        # dev.EMAIL_HOST_USER = self.from_address
-        # dev.EMAIL_HOST_PASSWORD = self.email_password
-        # print(dev.EMAIL_HOST_USER)
-        # print(dev.EMAIL_HOST_PASSWORD)
+        print(dev.EMAIL_HOST_USER)
+        print(dev.EMAIL_HOST_PASSWORD)
         addresses = [address.strip() for address in self.to_address.split(',')]
         content = []
         for field in form:
@@ -252,3 +286,17 @@ class ContactUsPage(AbstractEmailForm):
         content = '\n'.join(content)
         subject = self.subject + " - " + submitted_date_str
         send_mail(subject, content, addresses, self.from_address)
+
+
+class NewsPage(Page):
+    author = models.CharField(max_length=255, null=True, blank=True)
+    date = models.DateTimeField(auto_now=True)
+    cover_image = models.ForeignKey(
+        'wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
+    body = RichTextField()
+
+    content_panels = Page.content_panels + [
+        FieldPanel('author'),
+        ImageChooserPanel('cover_image'),
+        FieldPanel('body')
+    ]

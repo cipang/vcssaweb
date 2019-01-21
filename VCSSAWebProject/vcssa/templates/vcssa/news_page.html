@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags wagtailsettings_tags static %}
+
+{% block body_class %}template-newspage{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/news/news.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="topnav" id="myTopnav">
+        {% load_menu %}
+    </div>
+    {#    news body#}
+    <div class="container">
+
+        <h1 class="news-title">{{ page.title }}</h1>
+        <h1 class="news-second-title">{{ page.intro }}</h1>
+
+        By
+        <i class="news-author">
+            {{ page.author }}
+        </i> |
+        Updated
+        <i class="news-time">
+            {{ page.date }}
+        </i>
+
+        <div class="news-body">{{ page.body | richtext }}</div>
+
+
+    </div>
+
+
+{% endblock %}

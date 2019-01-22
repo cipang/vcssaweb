@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static%}
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
 
 {% block body_class %}template-activitypage{% endblock %}
 
@@ -15,28 +15,20 @@
     <div class="topnav" id="myTopnav">
         {% load_menu %}
     </div>
-    <div>    {{ page.title }}
-    </div>
-
     <div class="container">
         <div class="coupon">
-            <div class="flex-container">
-                <h3>Activity Details</h3>
-            </div>
             {% image page.background_image original as activity_image %}
-            <div class="flex-container">
-                <img src="{{activity_image.url}}" alt="activity_image" style="width: 100%">
+            <img class="activity-img" src="{{ activity_image.url }}" alt="activity_image">
+            <div class="activity-title">
+                <h2><b>{{ page.name }}</b></h2>
+                <p>{{ page.intro }}</p>
             </div>
-            <div class="flex-container" style="background-color:white;">
-                <h2><b>{{page.name}}</b></h2>
-                <p>{{page.intro}}</p >
+            <div class="activity-body">
+                <p>{{ page.body | richtext }}</p>
             </div>
-            <div class="flex-container" style="background-color:white;">
-                <p>{{page.body | richtext }}</p>
-            </div>
-            <div class="flex-container">
-                <p>Apply Link:<a class="promo" target="_blank" href=" ">{{page.link}}</a></p>
-                <p class="expire">Expire Date: {{page.date}}</p>
+            <div class="activity-footer">
+                <p>Apply Link:<a class="promo" target="_blank" href=" ">{{ page.link }}</a></p>
+                <p class="expire">Expire Date: {{ page.date }}</p>
             </div>
         </div>
     </div>

@@ -1,3 +1,4 @@
+/*body style*/
 body, html {
     height: 100%;
     margin: 0;
@@ -26,6 +27,7 @@ body, html {
 
 .hero-text button {
     border-radius: 4px;
+    opacity: 0.5;
     /*border: 0;*/
     outline: 0;
     display: inline-block;
@@ -42,11 +44,22 @@ body, html {
     color: white;
     border-width: 2px;
     border-color: #dddddd;
+    opacity: 1;
+    font-size: 16px;
+    font-weight: bold;
 }
+
+.page-title {
+    font-size: 50px;
+}
+
 
 /*logo layout*/
 .topleft {
     position: absolute;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
     top: 16px;
     left: 16px;
     font-size: 18px;
@@ -56,7 +69,9 @@ body, html {
     position: absolute;
     top: 8px;
     right: 16px;
-    font-size: 18px;
+    font-size: 50px;
+    cursor: pointer;
+    color: #dddddd
 }
 
 
@@ -95,6 +110,22 @@ body, html {
     margin-left: 50px;
 }
 
+/*container*/
+.content-container-fluid {
+    width: 100%;
+    padding: 50px 7% 20px 7%;
+}
+
+.content-container-fluid .block-title {
+    height: 100px;
+    font-family: 'Andale Mono';
+}
+
+.content-container-fluid .block-title-md {
+    font-family: 'Andale Mono';
+}
+
+
 @media screen and (max-height: 600px) {
     .sidenav {
         padding-top: 15px;
@@ -103,6 +134,39 @@ body, html {
     .sidenav a {
         font-size: 18px;
     }
+}
+
+
+/*card body detail*/
+.card {
+@extend . card;
+    margin: 2px;
+    border: none
+
+}
+
+.card-title {
+    margin: 10px;
+    font-weight: bold;
+}
+
+.card-content {
+
+    margin: 10px 10px 50px 10px;
+    font-size: 20px;
+}
+
+.card-body {
+    position: relative;
+    bottom: 30px;
+    margin: auto;
+    background-color: white;
+    border: 2px solid lightgrey;
+    width: 95%;
+}
+
+.card-link {
+    margin: 10px;
 }
 
 /*card link*/
@@ -114,6 +178,7 @@ body, html {
     color: dodgerblue;
     font-weight: bold;
     border: 2px solid dodgerblue;
+
     padding: 0.5em 1em;
     position: absolute;
     bottom: 20px;
@@ -129,16 +194,6 @@ body, html {
 .news-link:active {
     text-decoration: none;
     background-color: dodgerblue;
-}
-
-/*card body detail*/
-.card-body {
-    position: relative;
-    bottom: 30px;
-    margin: auto;
-    background-color: white;
-    border: 2px solid lightgrey;
-    width: 95%;
 }
 
 gallery {
@@ -187,6 +242,7 @@ gallery {
         color: white;
     }
 }
+
 /*show 2 news in a row*/
 .card-columns {
 @extend . card-cloumns;

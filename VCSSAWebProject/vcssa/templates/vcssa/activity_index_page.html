@@ -16,33 +16,32 @@
         {% load_menu %}
     </div>
 
-    <div class="container-fluid" style="padding: 0">
+    <div class="container-fluid">
         {% image page.background_image original as background %}
-        <img src="{{ background.url }}" alt="{{ background.alt }}" style="width: 100%; height: 500px;"/>
+        <img class="background" src="{{ background.url }}" alt="{{ background.alt }}"/>
         <div class="content">
             <h1>{{ page.title }}</h1>
             <p>{{ page.intro|richtext }}</p>
         </div>
     </div>
     <br>
-    <div class="container-fluid" style="padding: 20px 5% 20px 5%">
+    <div class="container-fluid-body">
         <div class="card-columns">
             {% for activity in activities %}
-                <div class="card shadow" style="margin-bottom:10px;">
+                <div class="card shadow">
                     {% image activity.specific.background_image fill-600x400 as tmp_photo %}
                     <img class="card-img-top img-fluid" src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}"/>
                     <div class="card-block">
-                        <h5 class="card-title"
-                            style="margin: 10px; font-weight: bold">{{ activity.specific.name }}</h5>
-                        <p class="card-text" style="margin: 10px"> {{ activity.specific.date }}</p>
-                        <p class="card-text" style="margin: 10px"> {{ activity.specific.intro }}</p>
+                        <h5 class="card-title">{{ activity.specific.name }}</h5>
+                        <p class="card-date"> {{ activity.specific.date }}</p>
+                        <p class="card-text"> {{ activity.specific.intro }}</p>
+                        <div class="card-text">
+                            <a class="card-link" href="{% pageurl activity.specific %}">See Detail</a>
+                        </div>
                     </div>
-                    <div class="card-text" style="margin: 10px;">
-                        <a href= "card-link">See Detail</a>
-                </div>
                 </div>
 
             {% endfor %}
-    </div>
+        </div>
     </div>
 {% endblock %}

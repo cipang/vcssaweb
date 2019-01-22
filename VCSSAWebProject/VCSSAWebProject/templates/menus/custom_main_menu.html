@@ -17,23 +17,23 @@
 </script>
 
 <!--only the content of the menu no layout-->
-{% vcssa_home as homemenu%}
+{% vcssa_home as homemenu %}
 <a href="{% pageurl homemenu %}" class="nav-link"><i class="fa fa-fw fa-home"></i>{{ homemenu.title }}</a>
 
 {#if the page is under subunion, load subunion home page menu#}
 {% is_child_of_subunion as is_child %}
 {% if is_child %}
-    {% subunion_home as subunion_homemenu%}
+    {% subunion_home as subunion_homemenu %}
     <a href="{% pageurl subunion_homemenu %}" class="nav-link" style="">{{ subunion_homemenu.title }}</a>
 {% endif %}
 
 {% for item in menu_items %}
     {# first level menu#}
     <a href="{{ item.href }}" style="">{{ item.text }}
-{#        {% if item.has_children_in_menu %}#}
-            {# second level menu#}
-{#            <a> {% sub_menu item %}</a>#}
-{#            {% endif %}#}
+        {#        {% if item.has_children_in_menu %}#}
+        {# second level menu#}
+        {#            <a> {% sub_menu item %}</a>#}
+        {#            {% endif %}#}
     </a>
 {% endfor %}
 <a href="javascript:void(0);" class="icon" id="close_icon" onclick="myFunction()">

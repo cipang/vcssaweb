@@ -55,7 +55,7 @@
     {% image page.background_image original as background %}
     <div class="hero-image" id="background" title="{{ background.url }}">
         <div class="hero-text">
-            <h1 style="font-size:50px">{{ page.title }}</h1>
+            {{ page.title }}
         </div>
     </div>
 
@@ -68,19 +68,19 @@
         <a href="{{ page.instagram }}" class="instagram"><i class="fa fa-instagram"></i></a>
     </div>
 
-    <div class="container-fluid bg-light" style="padding: 20px">
+    <div class="container-fluid bg-light">
         {#        <h2 class="text-center">CONTACT</h2>#}
         <br>
         <div class="row">
-
             {#    address introduction#}
-            <div class="col-lg-7 bg-light text-center align-middle"
-                 style="font-size: 20px">
-                {{ page.intro |richtext }}
-                <p>Contact us and we'll get back to you within 24 hours.</p>
-                <p><span class="fas fa-map-marker"></span> {{ page.address }}</p>
-                <p><span class="fas fa-phone"></span>{{ page.phone }}</p>
-                <p><span class="fas fa-envelope"></span>{{ page.email }}</p>
+            <div class="col-lg-7 bg-light text-center align-middle">
+                <div class="contact-info">
+                    {{ page.intro |richtext }}
+                    <p>Contact us and we'll get back to you within 24 hours.</p>
+                    <p><span class="fas fa-map-marker"></span> {{ page.address }}</p>
+                    <p><span class="fas fa-phone"></span>{{ page.phone }}</p>
+                    <p><span class="fas fa-envelope"></span>{{ page.email }}</p>
+                </div>
             </div>
 
             {#        form #}
@@ -97,7 +97,6 @@
                     {% for field in form.visible_fields %}
                         <div class="form-group">
                             {{ field.label_tag }}
-
                             {% if form.is_bound %}
                                 {% if field.errors %}
                                     {% render_field field class="form-control is-invalid" %}
@@ -119,7 +118,7 @@
                         </div>
                     {% endfor %}
                     {% if form.visible_fields %}
-                        <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     {% endif %}
                 </form>
             </div>
@@ -133,7 +132,7 @@
             <span class="close">&times;</span>
             <p>Scan QR code to know more details.</p>
             {% image page.weChat original as side_image %}
-            <img src="{{ side_image.url }}" alt="{{ side_image.alt }}" style="width: 100%; height: 100%;"/>
+            <img class="wechat-img" src="{{ side_image.url }}" alt="{{ side_image.alt }}"/>
         </div>
     </div>
 

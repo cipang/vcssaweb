@@ -6,6 +6,7 @@ from wagtail.contrib.settings.registry import register_setting
 from wagtail.users.forms import UserEditForm, UserCreationForm, standard_fields, custom_fields
 from .models import SubunionUser
 
+
 class CustomUserEditForm(UserEditForm):
     country = forms.CharField(required=True, label=_("Country"))
     # class Meta:

@@ -3,12 +3,14 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
     {#    slide show css#}
     <link rel="stylesheet" href="{% static 'css/flickity.css' %}">
 {% endblock %}
 
 {% block extra_js %}
+    <script>
+        loadCssFile("{% static 'css/home1.css' %}", "css");
+    </script>
     <script type="text/javascript" src="{% static 'js/home.js' %}"></script>
     {#  slide show js   #}
     <script type="text/javascript" src="{% static 'js/flickity.pkgd.min.js' %}"></script>
@@ -22,7 +24,7 @@
         <div class="hero-text">
             {# load introduction from model#}
             <h1 class="page-title">{{ page.title }}</h1>
-            <p>{{ page.intro }}</p>
+            <p>{{ page.welcome }}</p>
             <div>
                 <button>Know about us
                 </button>
@@ -71,7 +73,7 @@
                         {# title#}
                         <h3 class="card-title"> {% include_block block.value.specific.title %}</h3>
                         {# intro#}
-                        <div class="card-content">{{ block.value.specific.body | richtext }} </div>
+                        <div class="card-content">{{ block.value.specific.intro | richtext }} </div>
                         {#footer link#}
                         <div class="card-link">
                             <a class="news-link" href={% pageurl block.value.specific %}>LEARN MORE</a>

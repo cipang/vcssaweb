@@ -4,8 +4,24 @@
 
 {% block body_class %}template-activitypage{% endblock %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/activity/activity.css' %}">
+
+{% block extra_js %}
+    <script>
+        loadCssFile("{% static 'css/activity/activity.css' %}", "css");
+        {#use to change video layout on safari#}
+        {#only on mac os and in safari#}
+        if (getOS() === 'Mac OS') {
+            if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+                {#alert('safari on mac');#}
+                var responsive_obj = document.getElementsByClassName("responsive-object");
+                var videoImage = document.getElementsByClassName("ytp-cued-thumbnail-overlay");
+                var images = document.getElementsByClassName("richtext-image left");
+                for (var i = 0; i < responsive_obj.length; i += 1) {
+                    responsive_obj[i].style.padding = "0";
+                }
+            }
+        }
+    </script>
 
 {% endblock %}
 
@@ -24,7 +40,7 @@
                 <p>{{ page.intro }}</p>
             </div>
             <div class="activity-body">
-                <p>{{ page.body | richtext }}</p>
+                {{ page.body |richtext }}
             </div>
             <div class="activity-footer">
                 <p>Apply Link:<a class="promo" target="_blank" href=" ">{{ page.link }}</a></p>

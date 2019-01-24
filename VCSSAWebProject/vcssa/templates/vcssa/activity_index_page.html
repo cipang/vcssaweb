@@ -4,9 +4,10 @@
 
 {% block body_class %}template-activityindexpage{% endblock %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/activity_index/activity_index.css' %}">
-
+{% block extra_js %}
+    <script>
+        loadCssFile("{% static 'css/activity_index/activity_index.css' %}", "css");
+    </script>
 {% endblock %}
 
 {% block content %}
@@ -21,7 +22,7 @@
         <img class="background" src="{{ background.url }}" alt="{{ background.alt }}"/>
         <div class="content">
             <h1>{{ page.title }}</h1>
-            <p>{{ page.intro|richtext }}</p>
+            <p>{{ page.intro }}</p>
         </div>
     </div>
     <br>

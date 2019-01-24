@@ -4,11 +4,10 @@
 
 {% block body_class %}template-newstagindexpage{% endblock %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/news_tag/news_tag.css' %}">
-
-{% endblock %}
 {% block extra_js %}
+    <script>
+        loadCssFile("{% static 'css/news_tag/news_tag.css' %}", "css");
+    </script>
 {% endblock %}
 
 {% block content %}

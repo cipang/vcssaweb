@@ -4,11 +4,11 @@
 
 {% block body_class %}template-subunionindexpage{% endblock %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/sub_union/sub_union.css' %}">
-
+{% block extra_js %}
+    <script>
+        loadCssFile("{% static 'css/sub_union/sub_union.css' %}", "css");
+    </script>
 {% endblock %}
-
 
 {% block content %}
 

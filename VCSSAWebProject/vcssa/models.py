@@ -167,6 +167,9 @@ class ActivityIndexPage(Page):
 #     panels = [
 #         ImageChooserPanel('image'),
 #     ]
+# test markdown
+from wagtailmarkdown.edit_handlers import MarkdownPanel
+from wagtailmarkdown.fields import MarkdownField
 
 
 # activity page for a single activity
@@ -181,6 +184,7 @@ class ActivityPage(Page):
     search_fields = Page.search_fields + [
         index.SearchField('intro'),
     ]
+
     content_panels = Page.content_panels + [
         FieldPanel('name'),
         FieldPanel('intro'),

@@ -16,7 +16,6 @@ import os
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -29,7 +28,6 @@ INSTALLED_APPS = [
     'search',
     'users',
     'vcssa',
-
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -68,14 +66,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
-
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 
 ]
 
 ROOT_URLCONF = 'VCSSAWebProject.urls'
-
 
 TEMPLATES = [
     {
@@ -104,7 +100,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'VCSSAWebProject.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
@@ -114,7 +109,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -134,7 +128,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', ]
 AUTH_USER_MODEL = 'users.User'
 WAGTAIL_USER_EDIT_FORM = 'users.forms.CustomUserEditForm'
@@ -153,7 +146,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -177,7 +169,6 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
 
 # Wagtail settings
 

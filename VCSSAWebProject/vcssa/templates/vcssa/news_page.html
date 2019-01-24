@@ -3,8 +3,10 @@
 
 {% block body_class %}template-newspage{% endblock %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/news/news.css' %}">
+{% block extra_js %}
+    <script>
+        loadCssFile("{% static 'css/news/news.css' %}", "css");
+    </script>
 {% endblock %}
 
 {% block content %}
@@ -27,7 +29,8 @@
             {{ page.date }}
         </i>
 
-        <div class="news-body">{{ page.body | richtext }}</div>
+        <div class="news-body">
+            {{ page.body | richtext }}</div>
 
 
     </div>

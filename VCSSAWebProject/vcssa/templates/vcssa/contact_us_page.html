@@ -5,9 +5,7 @@
 {% block body_class %}template-contactuspage{% endblock %}'
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/contact_us/contact.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 {% endblock %}
 {% block extra_js %}
     <script type="text/javascript">
@@ -40,6 +38,8 @@
         document.getElementById('background').style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))," + "url(" + imageUrl + ")";
         {#change body bg color to gray#}
         document.body.className = "bg-light";
+
+        loadCssFile("{% static 'css/contact_us/contact.css' %}", "css");
     </script>
 {% endblock %}
 

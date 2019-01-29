@@ -1,0 +1,21 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/home_slides.css' %}">
+<div class="content-container-fluid">
+    <h2 class="block-title">
+        Introduction about the association
+        this is a very long paragraph
+        fadhf jfadkfdj fakjldkjasld afjkldjlkd
+        vkjafjkfdskfjl
+        fdasf djk
+    </h2>
+
+    <div class="carousel"
+         data-flickity='{ "freeScroll": true, "wrapAround": true }'>
+        {% for block in page.index_pages %}
+            {% image block.value.specific.cover_image fill-600x500 as coverimage %}
+            <img class="carousel-cell" src="{{ coverimage.url }}" alt="{{ coverimage.alt }}">
+
+        {% endfor %}
+    </div>
+</div>
+<br>

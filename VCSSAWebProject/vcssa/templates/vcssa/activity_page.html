@@ -10,17 +10,17 @@
         loadCssFile("{% static 'css/activity/activity.css' %}", "css");
         {#use to change video layout on safari#}
         {#only on mac os and in safari#}
-        if (getOS() === 'Mac OS') {
-            if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
-                {#alert('safari on mac');#}
-                var responsive_obj = document.getElementsByClassName("responsive-object");
-                var videoImage = document.getElementsByClassName("ytp-cued-thumbnail-overlay");
-                var images = document.getElementsByClassName("richtext-image left");
-                for (var i = 0; i < responsive_obj.length; i += 1) {
-                    responsive_obj[i].style.padding = "0";
-                }
-            }
-        }
+        {#if (getOS() === 'Mac OS') {#}
+        {#    if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {#}
+        {#alert('safari on mac');#}
+        {#        let responsive_obj = document.getElementsByClassName("responsive-object");#}
+        {#        let videoImage = document.getElementsByClassName("ytp-cued-thumbnail-overlay");#}
+        {#        let images = document.getElementsByClassName("richtext-image left");#}
+        {#        for (let i = 0; i < responsive_obj.length; i += 1) {#}
+        {#            responsive_obj[i].style.padding = "0";#}
+        {#        }#}
+        {#    }#}
+        {# }#}
     </script>
 
 {% endblock %}
@@ -31,22 +31,8 @@
     <div class="topnav" id="myTopnav">
         {% load_menu %}
     </div>
-    <div class="container">
-        <div class="coupon">
-            {% image page.background_image original as activity_image %}
-            <img class="activity-img" src="{{ activity_image.url }}" alt="activity_image">
-            <div class="activity-title">
-                <h2><b>{{ page.name }}</b></h2>
-                <p>{{ page.intro }}</p>
-            </div>
-            <div class="activity-body">
-                {{ page.body |richtext }}
-            </div>
-            <div class="activity-footer">
-                <p>Apply Link:<a class="promo" target="_blank" href=" ">{{ page.link }}</a></p>
-                <p class="expire">Expire Date: {{ page.date }}</p>
-            </div>
-        </div>
-    </div>
+
+    <!-- activity content-->
+    {% include "vcssa/includes/activity_content1.html" %}
 
 {% endblock %}

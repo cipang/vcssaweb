@@ -16,45 +16,7 @@
     <div class="topnav" id="myTopnav">
         {% load_menu %}
     </div>
+    <!--news tag index content-->
+    {% include "vcssa/includes/news_tag_index_content1.html" %}
 
-
-
-    <div class="index-body">
-        <div class="left-column">
-            {% if request.GET.tag|length %}
-                <div class="news-index-title">
-                    Showing news tagged "{{ request.GET.tag }}"
-                </div>
-                <hr>
-            {% endif %}
-
-            {% for news_page in newspages %}
-                <div class="news-card row">
-                    <div class="col-md-6 col-xr-6">
-                        {% image news_page.specific.cover_image fill-300x300 as tmp_photo %}
-                        <a href="{% pageurl news_page.specific %} "> <img class="fakeimg" src="{{ tmp_photo.url }}"
-                                                                          alt="{{ tmp_photo.alt }}"></a>
-                        {#                        <img class="fakeimg" src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" href="">#}
-                    </div>
-                    <div class="col-md-6 col-xs-6">
-                        <h1 class="news-card-title">
-                            <a href= {% pageurl news_page.specific %}>  {{ news_page.specific.title }} </a>
-
-                        </h1>
-                        <div class="news-card-time">{{ news_page.specific.date }}</div>
-                        <div class="news-card-intro">
-                            {{ news_page.specific.intro }}
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            {% empty %}
-                <div class="news-index-title">
-                    No news found with that tag.
-                </div>
-                <hr>
-            {% endfor %}
-
-        </div>
-    </div>
 {% endblock %}

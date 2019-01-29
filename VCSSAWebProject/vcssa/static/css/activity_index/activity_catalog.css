@@ -1,0 +1,24 @@
+/*card layout*/
+.card {
+@extend . card;
+    margin-bottom: 10px;
+}
+
+.card-block {
+    padding: 20px;
+}
+
+.card-title {
+    margin: 10px;
+    font-weight: bold
+}
+
+.card-date {
+    margin: 10px;
+    color: dodgerblue;
+    font-style: italic;
+}
+
+.card-text {
+    margin: 10px;
+}

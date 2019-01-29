@@ -10,13 +10,13 @@
 {% block extra_js %}
     <script type="text/javascript">
         // Get the modal
-        var modal = document.getElementById('myModal');
+        let modal = document.getElementById('myModal');
 
         // Get the button that opens the modal
-        var btn = document.getElementById("wechat_btn");
+        let btn = document.getElementById("wechat_btn");
 
         // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+        let span = document.getElementsByClassName("close")[0];
 
         // When the user clicks the button, open the modal
         btn.onclick = function () {
@@ -34,11 +34,10 @@
                 modal.style.display = "none";
             }
         };
-        var imageUrl = document.getElementById('background').title;
+        let imageUrl = document.getElementById('background').title;
         document.getElementById('background').style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))," + "url(" + imageUrl + ")";
         {#change body bg color to gray#}
-        document.body.className = "bg-light";
-
+        {#document.body.className = "bg-light";#}
         loadCssFile("{% static 'css/contact_us/contact.css' %}", "css");
     </script>
 {% endblock %}
@@ -51,78 +50,16 @@
         {% load_menu %}
     </div>
 
-    <!--background image and introduction-->
-    {% image page.background_image original as background %}
-    <div class="hero-image" id="background" title="{{ background.url }}">
-        <div class="hero-text">
-            {{ page.title }}
-        </div>
-    </div>
+    <!--contact us form and layout -->
+    {% include "vcssa/includes/contact_us_content1.html" %}
 
-    {#    icon bar#}
+    {#icon bar#}
     <div class="icon-bar">
         <a href=" " class="facebook"><i class="fa fa-facebook"></i></a>
         <a href="{{ page.weibo }}" class="weibo"><i class="fa fa-weibo"></i></a>
         <a href="#" class="wechat" id="wechat_btn"><i class="fa fa-wechat"></i>
             <span class="tooltiptext">Scan QR Code</span></a>
         <a href="{{ page.instagram }}" class="instagram"><i class="fa fa-instagram"></i></a>
-    </div>
-
-    <div class="container-fluid bg-light">
-        {#        <h2 class="text-center">CONTACT</h2>#}
-        <br>
-        <div class="row">
-            {#    address introduction#}
-            <div class="col-lg-7 bg-light text-center align-middle">
-                <div class="contact-info">
-                    {{ page.intro |richtext }}
-                    <p>Contact us and we'll get back to you within 24 hours.</p>
-                    <p><span class="fas fa-map-marker"></span> {{ page.address }}</p>
-                    <p><span class="fas fa-phone"></span>{{ page.phone }}</p>
-                    <p><span class="fas fa-envelope"></span>{{ page.email }}</p>
-                </div>
-            </div>
-
-            {#        form #}
-            <div class="col-lg-4">
-                <form action="{% pageurl page %}" method="POST" novalidate>
-                    {% csrf_token %}
-                    {% if form.non_field_errors %}
-                        <div class="alert alert-danger" role="alert">
-                            {% for error in form.non_field_errors %}
-                                {{ error }}
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                    {% for field in form.visible_fields %}
-                        <div class="form-group">
-                            {{ field.label_tag }}
-                            {% if form.is_bound %}
-                                {% if field.errors %}
-                                    {% render_field field class="form-control is-invalid" %}
-                                    {% for error in field.errors %}
-                                        <div class="invalid-feedback">
-                                            {{ error }}
-                                        </div>
-                                    {% endfor %}
-                                {% else %}
-                                    {% render_field field class="form-control is-valid" %}
-                                {% endif %}
-                            {% else %}
-                                {% render_field field class="form-control" %}
-                            {% endif %}
-
-                            {% if field.help_text %}
-                                <small class="form-text text-muted">{{ field.help_text }}</small>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                    {% if form.visible_fields %}
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    {% endif %}
-                </form>
-            </div>
-        </div>
     </div>
 
     {#modal#}

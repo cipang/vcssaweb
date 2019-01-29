@@ -17,62 +17,9 @@
         {% load_menu %}
     </div>
 
-    {# background image #}
-    <div class="container-fluid">
-        {% image page.background_image original as background %}
-        <img src="{{ background.url }}" alt="{{ background.alt }}"/>
-        <div class="content">
-            <h1>{{ page.title }}</h1>
-            <p>{{ page.intro| richtext }}</p>
-        </div>
-    </div>
-    <br>
+    <!--background image and intro-->
+    {% include "vcssa/includes/news_index_background1.html" %}
 
-
-    {# news index body #}
-    {#    <div class="container">#}
-    <div class="index-body">
-        <div class="left-column">
-            <div class="news-index-title">Featured news</div>
-            <hr>
-            {% for news_page in news %}
-                <div class="news-card row">
-                    <div class="col-md-6 col-xr-6">
-                        {% image news_page.specific.cover_image fill-300x300 as tmp_photo %}
-                        <a href="{% pageurl news_page.specific %} ">
-                            <img class="fakeimg" src="{{ tmp_photo.url }}"
-                                 alt="{{ tmp_photo.alt }}"></a>
-                        {#                        <img class="fakeimg" src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" href="">#}
-                    </div>
-                    <div class="col-md-6 col-xs-6">
-                        <h1 class="news-card-title">
-                            <a href= {% pageurl news_page.specific %}>  {{ news_page.specific.title }} </a>
-
-                        </h1>
-                        <div class="news-card-time">{{ news_page.specific.date }}</div>
-                        <div class="news-card-intro">
-                            {{ news_page.specific.intro }}
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            {% endfor %}
-
-        </div>
-        {#    </div>#}
-        <div class="right-column">
-            {# Leave tags here#}
-            <div class="news-index-title">Tags</div>
-            <div class="news-tags-block">
-                {% for news_page in news %}
-                    {% for tag in news_page.specific.tags.all %}
-                        <a class="tag" href="{% slugurl 'new-tag-index' %}?tag={{ tag }}">
-                            {{ tag }}
-                        </a>
-                    {% endfor %}
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-
+    <!--news index body-->
+    {% include "vcssa/includes/news_index_content1.html" %}
 {% endblock %}

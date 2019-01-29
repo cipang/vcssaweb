@@ -11,38 +11,14 @@
 {% endblock %}
 
 {% block content %}
-
     {#menu is here#}
     <div class="topnav" id="myTopnav">
         {% load_menu %}
     </div>
 
-    <div class="container-fluid">
-        {% image page.background_image original as background %}
-        <img class="background" src="{{ background.url }}" alt="{{ background.alt }}"/>
-        <div class="content">
-            <h1>{{ page.title }}</h1>
-            <p>{{ page.intro }}</p>
-        </div>
-    </div>
-    <br>
-    <div class="container-fluid-body">
-        <div class="card-columns">
-            {% for activity in activities %}
-                <div class="card shadow">
-                    {% image activity.specific.background_image fill-600x400 as tmp_photo %}
-                    <img class="card-img-top img-fluid" src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}"/>
-                    <div class="card-block">
-                        <h5 class="card-title">{{ activity.specific.name }}</h5>
-                        <p class="card-date"> {{ activity.specific.date }}</p>
-                        <p class="card-text"> {{ activity.specific.intro }}</p>
-                        <div class="card-text">
-                            <a class="card-link" href="{% pageurl activity.specific %}">See Detail</a>
-                        </div>
-                    </div>
-                </div>
+    <!--background image-->
+    {% include "vcssa/includes/activity_index_background.html" %}
+    {#activity index layout#}
+    {% include "vcssa/includes/activity_index_catalog1.html" %}
 
-            {% endfor %}
-        </div>
-    </div>
 {% endblock %}

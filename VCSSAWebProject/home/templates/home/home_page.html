@@ -9,79 +9,27 @@
 
 {% block extra_js %}
     <script>
+        var theme = document.getElementById("theme").innerHTML;
+        {#console.log(theme);#}
         loadCssFile("{% static 'css/home1.css' %}", "css");
     </script>
-    <script type="text/javascript" src="{% static 'js/home.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/home1.js' %}"></script>
     {#  slide show js   #}
     <script type="text/javascript" src="{% static 'js/flickity.pkgd.min.js' %}"></script>
+
 {% endblock %}
 
 
 {% block content %}
-    {% image page.background_image original as background %}
+    <div style="display: none" id="theme">{{ page.title }}</div>
+
     <!--background image-->
-    <div class="hero-image" id="background" title="{{ background.url }}">
-        <div class="hero-text">
-            {# load introduction from model#}
-            <h1 class="page-title">{{ page.title }}</h1>
-            <p>{{ page.welcome }}</p>
-            <div>
-                <button>Know about us
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!--logo-->
-    {% image page.logo_image original as logo %}
-    <img class="topleft" src="{{ logo.url }}" alt="logo" href="#"/>
-
-    <!--nav bar-->
-    <div id="mySidenav" class="sidenav">
-        <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
-        {% load_menu %}
-    </div>
-
-    <span class="topright" onclick="openNav()">&#9776;</span>
+    {% include "home/includes/home_background1.html" %}
 
     {#  slide show #}
-    <div class="content-container-fluid">
-        <h2 class="block-title">
-            Introduction about the association
-        </h2>
-
-        <div class="gallery js-flickity"
-             data-flickity-options='{ "wrapAround": true }'>
-            {% for block in page.index_pages %}
-                {% image block.value.specific.cover_image fill-600x500 as coverimage %}
-                <img class="gallery-cell" src="{{ coverimage.url }}" alt="{{ coverimage.alt }}">
-            {% endfor %}
-        </div>
-    </div>
-    <br>
+    {% include "home/includes/home_slides1.html" %}
 
     <!--News Index-->
-    <div class="content-container-fluid">
-        <h2 class="block-title-md"> Look what is new here</h2>
-        <br>
-        <div class="card-columns">
-            {% for block in page.index_pages %}
-                <div class="card">
-                    {% image block.value.specific.cover_image fill-600x350 as coverimage %}
-                    <img class="card-img-top img-fluid" src="{{ coverimage.url }}" alt="{{ coverimage.alt }}"/>
-                    <div class="card-body">
-                        {# title#}
-                        <h3 class="card-title"> {% include_block block.value.specific.title %}</h3>
-                        {# intro#}
-                        <div class="card-content">{{ block.value.specific.intro | richtext }} </div>
-                        {#footer link#}
-                        <div class="card-link">
-                            <a class="news-link" href={% pageurl block.value.specific %}>LEARN MORE</a>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+    {% include "home/includes/home_newsblock1.html" %}
 
 {% endblock %}

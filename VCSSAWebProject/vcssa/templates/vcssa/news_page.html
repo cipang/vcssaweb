@@ -14,26 +14,9 @@
     <div class="topnav" id="myTopnav">
         {% load_menu %}
     </div>
-    {#    news body#}
-    <div class="container">
 
-        <h1 class="news-title">{{ page.title }}</h1>
-        <h1 class="news-second-title">{{ page.intro }}</h1>
-
-        By
-        <i class="news-author">
-            {{ page.author }}
-        </i> |
-        Updated
-        <i class="news-time">
-            {{ page.date }}
-        </i>
-
-        <div class="news-body">
-            {{ page.body | richtext }}</div>
-
-
-    </div>
+    <!--news body-->
+    {% include "vcssa/includes/news_content1.html" %}
 
 
 {% endblock %}

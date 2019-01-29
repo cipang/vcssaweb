@@ -1,0 +1,24 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/activity/activity_content1.css' %}">
+<div class="container">
+    <div class="activity-title">
+        <h2>{{ page.name }}</h2>
+        <div class="activity-intro">{{ page.intro }}</div>
+    </div>
+</div>
+<div class="container">
+    {% image page.background_image original as activity_image %}
+    <img class="activity-img" src="{{ activity_image.url }}" alt="activity_image">
+    <div class="activity-body">
+        {{ page.body |richtext }}
+    </div>
+    <hr style="color: black">
+    <div class="container text-center">
+        <div class="activity-footer">
+            <p class="expire">Expire Date: {{ page.date }}</p>
+            <p>Apply Link:<a class="activity-link" target="_blank" href=" ">fadsdfdsa{{ page.link }}</a></p>
+        </div>
+    </div>
+
+
+</div>

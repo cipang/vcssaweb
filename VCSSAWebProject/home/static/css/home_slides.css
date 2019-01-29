@@ -1,0 +1,15 @@
+
+.carousel-cell {
+    height: 450px;
+    width: 990px;
+    margin-right: 10px;
+    counter-increment: gallery-cell;
+}
+
+/* cell number */
+.carousel-cell:before {
+    display: block;
+    /*text-align: center;*/
+    content: counter(gallery-cell);
+    line-height: 200px;
+}

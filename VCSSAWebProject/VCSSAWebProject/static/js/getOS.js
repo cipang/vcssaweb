@@ -1,15 +1,4 @@
-function loadCssFile(filename, type) {
-    if (type === "css") {
-        let fileref = document.createElement("link");
-        fileref.rel = "stylesheet";
-        fileref.type = "text/css";
-        fileref.href = filename;
-        document.getElementsByTagName("head")[0].appendChild(fileref);
-    }
-};
-
-//get the current os
-function getOS() {
+export function getOS() {
     var userAgent = window.navigator.userAgent,
         platform = window.navigator.platform,
         macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],

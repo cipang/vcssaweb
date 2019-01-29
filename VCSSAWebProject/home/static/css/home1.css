@@ -1,0 +1,32 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+/*container*/
+.content-container-fluid {
+    width: 100%;
+    padding: 20px 7% 20px 7%;
+    margin-top: 100px;
+}
+
+.content-container-fluid .block-title {
+    width: 70%;
+    font-weight: bold;
+    height: 500px;
+    font-family: 'Andale Mono';
+    color: rgb(218, 57, 47);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.content-container-fluid .block-title-md {
+    font-family: 'Andale Mono';
+    color: rgb(218, 57, 47);
+}
+
+

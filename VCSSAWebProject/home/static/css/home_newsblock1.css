@@ -1,0 +1,91 @@
+.card {
+@extend . card;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.card-img-top {
+    height: 600px;
+    background-color: rgba(0, 0, 0.3, 0.9);
+}
+
+.card-title {
+    /*text-align: center;*/
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+    /*color: white;*/
+    /*margin: 10px;*/
+    /*font-weight: bold;*/
+    /*margin-top: 20%;*/
+    padding-top: 5%;
+    text-align: center;
+    color: white;
+    opacity: 1;
+    padding-bottom: 2%;
+}
+
+.card-content {
+    opacity: 1;
+    margin: 1% 10% 0 10%;
+    /*margin: 10px 10px 50px 10px;*/
+    font-size: 22px;
+    color: #EDEAE5;
+}
+
+.card-body {
+    position: relative;
+    bottom: 600px;
+    margin: auto;
+    background-color: rgba(256, 256, 256, 0);
+    /*border: 2px solid lightgrey;*/
+    width: 65%;
+}
+
+.card-link {
+    margin: 1% 10% 0 10%;
+}
+
+/*card link*/
+.news-link {
+    text-decoration: none;
+    text-transform: uppercase;
+    /*background-color: white;*/
+    cursor: pointer;
+    color: #EDEAE5;
+    font-weight: bold;
+    border: 2px solid #EDEAE5;
+
+    padding: 0.5em 1em;
+    position: absolute;
+    bottom: 20px;
+}
+
+.news-link:hover {
+    text-decoration: none;
+    background-color: #EDEAE5;
+    color: black;
+    border: solid black;
+
+}
+
+.news-link:active {
+    text-decoration: none;
+    background-color: #EDEAE5;
+}
+
+@media screen and (max-width: 800px) {
+    .card-title{
+        font-size: 32px;
+    }
+    .card-content{
+        font-size: 18px;
+    }
+
+}

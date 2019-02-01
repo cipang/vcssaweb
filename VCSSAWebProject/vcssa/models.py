@@ -58,9 +58,15 @@ CONTACT_PAGE_FORM_FIELD_CHOICES = (
 class AboutPage(Page):
     show_in_menus_default = True
     intro = models.CharField(max_length=500, blank=True)
-
+    background_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     content_panels = Page.content_panels + [
         FieldPanel('intro'),
+        ImageChooserPanel('background_image'),
         InlinePanel('about_images', label="About images"),
     ]
 

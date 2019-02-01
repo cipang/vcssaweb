@@ -5,16 +5,17 @@
 
 </script>
 {% image page.background_image original as background %}
-<div class="container-fluid text-center hero-image" id="background" title="{{ background.url }}" style="padding: 10%">
-    <div class="container-fluid text-center">
-        <h1 class="display-3" style="color: white; margin-bottom: 20px;">{{ page.title }}</h1>
-        {#        <div class="row justify-content-center" style="background-color: white; padding-top:2%">#}
-        {#            <h1>{{ page.title }}</h1>#}
-        {#        </div>#}
-        <div class="row align-items-center justify-content-around" style=" background-color:white">
+<div class="text-center hero-image" id="background" title="{{ background.url }}"
+     style="padding: 5%; display: flex;">
+    {#    <div class="container-fluid text-center">#}
+    <div class="container-fluid"
+         style=" background-color:white; border-radius: 10px; height: 100%; padding: 2%">
+        <h1 class="display-3" style="color: black; margin-bottom: 20px; text-align:center;">{{ page.title }}</h1>
+        <div class="row align-items-center justify-content-around"
+             style=" background-color:white; padding: 2%; margin: 0">
 
             {#    address introduction#}
-            <div class="col-lg-3 text-center">
+            <div class="col-lg-5 text-center">
                 <div class="contact-info">
                     {{ page.intro |richtext }}
                     <p>Contact us and we'll get back to you within 24 hours.</p>
@@ -23,8 +24,8 @@
                     <p><span class="fas fa-envelope"></span>{{ page.email }}</p>
                 </div>
             </div>
-            {#        form #}
-            <div class="col-lg-5 text-uppercase text-left" style="color: black; padding: 5%">
+            {# form #}
+            <div class="col-lg-5 text-uppercase text-left" style="color: black;">
                 <form action="{% pageurl page %}" method="POST" novalidate>
                     {% csrf_token %}
                     {% if form.non_field_errors %}

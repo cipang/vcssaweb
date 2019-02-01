@@ -1,0 +1,75 @@
+/*background image layout*/
+.container-fluid {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid .background {
+    vertical-align: middle;
+    width: 100%;
+    height: 500px;
+}
+
+.container-fluid .content {
+    position: absolute;
+    color: white;
+    font-size: 50px;
+    /*background: rgba(0, 0, 0, 0.5); !* Black background with 0.5 opacity *!*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container-fluid-body {
+    width: 100%;
+    padding: 20px 5% 20px 5%;
+}
+
+.about-title {
+    font-size: 50px;
+
+
+}
+
+.about-intro {
+    width: 350px;
+    /*padding: 0 7% 0 7%;*/
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.about-image {
+    height: 500px;
+    width: 500px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 800px) {
+    .about-image {
+        height: 400px;
+        width: 100%;
+        border-radius: 5px;
+
+    }
+
+    .about-intro {
+        font-size: 20px;
+        text-align: center;
+
+        /*reset to none*/
+        width: unset;
+        position: unset;
+        top: unset;
+        left: unset;
+        transform: unset;
+    }
+
+
+    .about-title {
+        font-size: 32px;
+    }
+}

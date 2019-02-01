@@ -7,6 +7,8 @@
         {% for block in page.index_pages %}
             {% image block.value.specific.cover_image fill-600x350 as coverimage %}
             <div class="card" style="
+                    display: flex;
+                    position: relative;
                     height: 600px;
                     width: 100%;
                     margin-bottom: 10px;
@@ -16,9 +18,8 @@
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-image:linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url({{ coverimage.url }})">
-
                 <h1 class="card-title"> {% include_block block.value.specific.title %}</h1>
-                <div class="card-content">{{ block.value.specific.intro | richtext }} </div>
+                <div class="card-content" style="padding: 20px 0">{{ block.value.specific.intro | richtext }} </div>
                 <div class="card-link">
                     <a class="news-link" href={% pageurl block.value.specific %}>
                         LEARN MORE</a>

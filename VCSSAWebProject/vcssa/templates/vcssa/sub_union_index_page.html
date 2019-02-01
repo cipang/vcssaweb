@@ -12,49 +12,14 @@
 
 {% block content %}
 
-    {#    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">#}
-    {#        <div class="container">#}
-    {#            {% section_menu max_levels=2 use_specific=USE_SPECIFIC_TOP_LEVEL template="menus/custom_main_menu.html" %}#}
-    {#            <!-- /.navbar-collapse -->#}
-    {#        </div>#}
-    {#        <!-- /.container -->#}
-    {#    </nav>#}
-
-
     {#menu is here#}
     <div class="topnav" id="myTopnav">
         {% load_menu %}
     </div>
 
+    <!--background image-->
+    {% include "vcssa/includes/sub_union_index_background1.html" %}
 
-
-    <div class="container-fluid">
-        {% image page.background_image original as background %}
-        <img src="{{ background.url }}" alt="{{ background.alt }}"/>
-        <div class="content">
-            <h1>{{ page.title }}</h1>
-            <p>{{ page.intro|richtext }}</p>
-        </div>
-    </div>
-
-    <br>
-    <div class="container">
-        <div class="row">
-            {% for subunion in subunions %}
-                <div class="col-md-4 col-xs-6">
-                    <div class="card">
-                        {% if subunion.logo != None %}
-                            {% image subunion.logo fill-300x300 as temp_photo %}
-                        {% endif %}
-                        <img class="card-img-top img-fluid" src="{{ temp_photo.url }}" alt="{{ temp_photo.alt }}"/>
-                        <div class="middle">
-                            <a href="{% pageurl subunion %}">
-                                <div class="text">{{ subunion.name }}</div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+    <!--sub union content-->
+    {% include "vcssa/includes/sub_union_index_content1.html" %}
 {% endblock %}

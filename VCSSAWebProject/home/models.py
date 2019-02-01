@@ -22,6 +22,7 @@ class HomePage(Page):
         ImageChooserPanel('background_image'),
         ImageChooserPanel('logo_image'),
         StreamFieldPanel('index_pages'),
+
     ]
 
     def get_context(self, request, *args, **kwargs):

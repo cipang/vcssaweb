@@ -1,23 +1,13 @@
 /*background image*/
-.body {
-
-
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-
 .hero-image {
     /*background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));*/
-    height: auto;
     width: auto;
-    /*width: 100%;*/
-    /*height: 100%;*/
+    height: auto;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    /*border-radius: 10px;*/
 }
 
 .hero-text {
@@ -34,9 +24,8 @@
 /*address phone and email*/
 .contact-info {
     /*color: white;*/
-    width: 100%;
     color: black;
-    font-size: 24px;
+    font-size: 32px;
 }
 
 /*comments form submit btn*/
@@ -54,8 +43,7 @@
         color: black;
         font-size: 22px;
     }
-
-    .form-group {
+    .form-group{
         font-size: 22px;
     }
 }

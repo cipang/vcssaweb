@@ -6,24 +6,16 @@ from wagtail.contrib.settings.models import BaseSetting
 from wagtail.contrib.settings.registry import register_setting
 from django import forms
 
+"""Only refers to the subunion of members to receive promotions.
+   For editors, use 'Group' to restrict permissions"""
+class Subunions(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 class User(AbstractUser):
-    country = models.CharField(verbose_name='country', max_length=255)
-    # groups = models.ManyToManyField(Group, limit_choices_to=Q(name="editor"))
-
-
-
-
-@register_setting
-class SubunionUser(BaseSetting):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True )
-    group = models.ManyToManyField(Group)
-
-    panels = [
-        FieldPanel('user.username'),
-        FieldPanel('group', widget=forms.CheckboxSelectMultiple())
-    ]
-
+    subunions = models.ManyToManyField(Subunions, blank=True)
 
 
 

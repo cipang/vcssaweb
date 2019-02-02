@@ -1,17 +1,11 @@
 
 .carousel {
     /*background: #EEE;*/
-    /*width: 100%;*/
-    /*height: 100%;*/
 }
 
 .carousel-cell {
     width: 100%;
-    /*height: 100%;*/
-    height: 600px;
-    /*height: ;*/
-    /*min-height: 600px;*/
-    /*max-width: 800px;*/
+    height: 800px;
 
     border-radius: 10px;
     counter-increment: gallery-cell;
@@ -41,7 +35,7 @@
 }
 
 @media screen and (max-width: 800px) {
-    .carousel-cell {
+    .carousel-cell{
         height: 400px;
     }
 

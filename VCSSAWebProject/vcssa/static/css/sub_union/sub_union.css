@@ -7,5 +7,61 @@ body {
     font-size: 17px;
 }
 
+.container-fluid {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid img {
+    vertical-align: middle;
+    width: 100%;
+    height: 500px;
+}
+
+.container-fluid .content {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+
+.row > div[class*='col-'] {
+    display: flex;
+    flex: 1 0 auto;
+}
 
 
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.card {
+    border: 0;
+    margin-bottom: 10px;
+}
+
+.card:hover .card-img-top {
+    opacity: 0.5;
+}
+
+.card:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    background-color: #0287af;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+}

@@ -13,7 +13,7 @@
         {#console.log(theme);#}
         loadCssFile("{% static 'css/home1.css' %}", "css");
     </script>
-    <script type="text/javascript" src="{% static 'js/home2.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/home1.js' %}"></script>
     {#  slide show js   #}
     <script type="text/javascript" src="{% static 'js/flickity.pkgd.min.js' %}"></script>
 
@@ -22,14 +22,13 @@
 
 {% block content %}
     <div style="display: none" id="theme">{{ page.title }}</div>
-
     <!--background image-->
-    {% include "home/includes/home_background2.html" %}
+    {% include  background_theme%}
 
     {#  slide show #}
-    {% include "home/includes/home_slides2.html" %}
+    {% include  slide_theme%}
 
     <!--News Index-->
-    {% include "home/includes/home_newsblock2.html" %}
+    {% include news_theme %}
 
 {% endblock %}

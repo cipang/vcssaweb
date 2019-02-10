@@ -111,8 +111,27 @@ class SubUnionIndexPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+
+    theme_background = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                                         related_name="subunion_index_background_theme",
+                                         limit_choices_to={'type': "SUBUNION_INDEX_BACKGROUND"})
+    theme_content = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                                      related_name="subunion_index_content_theme",
+                                      limit_choices_to={'type': "SUBUNION_INDEX_CONTENT"})
+
+    theme_panels = [
+        FieldPanel('theme_background', widget=RadioSelectWithPicture),
+        FieldPanel('theme_content', widget=RadioSelectWithPicture),
+    ]
     content_panels = Page.content_panels + [
         FieldPanel('intro'), ImageChooserPanel('background_image'), ]
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(theme_panels, heading='Theme Setting'),
+        ObjectList(Page.promote_panels, heading='Promote'),
+        ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
+    ])
 
     # get all published pages created by SubUnionHomePage template
     def get_context(self, request):
@@ -120,6 +139,8 @@ class SubUnionIndexPage(Page):
         subpages = SubUnionHomePage.objects.live()
         print(subpages)
         context['subunions'] = subpages
+        context['theme_background'] = self.theme_background.template_path
+        context['theme_content'] = self.theme_content.template_path
         return context
 
 
@@ -131,6 +152,7 @@ class SubUnionIndexPageGalleryImage(Orderable):
     panels = [
         ImageChooserPanel('image'),
     ]
+
 
 
 # page for a single sub union

@@ -1,0 +1,26 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/about/about_content2.css' %}">
+{#menu is here#}
+<div class="topnav" id="myTopnav">
+    {% load_menu %}
+</div>
+<div class="about-container">
+    {% image page.background_image original as about_image %}
+    <div class="about-left" id="about-image" title="{{ about_image.url }}">
+    </div>
+    <div class="about-right">
+        <div class="about-block">
+            <div class="about-title">
+                {{ page.title }}
+            </div>
+            <div class="about-intro">
+                {{ page.intro }}
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    let imageUrl = document.getElementById("about-image").title;
+    document.getElementById("about-image").style.backgroundImage = "url(" + imageUrl + ")";
+</script>

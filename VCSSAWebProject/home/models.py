@@ -1,3 +1,5 @@
+import os
+
 from django import forms
 from django.db import models
 from django.forms.widgets import ChoiceWidget
@@ -9,6 +11,9 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 HOME_PAGE_URL_PATH = '/home/homepage/'
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(PROJECT_DIR)
+
 
 THEME_CHOICES = (
     ("HOME_BACKGROUND", "Home Background"),
@@ -23,9 +28,25 @@ THEME_CHOICES = (
     ("NEWS", "News"),
     ("NEWS_INDEX_BACKGROUND", "News Index Background"),
     ("NEWS_INDEX_CONTENT", "News Index Content"),
-
+    ("SUBUNION_INDEX_BACKGROUND", "Subunion Index Background"),
+    ("SUBUNION_INDEX_CONTENT", "Subunion Index Content"),
 )
 
+BASE_THEME_PATH = ['\\home\\templates\\home\\includes\\backgrounds\\',
+                   '\\home\\templates\\home\\includes\\slides\\',
+                   '\\home\\templates\\home\\includes\\news\\',
+                   '\\vcssa\\templates\\vcssa\\includes\\about\\',
+                   '\\vcssa\\templates\\vcssa\\includes\\activity_index\\background\\',
+                   '\\vcssa\\templates\\vcssa\\includes\\activity_index\\catalog\\',
+                   '\\vcssa\\templates\\vcssa\\includes\\activity\\',
+                   '\\vcssa\\templates\\vcssa\\includes\\contact_us\\',
+                   '\\vcssa\\templates\\vcssa\\includes\\news_tag_index\\',
+                   '\\vcssa\\templates\\vcssa\\includes\\news\\',
+                   '\\vcssa\\templates\\vcssa\\includes\\news_index\\background\\',
+                   '\\vcssa\\templates\\vcssa\\includes\\news_index\\content\\',
+                   '\\vcssa\\templates\\vcssa\\includes\\subunion_index\\background\\',
+                   '\\vcssa\\templates\\vcssa\\includes\\subunion_index\\content\\',
+                   ]
 
 class RadioSelectWithPicture(ChoiceWidget):
     input_type = 'radio'
@@ -66,10 +87,9 @@ class ThemeManager(models.Manager):
 
 
 class Theme(models.Model):
-    name = models.CharField(max_length=255, null=True, blank=True)
-    type = models.CharField(max_length=255, choices=THEME_CHOICES, default="HOME_BACKGROUND", null=True, blank=True)
-    template_path = models.CharField(max_length=255, null=True, blank=True,
-                                     help_text="Enter full template path with name.")
+    name = models.CharField(max_length=255, null=False, default="theme")
+    type = models.CharField(max_length=255, choices=THEME_CHOICES, default="HOME_BACKGROUND")
+    template_path = models.CharField(max_length=255, default=BASE_DIR, help_text="Enter full template path with name.")
     preview_photo = models.ImageField(null=True)
     objects = ThemeManager()
     panels = [

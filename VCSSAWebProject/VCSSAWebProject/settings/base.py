@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from django.contrib.messages import constants as messages
+from django.urls import reverse
 from messages_extends import constants as constants_messages
 
 
@@ -136,8 +137,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', ]
 AUTH_USER_MODEL = 'users.User'
-# WAGTAIL_USER_EDIT_FORM = 'users.forms.CustomUserEditForm'
-# WAGTAIL_USER_CREATION_FORM = 'users.forms.CustomUserCreationForm'
+WAGTAIL_USER_EDIT_FORM = 'users.forms.CustomUserEditForm'
+WAGTAIL_USER_CREATION_FORM = 'users.forms.CustomUserCreationForm'
 WAGTAIL_USER_CUSTOM_FIELDS = ['subunions', ]
 
 # Internationalization
@@ -194,3 +195,6 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+PASSWORD_RESET_TIMEOUT = 1
+# LOGIN_URL = reverse('login')

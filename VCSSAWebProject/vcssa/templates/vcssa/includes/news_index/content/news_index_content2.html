@@ -1,0 +1,42 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/news_index/news_index_content2.css' %}">
+<div class="index-body">
+    <div class="left-column">
+        <div class="news-index-title">Featured news</div>
+        {% for news_page in news %}
+            <div class="news-card">
+                <div class="news-card-left">
+                    {% image news_page.specific.cover_image original as tmp_photo %}
+                    <a href="{% pageurl news_page.specific %} ">
+                        <img class="fakeimg" src="{{ tmp_photo.url }}"
+                             alt="{{ tmp_photo.alt }}"></a>
+                </div>
+                <div class="news-card-right">
+                    <h1 class="news-card-title">
+                        <a href= {% pageurl news_page.specific %}>  {{ news_page.specific.title }} </a>
+                    </h1>
+                    <div class="news-card-time">{{ news_page.specific.date }}</div>
+                    <div class="news-card-intro">
+                        {{ news_page.specific.intro }}
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="right-column">
+        {# Leave tags here#}
+        <div class="news-index-title">Tags</div>
+        <div class="news-tags-block">
+            {% for news_page in news %}
+                {% for tag in news_page.specific.tags.all %}
+                    <a class="tag" href="{% slugurl 'new-tag-index' %}?tag={{ tag }}">
+                        {{ tag }}
+                    </a>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -45,10 +45,15 @@
 
 {% block content %}
 
+{#    {% logo as logo%}#}
+{#    {% if logo is not None %}#}
+{#        {% image logo fill-400x400 %}#}
+{#    {% endif %}#}
+
     {#menu is here#}
-    <div class="topnav" id="myTopnav">
-        {% load_menu %}
-    </div>
+{#    <div class="topnav" id="myTopnav">#}
+{#        {% load_menu %}#}
+{#    </div>#}
 
     {#form message display#}
     {% include 'vcssa/message.html' %}
@@ -76,4 +81,9 @@
         </div>
     </div>
 
+
+
+    {#    <img src="{{ logo.url }}" alt="{{ logo.alt }}"/>#}
+
 {% endblock %}
+

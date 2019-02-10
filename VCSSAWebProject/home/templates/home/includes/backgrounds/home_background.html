@@ -1,0 +1,27 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/home_background.css' %}">
+{% image page.background_image original as background %}
+<!--background image-->
+<div class="hero-image" id="background" title="{{ background.url }}">
+    <div class="hero-text">
+        {# load introduction from model#}
+        <h1 class="page-title">{{ page.title }}</h1>
+        <p>{{ page.welcome }}</p>
+        <div>
+            <button>Know about us
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--logo-->
+{% image page.logo_image original as logo %}
+<img class="topleft" src="{{ logo.url }}" alt="logo" href="#"/>
+
+<!--nav bar-->
+<div id="mySidenav" class="sidenav">
+    <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+    {% load_menu %}
+</div>
+
+<span class="topright" onclick="openNav()">&#9776;</span>

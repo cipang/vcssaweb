@@ -1,0 +1,7 @@
+{% load wagtailcore_tags global_tags %}
+{% load_menu %}
+<h1>Account Home</h1>
+<h2>Welcome {{ firstname }}</h2>
+{% for attrname, value in profile.items %}
+    <p>{{ attrname }}: {{ value | safe }} </p>
+{% endfor %}

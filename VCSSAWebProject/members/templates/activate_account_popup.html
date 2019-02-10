@@ -1,0 +1,14 @@
+{% block content %}
+{% include 'vcssa/message.html' %}
+<p>Please confirm your email address to complete the registration</p>
+<div>
+    {% if request.session.host_link is not None %}
+        <a href="{{ request.session.host_link }}" >Click here to check your mailbox</a>
+    {% endif %}
+</div>
+<div>
+    <a href="{% url 'resend' %}" >Resend activation email</a>
+</div>
+{% endblock %}
+
+

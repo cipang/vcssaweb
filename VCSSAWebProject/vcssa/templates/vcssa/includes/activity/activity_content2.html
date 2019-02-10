@@ -1,0 +1,39 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/activity/activity_content2.css' %}">
+{#menu is here#}
+<div class="topnav" id="myTopnav">
+    {% load_menu %}
+</div>
+
+<div class="activity-container">
+    {% image page.background_image original as activity_image %}
+    <div class="activity-head-block" title="{{ activity_image.url }}" id="background">
+        <div class="activity-title">
+            {{ page.name }}
+        </div>
+        <div class="activity-intro">
+            {{ page.intro }}
+        </div>
+    </div>
+</div>
+
+<div class="activity-body">
+    {{ page.body |richtext }}
+</div>
+
+<div class="activity-footer">
+    <p> Expire Date: <span class="expire">{{ page.date }}</span></p>
+    <p>Book through:
+        <a class="activity-link" target="_blank" href="{{ page.link }}">
+            {{ page.link }}
+            https://translate.google.com.au/
+        </a>
+    </p>
+</div>
+
+
+<script>
+    let bk = document.getElementById("background");
+    let imageUrl = bk.title;
+    bk.style.backgroundImage = "url(" + imageUrl + ")";
+</script>

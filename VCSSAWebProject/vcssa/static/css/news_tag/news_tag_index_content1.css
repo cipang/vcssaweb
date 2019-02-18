@@ -20,7 +20,7 @@
     position: absolute;
     bottom: 0;
     background: rgb(0, 0, 0); /* Fallback color */
-    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    background: rgba(0, 0, 0, 0.5); /* Black backgrounds with 0.5 opacity */
     color: #f1f1f1;
     width: 100%;
     padding: 20px;
@@ -44,7 +44,7 @@
 }
 
 .fakeimg {
-    /*background-color: #aaa;*/
+    /*backgrounds-color: #aaa;*/
     height: 300px;
     width: 300px;
     border-radius: 50%;
@@ -52,8 +52,8 @@
 
 /*card layout*/
 .news-card {
-    /*background: rgb(247, 247, 247);*/
-    background-color: #EDEAE5;
+    /*backgrounds: rgb(247, 247, 247);*/
+    background-color: white;
     padding: 20px;
     margin-top: 20px;
     border: thin solid black
@@ -133,7 +133,7 @@
     }
 
     .fakeimg {
-        /*background-color: #aaa;*/
+        /*backgrounds-color: #aaa;*/
         border-radius: 50%;
         height: 300px;
         width: 300px;

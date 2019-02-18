@@ -2,9 +2,12 @@ import os
 import smtplib
 
 from django import forms
+from django.contrib import messages
 from django.db import models
+from django.shortcuts import render
 from django.utils import timezone
 from django.utils.datetime_safe import date
+from django.utils.html import strip_tags
 from modelcluster.fields import ParentalKey
 from wagtail.admin.utils import send_mail
 from wagtail.core import blocks
@@ -19,7 +22,7 @@ from wagtail.users.views.users import User
 from wagtail.embeds.blocks import EmbedBlock
 
 from VCSSAWebProject.settings import dev
-from home.models import HomePage
+from home.models import HomePage, RadioSelectWithPicture, Theme, THEME_CHOICES
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 
 from modelcluster.fields import ParentalKey
@@ -56,19 +59,36 @@ CONTACT_PAGE_FORM_FIELD_CHOICES = (
 
 
 class AboutPage(Page):
+    parent_page_types = ['home.HomePage', 'vcssa.SubUnionHomePage']
     show_in_menus_default = True
+    union_name = models.CharField(max_length=500, null=True, blank=True, default="", help_text="Enter your union name")
     intro = models.CharField(max_length=500, blank=True)
-    background_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
+    background_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
+    theme = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                              related_name="about_theme", limit_choices_to={'type': "ABOUT"})
+
+    theme_panels = [
+        FieldPanel('theme', widget=RadioSelectWithPicture),
+    ]
+
     content_panels = Page.content_panels + [
         FieldPanel('intro'),
+        FieldPanel('union_name'),
         ImageChooserPanel('background_image'),
         InlinePanel('about_images', label="About images"),
     ]
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(theme_panels, heading='Theme Setting'),
+        ObjectList(Page.promote_panels, heading='Promote'),
+        ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
+    ])
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(AboutPage, self).get_context(request, *args, **kwargs)
+        context['theme'] = self.theme.template_path
+        return context
 
 
 class AboutPageGalleryImage(Orderable):
@@ -91,8 +111,27 @@ class SubUnionIndexPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+
+    theme_background = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                                         related_name="subunion_index_background_theme",
+                                         limit_choices_to={'type': "SUBUNION_INDEX_BACKGROUND"})
+    theme_content = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                                      related_name="subunion_index_content_theme",
+                                      limit_choices_to={'type': "SUBUNION_INDEX_CONTENT"})
+
+    theme_panels = [
+        FieldPanel('theme_background', widget=RadioSelectWithPicture),
+        FieldPanel('theme_content', widget=RadioSelectWithPicture),
+    ]
     content_panels = Page.content_panels + [
         FieldPanel('intro'), ImageChooserPanel('background_image'), ]
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(theme_panels, heading='Theme Setting'),
+        ObjectList(Page.promote_panels, heading='Promote'),
+        ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
+    ])
 
     # get all published pages created by SubUnionHomePage template
     def get_context(self, request):
@@ -100,6 +139,8 @@ class SubUnionIndexPage(Page):
         subpages = SubUnionHomePage.objects.live()
         print(subpages)
         context['subunions'] = subpages
+        context['theme_background'] = self.theme_background.template_path
+        context['theme_content'] = self.theme_content.template_path
         return context
 
 
@@ -116,7 +157,6 @@ class SubUnionIndexPageGalleryImage(Orderable):
 # page for a single sub union
 class SubUnionHomePage(Page):
     parent_page_types = ['home.HomePage']
-
     # sub union name to be displayed on index page
     name = models.CharField(max_length=100)
     intro = models.CharField(max_length=500)
@@ -141,26 +181,38 @@ class ActivityIndexPage(Page):
     parent_page_types = ['home.HomePage', 'vcssa.SubUnionHomePage']
     show_in_menus_default = True
     intro = models.CharField(max_length=500, blank=True)
-
-    background_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
+    background_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
+    theme_background = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                                         related_name="activity_index_background_theme",
+                                         limit_choices_to={'type': "ACTIVITY_INDEX_BACKGROUND"})
+    theme_catalog = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                                      related_name="activity_index_catalog_theme",
+                                      limit_choices_to={'type': "ACTIVITY_INDEX_CATALOG"})
 
     content_panels = Page.content_panels + [
         FieldPanel('intro', classname="full"),
         ImageChooserPanel('background_image'),
-        # InlinePanel('activity_index_images', label="Activity images"),
     ]
+
+    theme_panels = [
+        FieldPanel('theme_background', widget=RadioSelectWithPicture),
+        FieldPanel('theme_catalog', widget=RadioSelectWithPicture),
+    ]
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(theme_panels, heading='Theme Setting'),
+        ObjectList(Page.promote_panels, heading='Promote'),
+        ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
+    ])
 
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
         activities = self.get_children().live().order_by('-first_published_at')
-        print(type(activities))
         context['activities'] = activities
+        context['background_theme'] = self.theme_background.template_path
+        context['catalog_theme'] = self.theme_catalog.template_path
         return context
 
 
@@ -174,20 +226,24 @@ class ActivityIndexPage(Page):
 #         ImageChooserPanel('image'),
 #     ]
 # test markdown
-from wagtailmarkdown.edit_handlers import MarkdownPanel
-from wagtailmarkdown.fields import MarkdownField
+# from wagtailmarkdown.edit_handlers import MarkdownPanel
+# from wagtailmarkdown.fields import MarkdownField
 
 
 # activity page for a single activity
 class ActivityPage(Page):
-    # parent_page_types = ['ActivityIndexPage']
+    parent_page_types = ['ActivityIndexPage']
     name = models.CharField(max_length=100)
     intro = models.CharField(max_length=500)
     date = models.DateField(("Date"), default=datetime.date.today)
     body = RichTextField(blank=True)
     cover_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
     background_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
+    theme = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                              related_name="activity_theme",
+                              limit_choices_to={'type': "ACTIVITY"})
     search_fields = Page.search_fields + [
+        index.SearchField('name'),
         index.SearchField('intro'),
     ]
 
@@ -199,6 +255,22 @@ class ActivityPage(Page):
         ImageChooserPanel('cover_image'),
         ImageChooserPanel('background_image'),
     ]
+
+    theme_panels = [
+        FieldPanel('theme', widget=RadioSelectWithPicture),
+    ]
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(theme_panels, heading='Theme Setting'),
+        ObjectList(Page.promote_panels, heading='Promote'),
+        ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
+    ])
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request)
+        context['theme'] = self.theme.template_path
+        return context
 
 
 # @register_setting
@@ -240,11 +312,12 @@ class FormField(AbstractFormField):
 
 
 class ContactUsPage(AbstractEmailForm):
+    parent_page_types = ['home.HomePage', 'vcssa.SubUnionHomePage']
+    show_in_menus_default = True
     background_image = models.ForeignKey(
         'wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
     intro = RichTextField(blank=True, default="Please contact us through our WeChat, or leave a message")
     thank_you_text = RichTextField(blank=True, default="Thank you for contacting us! We will get back to you soon.")
-    # email_password = models.CharField(max_length=16, default=None)
     address = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=100, blank=True)
     email = models.CharField(max_length=100, blank=True)
@@ -255,6 +328,10 @@ class ContactUsPage(AbstractEmailForm):
     weChat = models.ForeignKey(
         'wagtailimages.Image', blank=True, null=True, on_delete=models.SET_NULL, related_name='+',
         help_text='Your WeChat QR Code')
+
+    theme = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                              related_name="contact_theme",
+                              limit_choices_to={'type': "CONTACT"})
 
     content_panels = [
         FieldPanel('title'),
@@ -272,8 +349,6 @@ class ContactUsPage(AbstractEmailForm):
         FieldPanel('thank_you_text', classname="full"),
         MultiFieldPanel(
             [
-                # FieldPanel('from_address', help_text="Please enter an email to send the message"),
-                # FieldPanel('email_password'),
                 FieldPanel('to_address', help_text='Please enter an email to receive notifications'),
                 FieldPanel('subject'),
             ],
@@ -281,9 +356,39 @@ class ContactUsPage(AbstractEmailForm):
         ),
     ]
 
+    theme_panels = [
+        FieldPanel('theme', widget=RadioSelectWithPicture),
+    ]
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(theme_panels, heading='Theme Setting'),
+        ObjectList(Page.promote_panels, heading='Promote'),
+        ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
+    ])
+
+    def serve(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            form = self.get_form(request.POST, request.FILES, page=self, user=request.user)
+
+            if form.is_valid():
+                form_submission = self.process_form_submission(form)
+                # messages.add_message(request, constants_messages.SUCCESS_STICKY, 'The mail was sent successfully!')
+                print(strip_tags(self.thank_you_text))
+                messages.success(request, strip_tags(self.thank_you_text))
+                # return self.render_landing_page(request, form_submission, *args, **kwargs)
+        else:
+            form = self.get_form(page=self, user=request.user)
+
+        context = self.get_context(request)
+        context['form'] = form
+        return render(
+            request,
+            self.get_template(request),
+            context
+        )
+
     def send_mail(self, form):
-        print(dev.EMAIL_HOST_USER)
-        print(dev.EMAIL_HOST_PASSWORD)
         addresses = [address.strip() for address in self.to_address.split(',')]
         content = []
         for field in form:
@@ -298,6 +403,11 @@ class ContactUsPage(AbstractEmailForm):
         subject = self.subject + " - " + submitted_date_str
         send_mail(subject, content, addresses, self.from_address)
 
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request)
+        context['theme'] = self.theme.template_path
+        return context
+
 
 class NewsPageTag(TaggedItemBase):
     content_object = ParentalKey(
@@ -308,19 +418,37 @@ class NewsPageTag(TaggedItemBase):
 
 
 class NewsTagIndexPage(Page):
+    parent_page_types = ['home.HomePage', 'vcssa.SubUnionHomePage']
+
+    theme = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                              related_name="news_tag_index_theme",
+                              limit_choices_to={'type': "NEWS_TAGS_INDEX"})
+
+    content_panels = Page.content_panels
+
+    theme_panels = [
+        FieldPanel('theme', widget=RadioSelectWithPicture),
+    ]
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(theme_panels, heading='Theme Setting'),
+        ObjectList(Page.promote_panels, heading='Promote'),
+        ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
+    ])
 
     def get_context(self, request):
         # Filter by tag
         tag = request.GET.get('tag')
         newspages = NewsPage.objects.filter(tags__name=tag)
-
-        # Update template context
         context = super().get_context(request)
         context['newspages'] = newspages
+        context['theme'] = self.theme.template_path
         return context
 
 
 class NewsPage(Page):
+    parent_page_types = ['vcssa.NewsIndexPage']
     author = models.CharField(max_length=30, null=True, blank=True)
     date = models.DateTimeField(auto_now=True)
     cover_image = models.ForeignKey(
@@ -328,6 +456,9 @@ class NewsPage(Page):
     intro = models.CharField(max_length=255, null=True, blank=True)
     body = RichTextField()
     tags = ClusterTaggableManager(through=NewsPageTag, blank=True)
+    theme = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                              related_name="news_page_theme",
+                              limit_choices_to={'type': "NEWS"})
 
     content_panels = Page.content_panels + [
         FieldPanel('author'),
@@ -337,26 +468,57 @@ class NewsPage(Page):
         FieldPanel('body')
     ]
 
+    theme_panels = [
+        FieldPanel('theme', widget=RadioSelectWithPicture),
+    ]
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(theme_panels, heading='Theme Setting'),
+        ObjectList(Page.promote_panels, heading='Promote'),
+        ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
+    ])
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request)
+        context['theme'] = self.theme.template_path
+        return context
+
 
 class NewsIndexPage(Page):
     parent_page_types = ['home.HomePage', 'vcssa.SubUnionHomePage']
     show_in_menus_default = True
     intro = models.CharField(max_length=500, blank=True)
-    background_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
+    background_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
+    theme_background = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                                         related_name="news_index_background_theme",
+                                         limit_choices_to={'type': "NEWS_INDEX_BACKGROUND"})
+    theme_content = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                                      related_name="news_index_content_theme",
+                                      limit_choices_to={'type': "NEWS_INDEX_CONTENT"})
 
     content_panels = Page.content_panels + [
         FieldPanel('intro', classname="full"),
         ImageChooserPanel('background_image'),
     ]
 
+    theme_panels = [
+        FieldPanel('theme_background', widget=RadioSelectWithPicture),
+        FieldPanel('theme_content', widget=RadioSelectWithPicture),
+    ]
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(theme_panels, heading='Theme Setting'),
+        ObjectList(Page.promote_panels, heading='Promote'),
+        ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
+    ])
+
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
         news = self.get_children().live().order_by('-first_published_at')
         context['news'] = news
+        context['background_theme'] = self.theme_background.template_path
+        context['content_theme'] = self.theme_content.template_path
         return context

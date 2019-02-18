@@ -11,15 +11,9 @@
 {% endblock %}
 
 {% block content %}
-
-    {#menu is here#}
-    <div class="topnav" id="myTopnav">
-        {% load_menu %}
-    </div>
-
     <!--background image-->
-    {% include "vcssa/includes/sub_union_index_background1.html" %}
+    {% include theme_background %}
 
     <!--sub union content-->
-    {% include "vcssa/includes/sub_union_index_content1.html" %}
+    {% include theme_content %}
 {% endblock %}

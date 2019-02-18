@@ -38,7 +38,7 @@
     }
 
     .news-second-title {
-        font-size: 28px;
+        font-size: 20px;
         color: darkgray;
     }
 
@@ -46,7 +46,7 @@
     .news-author {
         font-size: 16px;
         color: dodgerblue;
-        margin-bottom: 12px;
+       padding-bottom: 12px;
     }
 
     .news-time {

@@ -12,13 +12,14 @@
 
 {% block content %}
     {#menu is here#}
-    <div class="topnav" id="myTopnav">
-        {% load_menu %}
-    </div>
+{#    <div class="topnav" id="myTopnav">#}
+{#        {% load_menu %}#}
+{#    </div>#}
 
     <!--background image-->
-    {% include "vcssa/includes/activity_index_background2.html" %}
+    {% include background_theme %}
+
     {#activity index layout#}
-    {% include "vcssa/includes/activity_index_catalog2.html" %}
+    {% include catalog_theme %}
 
 {% endblock %}

@@ -13,13 +13,13 @@
 {% block content %}
 
     {#menu is here#}
-    <div class="topnav" id="myTopnav">
-        {% load_menu %}
-    </div>
+{#    <div class="topnav" id="myTopnav">#}
+{#        {% load_menu %}#}
+{#    </div>#}
 
     <!--background image and intro-->
-    {% include "vcssa/includes/news_index_background1.html" %}
+    {% include background_theme %}
 
     <!--news index body-->
-    {% include "vcssa/includes/news_index_content1.html" %}
+    {% include content_theme %}
 {% endblock %}

@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.contrib.messages import constants as messages
+from messages_extends import constants as constants_messages
+
+
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
@@ -28,6 +32,7 @@ INSTALLED_APPS = [
     'search',
     'users',
     'vcssa',
+    'members',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -55,6 +60,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.modeladmin',
     'wagtailmenus',
     'widget_tweaks',
+    'messages_extends',
 ]
 
 MIDDLEWARE = [
@@ -130,9 +136,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', ]
 AUTH_USER_MODEL = 'users.User'
-WAGTAIL_USER_EDIT_FORM = 'users.forms.CustomUserEditForm'
-WAGTAIL_USER_CREATION_FORM = 'users.forms.CustomUserCreationForm'
-WAGTAIL_USER_CUSTOM_FIELDS = ['country', ]
+# WAGTAIL_USER_EDIT_FORM = 'users.forms.CustomUserEditForm'
+# WAGTAIL_USER_CREATION_FORM = 'users.forms.CustomUserCreationForm'
+WAGTAIL_USER_CUSTOM_FIELDS = ['subunions', ]
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -177,3 +183,16 @@ WAGTAIL_SITE_NAME = "VCSSAWebProject"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+MESSAGE_STORAGE = 'messages_extends.storages.FallbackStorage'
+
+MESSAGE_TAGS = {
+    constants_messages.SUCCESS_STICKY: 'alert-success-sticky',
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
+
+PASSWORD_RESET_TIMEOUT_DAYS = 1

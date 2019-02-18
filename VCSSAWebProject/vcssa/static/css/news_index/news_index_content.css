@@ -24,7 +24,7 @@
 }
 
 .fakeimg {
-    /*background-color: #aaa;*/
+    /*backgrounds-color: #aaa;*/
     height: 300px;
     width: 100%;
     padding: 20px;
@@ -102,7 +102,7 @@
     border-left-color: dodgerblue;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1024px) {
     .news-index-title {
         margin: 20px 0 0 10px;
         font-size: 24px;
@@ -124,20 +124,21 @@
     }
 
     .news-card-title {
-        font-size: 16px;
+        font-size: 22px;
     }
 
     .news-card-time {
-        font-size: 10px;
+        font-size: 16px;
     }
 
     .news-card-intro {
-        font-size: 12px;
+        font-size: 18px;
     }
 
     /*card image*/
     .fakeimg {
-        height: 100px;
+        padding: 0;
+        margin-bottom: 10px;
     }
 
 }

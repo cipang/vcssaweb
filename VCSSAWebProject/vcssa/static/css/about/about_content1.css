@@ -1,4 +1,4 @@
-/*background image layout*/
+/*backgrounds image layout*/
 .container-fluid {
     position: relative;
     margin: 0;
@@ -15,7 +15,7 @@
     position: absolute;
     color: white;
     font-size: 50px;
-    /*background: rgba(0, 0, 0, 0.5); !* Black background with 0.5 opacity *!*/
+    /*backgrounds: rgba(0, 0, 0, 0.5); !* Black backgrounds with 0.5 opacity *!*/
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -37,7 +37,7 @@
 .about-title {
     font-size: 50px;
     text-align: center;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
     /*padding: 20%;*/
     /*margin-top: 15%;*/
 }
@@ -47,23 +47,39 @@
     /*padding: 0 7% 0 7%;*/
     font-size: 24px;
     text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+}
+
+.background-image {
+    height: 800px;
+    width: 100%;
+
 }
 
 .about-image {
-    height: 800px;
-    width: 100%;
-    border-radius: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    width: 200px;
+
 }
 
 @media screen and (max-width: 800px) {
-    .about-image {
-        height: 400px;
+    .background-image {
         width: 100%;
-        border-radius: 5px;
+        height: 80vh;
+    }
+
+    .about-image {
+        /*height: unset;*/
+        /*padding-bottom: 100%;*/
+        /*width: 100%;*/
+        /*border-radius: 5px;*/
+        flex: 1 0 auto;
 
     }
 

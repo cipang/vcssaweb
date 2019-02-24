@@ -1,0 +1,45 @@
+.sign-in-block {
+    margin: auto;
+    font-size: 20px;
+    width: 35%;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
+}
+
+.title {
+    font-size: 22px;
+    text-align: center;
+    font-family: "Arial Black";
+    padding: 20px;
+}
+
+.btn {
+    border-radius: 10px;
+    width: 80%;
+    height: 60px;
+    font-size: 25px;
+    font-family: "Arial Black";
+}
+
+.logo {
+    height: 100px;
+    width: 100px;
+    margin: 20px;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .sign-in-block {
+        width: 100%;
+        padding: 2%;
+
+    }
+
+    .btn {
+        border-radius: 10px;
+        width: 60%;
+        height: 40px;
+        font-size: 16px;
+        font-family: "Arial Black";
+    }
+}

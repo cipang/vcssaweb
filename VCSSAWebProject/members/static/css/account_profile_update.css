@@ -1,0 +1,84 @@
+.update-block {
+    margin: auto;
+    font-size: 20px;
+    width: 35%;
+
+}
+
+.title {
+    font-size: 22px;
+    text-align: center;
+    font-family: "Arial Black";
+}
+
+.form {
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.help-text {
+    color: gray;
+    font-size: 16px;
+}
+
+.error-text {
+    color: firebrick;
+    font-size: 16px;
+}
+
+.btn {
+    border-radius: 10px;
+    width: 80%;
+    height: 60px;
+    font-size: 30px;
+    font-family: "Arial Black";
+}
+
+input[type=checkbox] {
+    background: black;
+    transform: scale(2);
+    margin: 10px;
+}
+
+input[type=checkbox]:checked ~ input[type=checkbox] {
+    background-color: white;
+    color: red;
+}
+
+.sign-in-link {
+    margin: 20px;
+
+}
+
+.logo {
+    height: 100px;
+    width: 100px;
+    margin: 20px;
+}
+
+input[type="date"]:before {
+    content: attr(placeholder) !important;
+    /*color: #aaa;*/
+    margin-right: 0.5em;
+}
+
+input[type="date"]:focus:before,
+input[type="date"]:valid:before {
+    content: "";
+}
+
+@media screen and (max-width: 1024px) {
+    .signup-block {
+        width: 100%;
+        padding: 2%;
+
+    }
+
+    .btn {
+        border-radius: 10px;
+        width: 60%;
+        height: 40px;
+        font-size: 16px;
+        font-family: "Arial Black";
+    }
+}

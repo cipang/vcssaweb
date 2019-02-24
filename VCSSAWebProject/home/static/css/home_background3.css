@@ -1,0 +1,34 @@
+/*background image and text intro*/
+.background-image {
+    /*background-attachment: fixed;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+.hero-text {
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.75);
+    color: black;
+    font-size: 10vw;
+    font-weight: bold;
+    font-family: "Arial Black";
+    margin: 0 auto;
+    padding: 1vw;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+}
+
+.intro {
+    color: black;
+    font-size: 2rem;
+    /*mix-blend-mode: screen;*/
+}
+

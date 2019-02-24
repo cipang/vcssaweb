@@ -1,0 +1,120 @@
+/**/
+.index-body {
+    padding: 20px;
+}
+
+/*index page layout*/
+.news-index-title {
+    /*margin: 30px 0 0 20px;*/
+    color: black;
+    font-size: 46px;
+}
+
+.left-column {
+    float: left;
+    width: 75%;
+}
+
+.right-column {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+}
+
+.news-tags-block {
+    margin: 20px;
+}
+
+.fakeimg {
+    /*backgrounds-color: #aaa;*/
+    height: 100%;
+    width: 100%;
+}
+
+/*card layout*/
+.news-card {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 50px;
+}
+
+.news-card-left {
+    float: left;
+    width: 49.5%;
+    height: 100%;
+    padding: 0;
+}
+
+.news-card-right {
+    float: right;
+    width: 49.5%;
+    height: 100%;
+    padding: 2%;
+    text-align: center;
+
+}
+
+
+.news-card-title a {
+    /*color: #303C6C;*/
+    font-weight: lighter;
+    color: rgb(220, 59, 48);
+}
+
+
+.news-card-title a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.news-card-intro {
+    margin-top: 10px;
+    font-size: 22px;
+    line-height: 2;
+}
+
+.news-card-time {
+    font-style: italic;
+    font-size: 20px;
+    color: black;
+}
+
+@media screen and (max-width: 1024px) {
+
+    .left-column, .right-column {
+        width: 100%;
+        padding: 0;
+    }
+
+    .news-card-left {
+        width: 100%;
+    }
+
+    .news-card-right {
+        width: 100%;
+    }
+
+    .news-card-title a {
+        font-weight: lighter;
+        color: rgb(220, 59, 48);
+    }
+
+
+    .news-card-title a:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+    .news-card-intro {
+        margin-top: 10px;
+        font-size: 20px;
+        line-height: 1.5;
+    }
+
+    .news-card-time {
+        font-style: italic;
+        font-size: 20px;
+        color: black;
+    }
+
+}

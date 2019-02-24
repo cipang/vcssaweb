@@ -1,0 +1,25 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/sub_union/sub_union_index_background2.css' %}">
+
+{% logo as logo %}
+{% if logo is not None %}
+    <div class="container-fluid text-center">
+        <br>
+        {% vcssa_home as homemenu %}
+        <a href="{{ homemenu.url }}">
+            {% image logo original as logo %}
+            <img class="logo" src="{{ logo.url }}" alt="logo" />
+        </a>
+        <br>
+        <br>
+        <h2 class="association-title text-center" style="color: rgb(50,50,50);">
+            Victoria Chinese Student and Scholar Association
+        </h2>
+        <br>
+    </div>
+{% endif %}
+
+{#menu is here#}
+<div class="topnav" id="myTopnav">
+    {% load_menu %}
+</div>

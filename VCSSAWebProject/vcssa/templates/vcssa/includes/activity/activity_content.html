@@ -1,0 +1,23 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/activity/activity_content.css' %}">
+{#menu is here#}
+<div class="topnav" id="myTopnav">
+    {% load_menu %}
+</div>
+<div class="container">
+    <div class="coupon">
+        {% image page.background_image original as activity_image %}
+        <img class="activity-img" src="{{ activity_image.url }}" alt="activity_image">
+        <div class="activity-title">
+            <h2><b>{{ page.name }}</b></h2>
+            <p>{{ page.intro }}</p>
+        </div>
+        <div class="activity-body">
+            {{ page.body |richtext }}
+        </div>
+        <div class="activity-footer">
+            <p>Apply Link:<a class="promo" target="_blank" href=" ">{{ page.link }}</a></p>
+            <p class="expire">Expire Date: {{ page.date }}</p>
+        </div>
+    </div>
+</div>

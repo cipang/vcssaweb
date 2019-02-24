@@ -1,0 +1,60 @@
+/*hero image*/
+.container-fluid {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid .background {
+    vertical-align: middle;
+    width: 100%;
+    height: 500px;
+    filter: brightness(75%);
+}
+
+.container-fluid .content {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.85);
+    mix-blend-mode: screen;
+    width: auto;
+    height: auto;
+    border-radius: 2px;
+    padding: 1%;
+}
+
+.content .title {
+    font-weight: bold;
+    font-size: 8rem;
+    /*color: rgb(220, 59, 48);*/
+}
+
+.content .intro {
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+@media screen and (max-width: 1024px) {
+    .content .title {
+        font-size: 4rem;
+    }
+
+    .content .intro {
+        font-size: 1.2rem;
+    }
+
+    .container-fluid .content {
+        padding: 0;
+    }
+
+    .container-fluid .background {
+        vertical-align: middle;
+        width: 100%;
+        height: 500px;
+        filter: brightness(75%);
+    }
+}

@@ -1,0 +1,68 @@
+.card {
+@extend . card;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(85%);
+}
+
+
+.card-title {
+    mix-blend-mode: screen;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.card-text {
+    /*background-color: rgba(255, 255, 255, 0.8);*/
+    color: white;
+    height: 100%;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 2% 2% 2% 2%;
+}
+
+.card-body {
+    /*background-color: rgba(255, 255, 255, 0.8);*/
+    /*color: white;*/
+    /*mix-blend-mode: screen;*/
+    font-size: 1.5rem;
+    /*font-weight: bolder;*/
+    padding: 5% 10% 5% 10%;
+}
+
+.card-link {
+    /*padding: 5%;*/
+}
+
+/*card link*/
+.news-link {
+    mix-blend-mode: screen;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: rgba(255, 255, 255, 0.75) solid;
+    color: black;
+    font-weight: bolder;
+    padding: 0.5em 1em;
+    bottom: 1rem;
+}
+
+.news-link:hover {
+    mix-blend-mode: normal;
+    background-color: transparent;
+    text-decoration: none;
+    color: #EDEAE5;
+
+}
+
+.news-link:active {
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.8);
+}

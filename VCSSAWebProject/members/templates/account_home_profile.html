@@ -1,0 +1,36 @@
+{% load wagtailcore_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/account_home_profile.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<div class="card">
+    <h1 class="">Profile</h1>
+    <div class="profile text-left">
+        <div>
+            <i class="profile-title fa fa-user"></i>
+            <span class="profile-content" id="username"></span>
+            <hr>
+        </div>
+        <div>
+            <i class="profile-title fa fa-envelope"></i>
+            <span class="profile-content" id="email"></span>
+
+        </div>
+        <hr>
+        <div>
+            <i class="profile-title fa fa-birthday-cake"></i>
+            <span class="profile-content" id="birthday"></span>
+            <hr>
+        </div>
+        <div>
+            <i class="profile-title fa fa-university"></i>
+            <span class="profile-content text-uppercase" id="profile-union"></span>
+            <hr>
+        </div>
+    </div>
+    <p>
+        <button class="btn btn-lg">Update</button>
+    </p>
+</div>
+
+

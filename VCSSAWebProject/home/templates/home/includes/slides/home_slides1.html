@@ -1,0 +1,18 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/home_slides1.css' %}">
+<div class="content-container-fluid">
+    <h2 class="block-title">
+        {{ page.intro }}
+    </h2>
+
+    <div class="carousel"
+         data-flickity='{ "freeScroll": true, "wrapAround": true }'>
+        {% for block in page.posters %}
+            {% image block.value original as coverimage %}
+            <img class="carousel-cell" src="{{ coverimage.url }}" alt="{{ coverimage.alt }}">
+
+        {% endfor %}
+    </div>
+</div>
+<br>
+

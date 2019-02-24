@@ -1,0 +1,21 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+
+<link rel="stylesheet" href="{% static 'css/home_background3.css' %}">
+
+<!--nav bar-->
+<div class="topnav" id="myTopnav">
+    {% load_menu %}
+</div>
+
+{% image page.background_image original as background %}
+<div class="background-image" id="background" title="{{ background.url }}">
+    <div class="hero-text">
+        {{ page.title }}
+        <div class="intro">
+            {{ page.welcome }}
+        </div>
+    </div>
+</div>
+
+
+

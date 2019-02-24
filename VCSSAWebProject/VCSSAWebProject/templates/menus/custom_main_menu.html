@@ -17,7 +17,6 @@
 </script>
 
 <!--only the content of the menu no layout-->
-
 {% vcssa_home as home %}
 <a href="{% pageurl home %}" class="nav-link"><i class="fa fa-fw fa-home"></i>{{ home.title }}</a>
 
@@ -37,8 +36,11 @@
     {#            <a> {% sub_menu item %}</a>#}
     {#            {% endif %}#}
 {% endfor %}
+
 <a href="{% url 'signin' %}">Sign In</a>
 
+{# user name #}
+<a href="{% url 'account_home' %}">Hello username</a>
 
 <a href="javascript:void(0);" class="icon" id="close_icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>

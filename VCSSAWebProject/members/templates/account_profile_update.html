@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load global_tags wagtailcore_tags static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/account_profile_update.css' %}">
+
+{% endblock %}
+{% block extra_js %}
+    <script>
+        let list = [];
+        let placeholder = [];
+
+        {% for field in form %}
+            list.push('{{ field.auto_id }}');
+            placeholder.push('{{ field.label}}');
+        {% endfor%}
+
+        for (let i = 0; i < list.length - 1; i += 1) {
+            let temp = document.getElementById(list[i]);
+            temp.className = "form-control form-control-lg";
+            temp.style.fontSize = "20px";
+            temp.style.fontFamily = "Trebuchet MS";
+            temp.placeholder = placeholder[i];
+        }
+
+        let subunions = document.getElementsByName("subunions");
+        for (let i = 0; i < subunions.length; i += 1) {
+            subunions[i].height = "10px";
+            subunions[i].width = "10px";
+        }
+
+    </script>
+
+{% endblock %}
+{% block content %}
+    <div class="topnav" id="myTopnav">
+        {% load_menu %}
+    </div>
+    {#logo#}
+    <div class="text-center">
+        <img class="logo" src="{% static "images/logo.png" %}" alt="logo">
+        <h2>Victoria Chinese Student and Scholar Association</h2>
+    </div>
+    <hr>
+    <div class="update-block">
+        <div class="title">Update your profile</div>
+        <br>
+        {% include "vcssa/message.html" %}
+        <form class="form-group" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                {{ field }}
+                {% if field.help_text %}
+                    <div class="help-text">{{ field.help_text }}</div>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p class="error-text">{{ error }}</p>
+                {% endfor %}
+                <br>
+            {% endfor %}
+
+            <div class="text-center">
+                <button class="text-center btn btn-success form-control text-uppercase" type="submit">
+                    Update
+                </button>
+            </div>
+
+            {# Both button/href are ok #}
+            {#            <input class="btn btn-success" type="button" value="Sign In" onclick="location.href='{% url 'signin' %}'"/>#}
+
+        </form>
+    </div>
+
+{% endblock %}

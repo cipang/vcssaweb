@@ -1,0 +1,24 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/home_newsblock.css' %}">
+<div class="content-container-fluid">
+    <h2 class="block-title-md">Recent news and activities</h2>
+    <br>
+    <div class="card-columns">
+        {% for block in page.index_pages %}
+            <div class="card">
+                {% image block.value.specific.cover_image fill-600x350 as coverimage %}
+                <img class="card-img-top img-fluid" src="{{ coverimage.url }}" alt="{{ coverimage.alt }}"/>
+                <div class="card-body">
+                    {# title#}
+                    <h3 class="card-title"> {% include_block block.value.specific.title %}</h3>
+                    {# intro#}
+                    <div class="card-content">{{ block.value.specific.intro | richtext }} </div>
+                    {#footer link#}
+                    <div class="card-link">
+                        <a class="news-link" href={% pageurl block.value.specific %}>LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

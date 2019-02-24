@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+    <style>
+        .center {
+            padding: 20%;
+        }
+
+        #logo {
+            height: 80px;
+            width: 80px;
+            font-size: 80px;
+            color: dodgerblue;
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="center text-center">
+        {% include 'vcssa/message.html' %}
+
+        <div class="container">
+            <i id="logo" class="fa fa-envelope"></i>
+
+            <h5>Please confirm your email address to complete the registration</h5>
+
+            <div>
+                {% if request.session.host_link is not None %}
+                    <a href="{{ request.session.host_link }}">Click here to check your mailbox</a>
+                {% endif %}
+            </div>
+
+            <div>
+                <a href="{% url 'resend' %}"><h5>Resend activation email</h5></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

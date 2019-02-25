@@ -1,3 +1,10 @@
+.newsblock-container {
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin: 0;
+}
+
 .card {
 @extend . card;
     margin: 0;
@@ -11,20 +18,23 @@
 
 
 .card-title {
-    mix-blend-mode: screen;
-    background-color: rgba(255, 255, 255, 0.8);
+    /*mix-blend-mode: screen;*/
+    /*background-color: rgba(255, 255, 255, 0.8);*/
+    color: white;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2.0rem;
     font-weight: bold;
 }
 
 .card-text {
+    /*mix-blend-mode: screen;*/
     /*background-color: rgba(255, 255, 255, 0.8);*/
     color: white;
     height: 100%;
     width: 100%;
     font-size: 1.5rem;
     padding: 2% 2% 2% 2%;
+    margin-bottom: 2rem;
 }
 
 .card-body {
@@ -34,6 +44,7 @@
     font-size: 1.5rem;
     /*font-weight: bolder;*/
     padding: 5% 10% 5% 10%;
+
 }
 
 .card-link {

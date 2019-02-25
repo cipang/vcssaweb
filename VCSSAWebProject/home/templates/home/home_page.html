@@ -16,17 +16,15 @@
 
 
 {% block content %}
-    {% include "home/includes/backgrounds/home_background3.html" %}
-    {% include "home/includes/news/home_newsblock3.html" %}
 
-{#    <div style="display: none" id="theme">{{ page.title }}</div>#}
+    <div style="display: none" id="theme">{{ page.title }}</div>
     <!--background image-->
-{#    {% include  background_theme %}#}
+    {% include  background_theme %}
 
-    {#  slide show #}
-{#    {% include  slide_theme %}#}
-{##}
+    <!--slide show-->
+    {% include  slide_theme %}
+
     <!--News Index-->
-{#    {% include news_theme %}#}
+    {% include news_theme %}
 
 {% endblock %}

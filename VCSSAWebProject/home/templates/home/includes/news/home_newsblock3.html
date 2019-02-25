@@ -1,6 +1,10 @@
 {% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
 <link rel="stylesheet" href="{% static 'css/home_newsblock3.css' %}">
+
 <br>
+<div class="newsblock-container">
+    <h2 class="block-title-md">Recent news and activities</h2>
+    <br>
     <div class="card-columns">
         {% for block in page.index_pages %}
             {% image block.value.specific.cover_image fill-600x350 as coverimage %}
@@ -21,3 +25,4 @@
             </div>
         {% endfor %}
     </div>
+</div>

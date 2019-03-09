@@ -1,0 +1,53 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/home_slides3.css' %}">
+
+<div class="home-intro">
+    {{ page.intro }}
+</div>
+
+<div class="slideshow-container">
+    {% for block in page.posters %}
+        <div class="mySlides fade">
+            {% image block.value original as coverimage %}
+            <img src="{{ coverimage.url }}" alt="{{ coverimage.alt }}">
+        </div>
+    {% endfor %}
+    <br>
+    <div style="text-align:center">
+        {% for block in page.posters %}
+            <span class="dot"></span>
+        {% endfor %}
+    </div>
+</div>
+
+<br>
+
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    {# automate change slides #}
+
+    function showSlides() {
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+
+        for (let i = 0; i < slides.length; i += 1) {
+            slides[i].style.display = "none";
+        }
+
+        slideIndex += 1;
+
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000);
+    }
+</script>

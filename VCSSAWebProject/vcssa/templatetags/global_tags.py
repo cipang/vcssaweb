@@ -14,8 +14,8 @@ VCSSA_MENU_TEMPLATE = '{% load menu_tags %}{% section_menu max_levels=3 use_spec
 SUBUNION_MENU_TEMPLATE = '{% load menu_tags global_tags %}{% subunion_home as rootpage%}{% children_menu parent_page=rootpage max_levels=2 use_specific=USE_SPECIFIC_TOP_LEVEL template="menus/custom_main_menu.html" %}'
 NONE_PAGE_MENU_TEMPLATE = '{% include "menus/custom_main_menu.html" %}'
 
-MEDIA_DIR = 'media\\previews\\'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media\\previews\\')
+MEDIA_DIR = 'media/previews/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/previews/')
 # THEME_CHOICES = (
 #     ("HOME_BACKGROUND", "Home Background"),
 #     ("HOME_SLIDE", "Home Slide"),

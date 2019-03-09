@@ -3,7 +3,8 @@ import re
 
 from django.contrib import messages
 from django.core.files import File
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
+from django.http import HttpResponse
 
 from home.models import BASE_THEME_PATH, BASE_DIR, Theme, THEME_CHOICES
 from vcssa.templatetags.global_tags import MEDIA_DIR
@@ -41,3 +42,8 @@ def auto_load_theme(request):
     # theme_index = request.site.hostname + "/admin/home/theme"
     # print(theme_index)
     return redirect('/admin/home/theme/')
+
+
+def test(request):
+    return render(request, "whatever", {})
+

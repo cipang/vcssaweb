@@ -5,7 +5,7 @@ from django import template
 from django.contrib import messages
 from django.core.files import File
 from django.template import Template
-from home.models import HomePage, Theme, THEME_CHOICES,BASE_THEME_PATH, BASE_DIR
+from home.models import HomePage, Theme, THEME_CHOICES, BASE_THEME_PATH, BASE_DIR
 from vcssa.models import SubUnionHomePage
 
 HOME_PAGE_LEVEL = 1

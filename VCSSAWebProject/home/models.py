@@ -13,7 +13,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 HOME_PAGE_URL_PATH = '/home/homepage/'
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR) + "/VCSSAWebProject"
-# BASE_DIR = os.path.dirname(PROJECT_DIR)"
+# BASE_DIR = os.path.dirname(PROJECT_DIR)
 # todo change the BASE_DIR
 
 THEME_CHOICES = (

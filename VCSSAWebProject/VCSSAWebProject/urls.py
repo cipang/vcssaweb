@@ -12,6 +12,7 @@ from search import views as search_views
 from users import views as userview
 from members import views as memberview
 from home import views as themeview
+from home import views as homeview
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
@@ -32,6 +33,7 @@ urlpatterns = [
     url(r'^resend/$', memberview.resend, name='resend'),
     url(r'^reactivate/$', memberview.reactivate, name='reactivate'),
     url(r'^accounthome/$', memberview.accounthome, name='account_home'),
+    url(r'^load_theme/$', homeview.auto_load_theme, name='load_theme'),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
@@ -42,7 +44,6 @@ urlpatterns = [
     # of your site, rather than the site root:
     #    url(r'^pages/', include(wagtail_urls)),
 ]
-
 
 if settings.DEBUG:
     from django.conf.urls.static import static

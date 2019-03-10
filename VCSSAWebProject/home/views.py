@@ -8,6 +8,7 @@ from django.shortcuts import redirect
 from home.models import BASE_THEME_PATH, BASE_DIR, Theme, THEME_CHOICES
 from vcssa.templatetags.global_tags import MEDIA_DIR
 
+
 def auto_load_theme(request):
     """Load all pre-stored themes. Put the directory of html files in BASE_THEME_PATH,
     Note that the order of the directory must be of the same as THEME_CHOICES in home.models.
@@ -27,7 +28,8 @@ def auto_load_theme(request):
                     preview_file_name = name + '.jpg'  # preview .jpg name must be the same as html file
                     preview_path = MEDIA_DIR + preview_file_name
                     if not Theme.objects.filter(template_path=html_path).exists():  # if the theme is not added
-                        new_theme = Theme.objects.create(name=name, template_path=html_path, type=THEME_CHOICES[count][0])
+                        new_theme = Theme.objects.create(name=name, template_path=html_path,
+                                                         type=THEME_CHOICES[count][0])
                         if os.path.exists(preview_path):
                             try:  # store preview photo in db
                                 with open(preview_path, "rb") as f:
@@ -40,4 +42,9 @@ def auto_load_theme(request):
         count += 1
     # theme_index = request.site.hostname + "/admin/home/theme"
     # print(theme_index)
+    return redirect('/admin/home/theme/')
+
+
+def bulk_delete_theme(request):
+    Theme.objects.all().delete()
     return redirect('/admin/home/theme/')

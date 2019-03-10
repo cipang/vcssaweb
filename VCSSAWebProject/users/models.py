@@ -23,4 +23,4 @@ class User(AbstractUser):
         'unique': _("The email has already been registered."),
     }, )
     birthday = models.DateField(blank=True, default="2000-1-1")
-    subunions = models.ManyToManyField(Subunions, blank=True)
+    subunions = models.ForeignKey(Subunions, blank=True, null=True, on_delete=models.SET_NULL)

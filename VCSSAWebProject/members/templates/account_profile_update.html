@@ -14,20 +14,14 @@
             placeholder.push('{{ field.label}}');
         {% endfor%}
 
-        for (let i = 0; i < list.length - 1; i += 1) {
+        for (let i = 0; i < list.length; i += 1) {
             let temp = document.getElementById(list[i]);
             temp.className = "form-control form-control-lg";
             temp.style.fontSize = "20px";
             temp.style.fontFamily = "Trebuchet MS";
             temp.placeholder = placeholder[i];
-        }
 
-        let subunions = document.getElementsByName("subunions");
-        for (let i = 0; i < subunions.length; i += 1) {
-            subunions[i].height = "10px";
-            subunions[i].width = "10px";
         }
-
     </script>
 
 {% endblock %}

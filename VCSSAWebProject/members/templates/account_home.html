@@ -8,54 +8,23 @@
 {% block extra_js %}
     {# pay attention this page is no p tag#}
     <script>
-        //get union name in <li>
-        let getUnionName = /<li>(.*?)<\/li>/g;
-        let subunion = [];
-        {# data interface name #}
-        let nameList = ["Membership Number", "Username", "Email", "First Name", "Last Name", "Birthday",
-            "Member of Unions"];
         let info = {};
-
 
         {% for attrname, value in profile.items %}
             info['{{ attrname }}'] = '{{ value | safe }}';
-
-            {#parse the university name#}
-            {% if attrname == "Member of Unions" %}
-                subunion = '{{ value | safe }}'.toString().match(getUnionName).map(function (val) {
-                    return val.replace(/<\/?li>/g, '');
-                });
-            {% endif %}
         {% endfor %}
 
-        {# set <p> tag with info data #}
+        {# set info data #}
         document.getElementById("firstName").innerText = info["First Name"];
         document.getElementById("lastName").innerText = info["Last Name"];
+        document.getElementById("subUnion").innerText = info["Member of Unions"];
         document.getElementById("number").innerText = document.getElementById("number").innerText.concat(" " + info["Membership Number"]);
-
-        {# set subunion name#}
-        let union_member = document.getElementById("subUnion");
-        for (let union of subunion) {
-            let union_para = document.createElement("p");
-            let union_name = document.createTextNode(union);
-            union_para.appendChild(union_name);
-            union_member.appendChild(union_para)
-        }
 
         {# set member profile info it is on account_home_profile page#}
         document.getElementById("username").innerText = info["Username"];
         document.getElementById("email").innerText = info["Email"];
         document.getElementById("birthday").innerText = info["Birthday"];
-        let profile_union = document.getElementById("profile-union");
-        for (let union of subunion) {
-            let union_para = document.createElement("span");
-            let union_name = document.createTextNode(union + " ");
-            union_para.appendChild(union_name);
-            profile_union.appendChild(union_para);
-            {#profile_union.appendChild(document.createElement("br"));#}
-        }
-
-
+        document.getElementById("profile-union").innerText = info["Member of Unions"];
     </script>
 {% endblock %}
 

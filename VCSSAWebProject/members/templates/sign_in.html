@@ -61,7 +61,7 @@
             {#resend activation email#}
             <div>
                 {% if resend %}
-                    <a href="{% url 'resend' %}">Resend activation email</a>
+                    <a href="{% url 'members:resend' %}">Resend activation email</a>
                 {% endif %}
             </div>
             <div class="text-center">
@@ -76,9 +76,9 @@
             </div>
             {# Both button/href are ok #}
             <input class="btn btn-success text-uppercase" type="button" value="Sign Up"
-                   onclick="location.href='{% url 'signup' %}'"/>
+                   onclick="location.href='{% url 'members:signup' %}'"/>
             {#        <button class="btn btn-success text-uppercase" href="{% url 'signup' %}">Sign Up</button>#}
         </div>
     </div>
-    
+
 {% endblock %}

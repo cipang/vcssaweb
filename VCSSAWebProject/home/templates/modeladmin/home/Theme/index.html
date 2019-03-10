@@ -27,11 +27,19 @@
                 {% block header_extra %}
                     {% if user_can_create %}
                         <div class="right">
-                            <div class="addbutton">
-                                {% include 'modeladmin/includes/button.html' with button=view.button_helper.add_button %}
-                            </div>
-                            <input class="addbutton" type="button" value="Load All"
-                                   onclick="location.href='{% url 'load_theme' %}'"/>
+                            {#                            <div class="addbutton">#}
+                            {#                                {% include 'modeladmin/includes/button.html' with button=view.button_helper.add_button %}#}
+                            {#                            </div>#}
+                            <button class="addbutton" type="button" value="Load All"
+
+                                    onclick="location.href='{% url 'load_theme' %}'">
+                                Load All
+                            </button>
+                            <br>
+                            <button class="addbutton" type="button" value="Delete All"
+                                    onclick="location.href='{% url 'delete_theme' %}'">
+                                Delete All
+                            </button>
                         </div>
                     {% endif %}
                 {% endblock %}
@@ -101,5 +109,4 @@
             </div>
         </div>
     {% endblock %}
-
 {% endblock %}

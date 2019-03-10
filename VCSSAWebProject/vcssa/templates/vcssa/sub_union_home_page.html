@@ -3,29 +3,6 @@
 
 {% block body_class %}template-subunionhomepage{% endblock %}
 
-{% block extra_js %}
-    <script>
-        loadCssFile("{% static '' %}", "css");
-    </script>
-{% endblock %}
-
-
 {% block content %}
-    {#menu is here#}
-{#    <div class="topnav" id="myTopnav">#}
-{#        {% load_menu %}#}
-{#    </div>#}
-
-
-    <h1>{{ page.title }}</h1>
-    <p>{{ page.intro }}</p>
-    {% image page.logo fill-320x240 %}
-
-    {#    {% load wagtailsettings_tags %}#}
-    {#    {% get_settings %}#}
-    {#    {% for socialmedia in settings.vcssa.SocialMediaSettings %}#}
-    {#    <a href="{{ socialmedia }}" class="nav-link" ></a>#}
-    {#{% endfor %}#}
-    {#    {% flat_menu 'test' max_levels=1 show_menu_heading=False  use_specific=USE_SPECIFIC_TOP_LEVEL  fall_back_to_default_site_menus=True %}#}
-
+    {% include "home/home_page.html" %}
 {% endblock %}

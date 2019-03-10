@@ -34,17 +34,6 @@
     font-family: "Arial Black";
 }
 
-input[type=checkbox] {
-    background: black;
-    transform: scale(2);
-    margin: 10px;
-}
-
-input[type=checkbox]:checked ~ input[type=checkbox] {
-    background-color: white;
-    color: red;
-}
-
 .sign-in-link {
     margin: 20px;
 
@@ -56,17 +45,16 @@ input[type=checkbox]:checked ~ input[type=checkbox] {
     margin: 20px;
 }
 
-input[type="date"]:before {
+input[type="date"]::before {
     content: attr(placeholder) !important;
     /*color: #aaa;*/
     margin-right: 0.5em;
 }
 
-input[type="date"]:focus:before,
-input[type="date"]:valid:before {
+input[type="date"]:focus::before,
+input[type="date"]:valid::before {
     content: "";
 }
-
 
 /* The Close Button */
 .close {

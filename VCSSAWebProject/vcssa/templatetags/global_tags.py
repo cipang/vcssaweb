@@ -8,7 +8,7 @@ from django.template import Template
 from home.models import HomePage, Theme, THEME_CHOICES, BASE_THEME_PATH, BASE_DIR
 from vcssa.models import SubUnionHomePage
 
-HOME_PAGE_LEVEL = 1
+HOME_PAGE_LEVEL = 0
 SUBUNION_HOME_LEVEL = 2
 VCSSA_MENU_TEMPLATE = '{% load menu_tags %}{% section_menu max_levels=3 use_specific=2 template="menus/custom_main_menu.html" %}'
 SUBUNION_MENU_TEMPLATE = '{% load menu_tags global_tags %}{% subunion_home as rootpage%}{% children_menu parent_page=rootpage max_levels=2 use_specific=USE_SPECIFIC_TOP_LEVEL template="menus/custom_main_menu.html" %}'
@@ -51,6 +51,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/previews/')
 register = template.Library()
 
 
+@register.simple_tag(takes_context=True)
+def current_user(context):
+    try:
+        request = context['request']
+        name = request.user.first_name
+    except:
+        try:
+            name = context['profile']['First Name']
+        except:
+            name = None
+    return name
+
+
 @register.simple_tag()
 def vcssa_home():
     """ return vcssa home page to create menu """
@@ -62,6 +75,8 @@ def vcssa_home():
 def subunion_home(context):
     """ return subunion home page to create menu """
     page = context['page']
+    if page in SubUnionHomePage.objects.all():
+        return page
     subunion_home = None
     try:
         subunion_home = page.get_ancestors()[SUBUNION_HOME_LEVEL]
@@ -122,6 +137,8 @@ def is_child_of_subunion(context):
     child_of_subunion = False
     try:
         request_page = context['page']
+        if request_page in SubUnionHomePage.objects.all():
+            return True
         for page in SubUnionHomePage.objects.all():
             child_of_subunion = request_page.is_descendant_of(page) or child_of_subunion
         return child_of_subunion

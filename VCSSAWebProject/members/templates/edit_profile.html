@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load global_tags wagtailcore_tags%}
+{% load_menu %}
+{% block content %}
+    <h2>Edit Profile</h2>
+    {% include "vcssa/message.html" %}
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            {% if field in form.visible_fields %}
+            <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% if field.help_text %}
+                    <small style="color: grey">{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                {% endfor %}
+            </p>
+            {% endif %}
+        {% endfor %}
+        <button type="submit">Update</button>
+    </form>
+{% endblock %}

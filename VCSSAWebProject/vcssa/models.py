@@ -156,24 +156,61 @@ class SubUnionIndexPageGalleryImage(Orderable):
 
 # page for a single sub union
 class SubUnionHomePage(Page):
-    parent_page_types = ['home.HomePage']
     # sub union name to be displayed on index page
-    name = models.CharField(max_length=100)
-    intro = models.CharField(max_length=500)
-    logo = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    search_fields = Page.search_fields + [
-        index.SearchField('intro'),
-    ]
+    name = models.CharField(max_length=100, help_text="Enter your subunion name to be displayed on the index page.")
+    parent_page_types = ['home.RootHomePage']
+    subpage_types = ['vcssa.AboutPage', 'vcssa.SubUnionIndexPage', 'vcssa.ActivityIndexPage',
+                     'vcssa.NewsIndexPage', 'vcssa.NewsTagIndexPage', 'vcssa.ContactUsPage']
+    welcome = models.CharField(max_length=200, default="Welcome!")
+    intro = models.CharField(max_length=255, default="The introduction of your union",
+                             help_text="Introduce your union here")
+    background_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL,
+                                         related_name='subunion_background_image')
+    logo_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL,
+                                   related_name='subunion_logo_image')
+    posters = StreamField([('posters', ImageChooserBlock())], null=True, blank=True)
+    index_pages = StreamField([
+        ('index_page', blocks.PageChooserBlock(['vcssa.NewsPage', 'vcssa.ActivityPage'], null=True, required=False))
+    ], null=True, blank=True)
+
+    theme_background = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                                         related_name="subunion_background_theme",
+                                         limit_choices_to={'type': "HOME_BACKGROUND"})
+    theme_slide = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                                    related_name="subunion_slide_theme",
+                                    limit_choices_to={'type': "HOME_SLIDE"})
+    theme_news = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
+                                   related_name="subunion_news_theme",
+                                   limit_choices_to={'type': "HOME_NEWS"})
     content_panels = Page.content_panels + [
         FieldPanel('name'),
+        FieldPanel('welcome'),
         FieldPanel('intro'),
-        ImageChooserPanel('logo'),
+        ImageChooserPanel('background_image'),
+        ImageChooserPanel('logo_image'),
+        StreamFieldPanel('posters'),
+        StreamFieldPanel('index_pages'),
     ]
+
+    theme_panels = [
+        FieldPanel('theme_background', widget=RadioSelectWithPicture),
+        FieldPanel('theme_slide', widget=RadioSelectWithPicture),
+        FieldPanel('theme_news', widget=RadioSelectWithPicture),
+    ]
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(theme_panels, heading='Theme Setting'),
+        ObjectList(Page.promote_panels, heading='Promote'),
+        ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
+    ])
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(SubUnionHomePage, self).get_context(request, *args, **kwargs)
+        context['background_theme'] = self.theme_background.template_path
+        context['slide_theme'] = self.theme_slide.template_path
+        context['news_theme'] = self.theme_news.template_path
+        return context
 
 
 # activity index page (used to show all activities)

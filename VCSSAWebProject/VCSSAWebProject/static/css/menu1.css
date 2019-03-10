@@ -6,6 +6,7 @@ body {
 
 .topnav {
     overflow: hidden;
+    /*overflow: scroll;*/
     background-color: rgb(255, 255, 255);
 }
 
@@ -28,18 +29,24 @@ body {
     display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     .topnav a:not(:first-child) {
         display: none;
     }
 
-    .topnav a.icon {
+    .topnav a .icon {
         float: right;
         display: block;
+        /*background-color: black;*/
+    }
+
+    .topnav #close_icon {
+        float: right;
+        display: block !important;
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     .topnav.responsive {
         position: relative;
     }

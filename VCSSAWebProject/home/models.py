@@ -106,6 +106,14 @@ class Theme(models.Model):
             return self.name
 
 
+class RootHomePage(Page):
+    subpage_types = ['home.HomePage', 'vcssa.SubUnionHomePage']
+    welcome = models.CharField(max_length=200, default="This is the root page, do not use me as home!")
+    content_panels = Page.content_panels + [
+        FieldPanel('welcome'),
+    ]
+
+
 class HomePage(Page):
     # parent_page_types = ['HomePage']
     welcome = models.CharField(max_length=200, default="Welcome to VCSSA!")

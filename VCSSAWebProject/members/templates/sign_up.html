@@ -3,7 +3,6 @@
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/sign_up.css' %}">
-
 {% endblock %}
 
 {% block extra_js %}
@@ -18,21 +17,13 @@
         {% endfor%}
 
         {# change all form input property except for subunion #}
-        for (let i = 0; i < list.length - 1; i += 1) {
+        for (let i = 0; i < list.length; i += 1) {
             let temp = document.getElementById(list[i]);
             temp.className = "form-control form-control-lg";
             temp.style.fontSize = "20px";
             temp.style.fontFamily = "Trebuchet MS";
             temp.placeholder = placeholder[i];
         }
-
-        {# change subuinion check box size #}
-        let subunions = document.getElementsByName("subunions");
-        for (let i = 0; i < subunions.length; i += 1) {
-            subunions[i].height = "10px";
-            subunions[i].width = "10px";
-        }
-
     </script>
 {% endblock %}
 
@@ -67,12 +58,12 @@
 
             <div class="text-center">
                 <button id="sign_up" class="text-center btn btn-success form-control text-uppercase" type="submit"
-                        onclick="window.open({% url 'signin' %})">
+                        onclick="window.open({% url 'members:signin' %})">
                     Sign up
                 </button>
                 <div class="sign-in-link">
                     Already have an account?
-                    <a href="{% url 'signin' %}">Sign in</a>
+                    <a href="{% url 'members:signin' %}">Sign in</a>
                 </div>
             </div>
             {# Both button/href are ok #}

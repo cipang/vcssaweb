@@ -20,8 +20,22 @@
             temp.style.fontSize = "20px";
             temp.style.fontFamily = "Trebuchet MS";
             temp.placeholder = placeholder[i];
-
         }
+
+        {#function subunionPlaceholder(id) {#}
+        {#    let subunionWrapper = document.createElement("div");#}
+        {#    let subunions = document.getElementById(id);#}
+        {#    subunionWrapper.appendChild(subunions);#}
+        {#    document.body.appendChild(subunionWrapper);#}
+        {# }#}
+        {##}
+        {#let subunions = document.getElementById("id_subunions");#}
+        {#let subunionWrapper = document.createElement("div");#}
+        {##}
+        {#subunions.parentNode.insertBefore(subunionWrapper, subunions);#}
+        {#subunionWrapper.appendChild(subunions);#}
+        {#subunionWrapper.setAttribute("class", "subunionWrapper");#}
+        {#console.log(subunions.parentNode);#}
     </script>
 
 {% endblock %}
@@ -29,6 +43,7 @@
     <div class="topnav" id="myTopnav">
         {% load_menu %}
     </div>
+
     {#logo#}
     <div class="text-center">
         <img class="logo" src="{% static "images/logo.png" %}" alt="logo">
@@ -57,7 +72,6 @@
                     Update
                 </button>
             </div>
-
             {# Both button/href are ok #}
             {#            <input class="btn btn-success" type="button" value="Sign In" onclick="location.href='{% url 'signin' %}'"/>#}
 

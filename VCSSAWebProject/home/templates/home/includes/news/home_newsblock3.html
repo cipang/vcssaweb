@@ -3,8 +3,11 @@
 
 <br>
 <div class="newsblock-container">
-    <h2 class="block-title-md">Recent news and activities</h2>
-    <br>
+    {% if page.index_pages %}
+        <h2 class="block-title-md">Recent news and activities</h2>
+        <br>
+    {% endif %}
+
     <div class="card-columns">
         {% for block in page.index_pages %}
             {% image block.value.specific.cover_image fill-600x350 as coverimage %}

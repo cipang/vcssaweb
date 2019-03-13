@@ -14,6 +14,26 @@
 
 {% block content %}
     {% block header %}
+        <div class="modal fade" id="myModal" role="dialog" style="text-align: left; margin:auto; padding: auto;">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content" style="padding: 2%">
+                    <div class="modal-body" style="font-size: 20px;">
+                        Do you want to delete all themes ?
+                    </div>
+                    <div class="modal-footer">
+                        <button class="button serious" type="button" value="Delete All"
+                                id="deleteAll" onclick="location.href='{% url 'delete_theme' %}'">
+                            Yes, Delete All
+                        </button>
+                        <button class="button" type="button" data-dismiss="modal">NO,
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <header class="nice-padding hasform">
             <div class="row header-title">
                 <div class="left">
@@ -30,15 +50,13 @@
                             {#                            <div class="addbutton">#}
                             {#                                {% include 'modeladmin/includes/button.html' with button=view.button_helper.add_button %}#}
                             {#                            </div>#}
-                            <button class="addbutton" type="button" value="Load All"
-
+                            <button class="button" type="button" value="Load All" style="display: inline-block"
                                     onclick="location.href='{% url 'load_theme' %}'">
                                 Load All
                             </button>
-                            <br>
-                            <button class="addbutton" type="button" value="Delete All"
-                                    onclick="location.href='{% url 'delete_theme' %}'">
-                                Delete All
+                            <button type="button" class="button serious" data-toggle="modal"
+                                    style="display: inline-block"
+                                    data-target="#myModal">Delete All
                             </button>
                         </div>
                     {% endif %}

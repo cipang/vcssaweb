@@ -1,4 +1,4 @@
-html{
+html {
     height: 100%;
 }
 
@@ -110,4 +110,10 @@ html{
     top: 0;
     right: 25px;
     font-size: 36px;
+}
+
+@media screen and (max-width: 1024px) {
+    .hero-image {
+        height: 100vh;
+    }
 }

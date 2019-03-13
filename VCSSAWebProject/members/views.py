@@ -3,16 +3,17 @@ from urllib.parse import urljoin
 
 from django import forms
 from django.conf import settings
+from django.contrib import auth
 from django.contrib.auth import get_user_model, update_session_auth_hash, authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.core.mail import EmailMessage
 from django.db.models import Q, ManyToManyField
-from django.http import HttpResponse, HttpResponseRedirect, HttpRequest, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseRedirect, HttpRequest, HttpResponseNotFound, QueryDict
 from django.shortcuts import get_object_or_404, redirect, render, render_to_response
 from django.template.loader import render_to_string
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse, reverse_lazy, resolve
 from django.utils.encoding import force_bytes, force_text, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.translation import ugettext as _
@@ -34,6 +35,8 @@ import urllib
 
 from members.tokens import account_activation_token
 from users.models import Subunions
+from vcssa.models import ActivityPage
+from vcssa.templatetags.global_tags import vcssa_home
 from .forms import SignUpPage, SignInPage, EditProfilePage
 
 COMMON_MAILS = {'gmail.com': 'https://mail.google.com/',
@@ -205,16 +208,13 @@ def signin(request):
                     return redirect(request.META.get('HTTP_REFERER'))
         else:
             #  if the account is inactive, provide a resend activation email link
-            # if form.errors["__all__"].as_data()[0].code == 'inactive':
             for errorlist in form.errors.as_data().values():
-                print(errorlist[0].code)
-
-            if form.errors.code == 'inactive':
-                email = form.cleaned_data.get('email')
-                request.session['to_email'] = email
-                request.session['host_link'] = get_email_host_link(email)
-                request.session['username'] = User.objects.get(email=email).username
-                resend_email = True
+                if errorlist[0].code == 'inactive':
+                    email = form.cleaned_data.get('email')
+                    request.session['to_email'] = email
+                    request.session['host_link'] = get_email_host_link(email)
+                    request.session['username'] = User.objects.get(email=email).username
+                    resend_email = True
     else:
         form = SignInPage()
     return render(request, 'sign_in.html', {'form': form, 'resend': resend_email})
@@ -228,8 +228,11 @@ def accounthome(request):
             return redirect(reverse_lazy('wagtailadmin_home'))
         user = request.user
         profile = get_user_profile(request, user)
+        favorites = user.favorite_activities.all()
+        print(favorites)
         firstname = user.first_name
-        return render_to_response('account_home.html', {'profile': profile, 'firstname': firstname})
+        return render_to_response('account_home.html',
+                                  {'profile': profile, 'firstname': firstname, 'favorites': favorites})
     #  if user is not logged in
     else:
         messages.error(request, "Please login to your account.")
@@ -252,6 +255,13 @@ def get_user_profile(request, user):
     return userinfo
 
 
+@login_required
+def view_favorite_activities(request):
+    activities = request.user.favorite_activities.all()
+    return activities
+
+
+@login_required
 def edit_profile(request):
     if request.user.is_authenticated:
         if request.user.has_perm('wagtailadmin.access_admin'):
@@ -280,3 +290,35 @@ def edit_profile(request):
     # messages.success(request, _("User '{0}' updated.").format(user), buttons=[
     #     messages.button(reverse_lazy('members:edit_profile', args=(user.pk,)), _('Edit'))
     # ])
+
+
+@login_required
+def mark_activities(request, page_id):
+    previous_page = request.META.get('HTTP_REFERER')
+    activity = ActivityPage.objects.get(id=page_id)
+    try:
+        request.user.favorite_activities.add(activity)
+        print(request.user.favorite_activities.all())
+        messages.success(request, "Activity saved successfully!")
+    except:
+        messages.error(request, "Cannot save this activity due to errors")
+    return redirect(previous_page)
+
+
+@login_required
+def unmark_activities(request, page_id):
+    previous_page = request.META.get('HTTP_REFERER')
+    activity = ActivityPage.objects.get(id=page_id)
+    try:
+        request.user.favorite_activities.remove(activity)
+        print(request.user.favorite_activities.all())
+        messages.success(request, "Activity removed successfully!")
+    except:
+        messages.error(request, "Cannot remove this activity due to errors")
+    return redirect(previous_page)
+
+
+def logout(request):
+    auth.logout(request)
+    return render(request, 'logout.html')
+# return redirect(vcssa_home().url)

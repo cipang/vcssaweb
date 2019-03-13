@@ -1,4 +1,5 @@
 import datetime
+import re
 
 from django import forms
 from django.contrib.auth import authenticate, login
@@ -19,10 +20,11 @@ class SignUpPage(UserCreationForm):
             if fields in self.fields:
                 del self.fields[fields]
 
-    email = forms.EmailField(required=True)
+    email = forms.EmailField(required=True, help_text="In order to provide a better community environment, "
+                                                      "please enter your university email.")
     birthday = fields.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
     subunions = forms.ModelChoiceField(queryset=Subunions.objects.all(), required=False,
-                                       widget=forms.Select)
+                                       widget=forms.Select, empty_label=None)
 
     class Meta:
         model = User
@@ -34,6 +36,13 @@ class SignUpPage(UserCreationForm):
         if birthday < VALID_BIRTHDAY_FROM or birthday > VALID_BIRTHDAY_TO:
             raise forms.ValidationError("Please enter a valid birthday.")
         return birthday
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+
+        if not re.search("(\.edu|@vcssa.com.au)", email):
+            raise forms.ValidationError("Please use your university email to register.")
+        return email
 
 
 class SignInPage(forms.Form):
@@ -70,7 +79,8 @@ class EditProfilePage(UserEditForm):
         self.fields.pop('email')
 
     birthday = fields.DateField(required=False, widget=forms.widgets.DateInput(attrs={'type': 'date'}))
-    subunions = forms.ModelChoiceField(queryset=Subunions.objects.all(), required=False, widget=forms.Select)
+    subunions = forms.ModelChoiceField(queryset=Subunions.objects.all(), required=False, widget=forms.Select,
+                                       empty_label=None)
 
     class Meta:
         model = User

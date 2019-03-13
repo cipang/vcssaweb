@@ -48,6 +48,8 @@
         <span style="font-style: italic">{{ user }}
         </span>
     </a>
+
+    <a href="{% url 'members:logout' %}">Log Out</a>
 {% endif %}
 
 {% if not user %}

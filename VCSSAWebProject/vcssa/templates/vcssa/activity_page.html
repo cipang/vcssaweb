@@ -4,28 +4,39 @@
 
 {% block body_class %}template-activitypage{% endblock %}
 
-
 {% block extra_js %}
     <script>
         loadCssFile("{% static 'css/activity/activity.css' %}", "css");
-        {#use to change video layout on safari#}
-        {#only on mac os and in safari#}
-        {#if (getOS() === 'Mac OS') {#}
-        {#    if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {#}
-        {#alert('safari on mac');#}
-        {#        let responsive_obj = document.getElementsByClassName("responsive-object");#}
-        {#        let videoImage = document.getElementsByClassName("ytp-cued-thumbnail-overlay");#}
-        {#        let images = document.getElementsByClassName("richtext-image left");#}
-        {#        for (let i = 0; i < responsive_obj.length; i += 1) {#}
-        {#            responsive_obj[i].style.padding = "0";#}
-        {#        }#}
-        {#    }#}
-        {# }#}
     </script>
 
+    <script>
+        {# collection star click #}
+        document.getElementById("collection").addEventListener('click', check);
+
+        {# check the current user is already marked the activity #}
+        if ('{{ favorite }}'.toString() === "True") {
+            document.getElementById("collection").style.color = "orange";
+        }
+
+        function check() {
+            {# change the color #}
+            const currentColor = document.getElementById("collection").style.color;
+            if (currentColor !== "orange") {
+                fetch('{% url 'members:mark_activities' page_id=page.id %}')
+                    .then(() => {
+                        document.getElementById("collection").style.color = "orange";
+                    });
+            } else {
+                fetch('{% url 'members:unmark_activities' page_id=page.id %}').then(() => {
+                    document.getElementById("collection").style.color = "gray";
+                });
+            }
+        }
+    </script>
 {% endblock %}
 
 {% block content %}
+    {% include "vcssa/message.html" %}
 
     {#menu is here#}
     {#    <div class="topnav" id="myTopnav">#}

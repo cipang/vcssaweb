@@ -20,8 +20,45 @@
     <hr style="color: black">
     <div class="container text-center">
         <div class="activity-footer">
-            <p class="expire">Expire Date: {{ page.date }}</p>
-            <p>Book through:<a class="activity-link" target="_blank" href="{{ page.link }}">{{ page.link }}</a></p>
+            <article>
+                {% if page.activity_info %}
+                    <p>{{ page.timezone }} Time </p>
+                    {% for block in page.activity_info %}
+                        {#                        <p>{{ block.value.label }}</p>#}
+                        {% with block.value.starting_time|date:"d" as start_date %}
+                            {% with block.value.ending_time|date:"d" as end_date %}
+                                {% if start_date == end_date %}
+                                    <p>{{ block.value.starting_time|date:"Y-M-d H:iA " }}
+                                        {% if block.value.ending_time %}
+                                            - {{ block.value.ending_time|date:"H:iA " }}
+                                        {% endif %}</p>
+                                {% endif %}
+                                {% if start_date != end_date %}
+                                    <p class="expire">From: {{ block.value.starting_time|date:"Y-M-d H:iA " }}</p>
+                                    {% if end_date %}
+                                        <p class="expire">To: {{ block.value.ending_time|date:"Y-M-d H:iA " }}</p>
+                                    {% endif %}
+                                {% endif %}
+                            {% endwith %}
+                        {% endwith %}
+                        {% if block.value.venue %}
+                            <p>Venue: {{ block.value.venue }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </article>
+            <p>Add to Collections: <a class="fa fa-star" id="collection" style="font-size: 20px"></a></p>
+            {% if page.application_form_link %}
+                <p>Of Interest? Click here to register:
+                    <a class="activity-link" target="_blank" href="{{ page.application_form_link }}">Application
+                        Form</a>
+                </p>
+            {% endif %}
+            <p class="expire">Published On: {{ page.date }}</p>
+            {% contact_us_page as contact %}
+            {% if contact %}
+                <p>Have questions? <a class="promo" target="_blank" href="{{ contact.url }}">Contact Us</a></p>
+            {% endif %}
         </div>
     </div>
 

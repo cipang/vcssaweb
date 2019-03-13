@@ -3,10 +3,16 @@ import re
 
 from django import template
 from django.contrib import messages
+from django.contrib.auth.models import Group, Permission
+from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.files import File
 from django.template import Template
-from home.models import HomePage, Theme, THEME_CHOICES, BASE_THEME_PATH, BASE_DIR
-from vcssa.models import SubUnionHomePage
+from wagtail.core.models import Collection, CollectionViewRestriction
+
+from home.models import HomePage,Theme,THEME_CHOICES, BASE_THEME_PATH, BASE_DIR
+from users.models import Subunions
+from vcssa.models import SubUnionHomePage, ContactUsPage
 
 HOME_PAGE_LEVEL = 0
 SUBUNION_HOME_LEVEL = 2
@@ -14,39 +20,12 @@ VCSSA_MENU_TEMPLATE = '{% load menu_tags %}{% section_menu max_levels=3 use_spec
 SUBUNION_MENU_TEMPLATE = '{% load menu_tags global_tags %}{% subunion_home as rootpage%}{% children_menu parent_page=rootpage max_levels=2 use_specific=USE_SPECIFIC_TOP_LEVEL template="menus/custom_main_menu.html" %}'
 NONE_PAGE_MENU_TEMPLATE = '{% include "menus/custom_main_menu.html" %}'
 
-MEDIA_DIR = 'media/previews/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/previews/')
-# THEME_CHOICES = (
-#     ("HOME_BACKGROUND", "Home Background"),
-#     ("HOME_SLIDE", "Home Slide"),
-#     ("HOME_NEWS", "Home News"),
-#     ("ABOUT", "About"),
-#     ("ACTIVITY_INDEX_BACKGROUND", "Activity Index Background"),
-#     ("ACTIVITY_INDEX_CATALOG", "Activity Index Catalog"),
-#     ("ACTIVITY", "Activity"),
-#     ("CONTACT", "Contact Us"),
-#     ("NEWS_TAGS_INDEX", "News Tag"),
-#     ("NEWS", "News"),
-#     ("NEWS_INDEX_BACKGROUND", "News Index Background"),
-#     ("NEWS_INDEX_CONTENT", "News Index Content"),
-#     ("SUBUNION_INDEX_BACKGROUND", "Subunion Index Background"),
-#     ("SUBUNION_INDEX_CONTENT", "Subunion Index Content"),
-# )
-# BASE_THEME_PATH = ['\\home\\templates\\home\\includes\\backgrounds\\',
-#                    '\\home\\templates\\home\\includes\\slides\\',
-#                    '\\home\\templates\\home\\includes\\news\\',
-#                    '\\vcssa\\templates\\vcssa\\includes\\about\\',
-#                    '\\vcssa\\templates\\vcssa\\includes\\activity_index\\background\\',
-#                    '\\vcssa\\templates\\vcssa\\includes\\activity_index\\catalog\\',
-#                    '\\vcssa\\templates\\vcssa\\includes\\activity\\',
-#                    '\\vcssa\\templates\\vcssa\\includes\\contact_us\\',
-#                    '\\vcssa\\templates\\vcssa\\includes\\news_tag_index\\',
-#                    '\\vcssa\\templates\\vcssa\\includes\\news\\',
-#                    '\\vcssa\\templates\\vcssa\\includes\\news_index\\background\\',
-#                    '\\vcssa\\templates\\vcssa\\includes\\news_index\\content\\',
-#                    '\\vcssa\\templates\\vcssa\\includes\\subunion_index\\background\\',
-#                    '\\vcssa\\templates\\vcssa\\includes\\subunion_index\\content\\',
-#                    ]
+
+MEDIA_DIR = 'media\\previews\\'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media\\previews\\')
+
+ADMIN_PERMISSIONS = ['access_admin', 'add_user', 'change_user', 'delete_user', 'view_user']
+EDITOR_PERMISSIONS = ['access_admin']
 
 register = template.Library()
 
@@ -83,6 +62,20 @@ def subunion_home(context):
     except:
         print("Error on loading subunion home menu")
     return subunion_home
+
+
+@register.simple_tag(takes_context=True)
+def contact_us_page(context):
+    if is_child_of_subunion(context):
+        home = subunion_home(context)
+        for child in home.get_children().specific():
+            if child in ContactUsPage.objects.all():
+                return child
+    else:
+        for child in vcssa_home().get_children().specific():
+            if child in ContactUsPage.objects.all():
+                return child
+    return None
 
 
 @register.simple_tag(takes_context=True)
@@ -146,6 +139,7 @@ def is_child_of_subunion(context):
         return child_of_subunion
 
 
+
 @register.simple_tag(takes_context=True)
 def auto_load_theme(context):
     """Load all pre-stored themes. Put the directory of html files in BASE_THEME_PATH,
@@ -156,6 +150,7 @@ def auto_load_theme(context):
     count = 0  # auto increment type
     for theme_path in BASE_THEME_PATH:
         home_background_path = BASE_DIR + theme_path
+        # messages.success(home_background_path, request)
         file_names = os.listdir(home_background_path)
         if file_names:  # if the directory has files
             file_names.sort()
@@ -166,8 +161,7 @@ def auto_load_theme(context):
                     preview_file_name = name + '.jpg'  # preview .jpg name must be the same as html file
                     preview_path = MEDIA_DIR + preview_file_name
                     if not Theme.objects.filter(template_path=html_path).exists():  # if the theme is not added
-                        new_theme = Theme.objects.create(name=name, template_path=html_path,
-                                                         type=THEME_CHOICES[count][0])
+                        new_theme = Theme.objects.create(name=name, template_path=html_path, type=THEME_CHOICES[count][0])
                         if os.path.exists(preview_path):
                             try:  # store preview photo in db
                                 with open(preview_path, "rb") as f:
@@ -178,3 +172,64 @@ def auto_load_theme(context):
                         else:
                             messages.error(request, "File " + preview_path + " does not exist.")
         count += 1
+
+
+@register.simple_tag(takes_context=True)
+def add_subunion_groups(context):
+    """Create new group according to Subunion objects"""
+    request = context['request']
+    for subunion in Subunions.objects.all():
+        admin_group = None
+        editor_group = None
+        if not Group.objects.filter(name=subunion.name + " Member"):
+            try:
+                Group.objects.create(name=subunion.name + " Member")
+            except:
+                messages.error(request, "Cannot create member group for the new subunion.")
+
+        if not Group.objects.filter(name=subunion.name + " Admin"):
+            try:
+                admin_group = Group.objects.create(name=subunion.name + " Admin")
+            except:
+                messages.error(request, "Cannot create admin group for the new subunion.")
+        if not Group.objects.filter(name=subunion.name + " Editor"):
+            try:
+                editor_group = Group.objects.create(name=subunion.name + " Editor")
+            except:
+                messages.error(request, "Cannot create editor group for the new subunion.")
+            try:
+                union_admin_permission = Permission.objects.get(codename='union_admin')
+            except ObjectDoesNotExist:
+                content_type = ContentType.objects.get(id=3)
+                union_admin_permission = Permission.objects.create(codename='union_admin',
+                                                                   name='Administrator of Union',
+                                                                   content_type=content_type)
+            try:
+                union_editor_permission = Permission.objects.get(codename='union_editor')
+            except ObjectDoesNotExist:
+                content_type = ContentType.objects.get(id=3)
+                union_editor_permission = Permission.objects.create(codename='union_editor',
+                                                                    name='Editor of Union',
+                                                                    content_type=content_type)
+            try:
+                admin_group.permissions.add(union_admin_permission)
+                editor_group.permissions.add(union_editor_permission)
+                for admin_codename in ADMIN_PERMISSIONS:
+                    admin_group.permissions.add(Permission.objects.get(codename=admin_codename))
+                for editor_codename in EDITOR_PERMISSIONS:
+                    editor_group.permissions.add(Permission.objects.get(codename=editor_codename))
+            except:
+                messages.error(request, "Error occurred when setting permissions to new subunion groups.")
+
+        if not Collection.objects.filter(name=subunion.name):
+            try:
+                editor_group = Group.objects.filter(name=subunion.name + " Editor")
+                admin_group = Group.objects.filter(name=subunion.name + " Admin")
+                root_coll = Collection.get_first_root_node()
+                collection = root_coll.add_child(name=subunion.name)
+                restriction = CollectionViewRestriction.objects.create(collection=collection)
+                restriction.restriction_type = 'groups'
+                restriction.groups.add(editor_group.values_list('id', flat=True)[0])
+                restriction.groups.add(admin_group.values_list('id', flat=True)[0])
+            except:
+                messages.error(request, "Cannot create collection for the new subunion.")

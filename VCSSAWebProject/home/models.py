@@ -126,6 +126,9 @@ class HomePage(Page):
         ('index_page', blocks.PageChooserBlock(['vcssa.NewsPage', 'vcssa.ActivityPage'], null=True, required=False))
     ], null=True, blank=True)
 
+    page_full_title = models.CharField(max_length=500, default="Victoria Chinese Student and Scholar Association",
+                                       null=True, blank=True)
+
     theme_background = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
                                          related_name="background_theme",
                                          limit_choices_to={'type': "HOME_BACKGROUND"})
@@ -139,6 +142,7 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('welcome'),
         FieldPanel('intro'),
+        FieldPanel('page_full_title'),
         ImageChooserPanel('background_image'),
         ImageChooserPanel('logo_image'),
         StreamFieldPanel('posters'),

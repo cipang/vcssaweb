@@ -7,6 +7,8 @@ from wagtail.contrib.settings.registry import register_setting
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
+from vcssa.models import ActivityPage
+
 """Only refers to the subunion of members to receive promotions.
    For editors, use 'Group' to restrict permissions"""
 
@@ -24,3 +26,4 @@ class User(AbstractUser):
     }, )
     birthday = models.DateField(blank=True, default="2000-1-1")
     subunions = models.ForeignKey(Subunions, blank=True, null=True, on_delete=models.SET_NULL)
+    favorite_activities = models.ManyToManyField(ActivityPage)

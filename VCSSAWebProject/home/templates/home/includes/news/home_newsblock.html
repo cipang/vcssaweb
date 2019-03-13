@@ -1,8 +1,10 @@
 {% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
 <link rel="stylesheet" href="{% static 'css/home_newsblock.css' %}">
 <div class="content-container-fluid">
-    <h2 class="block-title-md">Recent news and activities</h2>
-    <br>
+    {% if page.index_pages %}
+        <h2 class="block-title-md">Recent news and activities</h2>
+        <br>
+    {% endif %}
     <div class="card-columns">
         {% for block in page.index_pages %}
             <div class="card">

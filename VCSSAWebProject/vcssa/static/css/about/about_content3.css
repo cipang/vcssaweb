@@ -17,7 +17,7 @@
 .about-right {
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.8);
-    mix-blend-mode: screen;
+    /*mix-blend-mode: screen;*/
     width: 50%;
     height: 100%;
     float: right;
@@ -47,6 +47,7 @@
 
 .about-block {
     padding: 1rem;
+    mix-blend-mode: color-burn;
 }
 
 
@@ -64,6 +65,7 @@
 .about-logo {
     height: 200px;
     width: 200px;
+    /*mix-blend-mode: unset;*/
 }
 
 
@@ -76,4 +78,9 @@
     .about-right {
         width: 100%;
     }
+
+    .about-block{
+        mix-blend-mode: unset;
+    }
+
 }

@@ -18,7 +18,6 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 import datetime
 
-from wagtail.users.views.users import User
 from wagtail.embeds.blocks import EmbedBlock
 
 from VCSSAWebProject.settings import dev
@@ -157,13 +156,16 @@ class SubUnionIndexPageGalleryImage(Orderable):
 # page for a single sub union
 class SubUnionHomePage(Page):
     # sub union name to be displayed on index page
-    name = models.CharField(max_length=100, help_text="Enter your subunion name to be displayed on the index page.")
+    name = models.CharField(max_length=100,
+                            help_text="Enter your subunion name to be displayed on the index page.")
     parent_page_types = ['home.RootHomePage']
     subpage_types = ['vcssa.AboutPage', 'vcssa.SubUnionIndexPage', 'vcssa.ActivityIndexPage',
                      'vcssa.NewsIndexPage', 'vcssa.NewsTagIndexPage', 'vcssa.ContactUsPage']
     welcome = models.CharField(max_length=200, default="Welcome!")
     intro = models.CharField(max_length=255, default="The introduction of your union",
                              help_text="Introduce your union here")
+    page_full_title = models.CharField(max_length=500, default="Victoria Chinese Student and Scholar Association",
+                                       null=True, blank=True)
     background_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL,
                                          related_name='subunion_background_image')
     logo_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL,
@@ -186,6 +188,7 @@ class SubUnionHomePage(Page):
         FieldPanel('name'),
         FieldPanel('welcome'),
         FieldPanel('intro'),
+        FieldPanel('page_full_title'),
         ImageChooserPanel('background_image'),
         ImageChooserPanel('logo_image'),
         StreamFieldPanel('posters'),
@@ -272,13 +275,27 @@ class ActivityPage(Page):
     parent_page_types = ['ActivityIndexPage']
     name = models.CharField(max_length=100)
     intro = models.CharField(max_length=500)
-    date = models.DateField(("Date"), default=datetime.date.today)
+    date = models.DateField(("Publish Date"), default=datetime.date.today)
+    application_form_link = models.CharField(max_length=500, null=True, blank=True)
     body = RichTextField(blank=True)
     cover_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
     background_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
     theme = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
                               related_name="activity_theme",
                               limit_choices_to={'type': "ACTIVITY"})
+    activity_info = StreamField([
+        ('activity_info', blocks.StructBlock([
+            ('starting_time', blocks.DateTimeBlock(required=False, format='%Y-%m-%d %H:%M')),
+            ('ending_time', blocks.DateTimeBlock(required=False, format='%Y-%m-%d %H:%M')),
+            ('venue', blocks.CharBlock(max_length=500, required=False)),
+            ('label', blocks.CharBlock(max_length=200, required=False, default="")),
+        ])), ], null=True, blank=True)
+
+    timezone = models.CharField(max_length=10, choices=[
+        ('Melbourne', 'Melbourne'),
+        ('Beijing', 'Beijing'),
+    ], default='mel', null=True, blank=False)
+
     search_fields = Page.search_fields + [
         index.SearchField('name'),
         index.SearchField('intro'),
@@ -288,6 +305,10 @@ class ActivityPage(Page):
         FieldPanel('name'),
         FieldPanel('intro'),
         FieldPanel('date'),
+        FieldPanel('application_form_link'),
+        StreamFieldPanel('activity_info'),
+        FieldPanel('timezone'),
+
         FieldPanel('body'),
         ImageChooserPanel('cover_image'),
         ImageChooserPanel('background_image'),
@@ -307,6 +328,13 @@ class ActivityPage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request)
         context['theme'] = self.theme.template_path
+        favorite = False
+        if request.user:
+            for page in request.user.favorite_activities.all():
+                if self.id == page.id:
+                    favorite = True
+                    break
+        context['favorite'] = favorite
         return context
 
 

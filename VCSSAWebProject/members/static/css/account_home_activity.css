@@ -45,6 +45,10 @@
     font-size: 18px;
 }
 
+#collection{
+    color: gray;
+}
+
 @media screen and (max-width: 1024px) {
     .account-home-activity-container {
         padding: 2%;

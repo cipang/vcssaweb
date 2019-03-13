@@ -25,8 +25,10 @@ def auto_load_theme(request):
                 if re.search("(\.html)$", file_name):  # find all html files
                     html_path = BASE_DIR + theme_path + file_name
                     name, tail = file_name.split(".")  # use html file name as template name
-                    preview_file_name = name + '.jpg'  # preview .jpg name must be the same as html file
+                    preview_file_name = name + '.png'  # preview .jpg name must be the same as html file
                     preview_path = MEDIA_DIR + preview_file_name
+                    print(preview_path)
+                    print(html_path)
                     if not Theme.objects.filter(template_path=html_path).exists():  # if the theme is not added
                         new_theme = Theme.objects.create(name=name, template_path=html_path,
                                                          type=THEME_CHOICES[count][0])

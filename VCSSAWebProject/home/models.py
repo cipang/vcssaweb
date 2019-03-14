@@ -115,7 +115,9 @@ class RootHomePage(Page):
 
 
 class HomePage(Page):
-    # parent_page_types = ['HomePage']
+    parent_page_types = ['home.RootHomePage']
+    subpage_types = ['vcssa.AboutPage', 'vcssa.SubUnionIndexPage', 'vcssa.ActivityIndexPage',
+                     'vcssa.NewsIndexPage', 'vcssa.NewsTagIndexPage', 'vcssa.ContactUsPage']
     welcome = models.CharField(max_length=200, default="Welcome to VCSSA!")
     intro = models.CharField(max_length=255, default="The introduction of your union",
                              help_text="Introduce your union here")

@@ -59,6 +59,7 @@ CONTACT_PAGE_FORM_FIELD_CHOICES = (
 
 class AboutPage(Page):
     parent_page_types = ['home.HomePage', 'vcssa.SubUnionHomePage']
+    subpage_types = []
     show_in_menus_default = True
     union_name = models.CharField(max_length=500, null=True, blank=True, default="", help_text="Enter your union name")
     intro = models.CharField(max_length=500, blank=True)
@@ -102,6 +103,7 @@ class AboutPageGalleryImage(Orderable):
 
 class SubUnionIndexPage(Page):
     parent_page_types = ['home.HomePage']
+    subpage_types = []
     show_in_menus_default = True
     intro = models.CharField(max_length=500, blank=True)
     background_image = models.ForeignKey(
@@ -219,6 +221,7 @@ class SubUnionHomePage(Page):
 # activity index page (used to show all activities)
 class ActivityIndexPage(Page):
     parent_page_types = ['home.HomePage', 'vcssa.SubUnionHomePage']
+    subpage_types = ['vcssa.ActivityPage']
     show_in_menus_default = True
     intro = models.CharField(max_length=500, blank=True)
     background_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
@@ -273,6 +276,7 @@ class ActivityIndexPage(Page):
 # activity page for a single activity
 class ActivityPage(Page):
     parent_page_types = ['ActivityIndexPage']
+    subpage_types = []
     name = models.CharField(max_length=100)
     intro = models.CharField(max_length=500)
     date = models.DateField(("Publish Date"), default=datetime.date.today)
@@ -378,6 +382,7 @@ class FormField(AbstractFormField):
 
 class ContactUsPage(AbstractEmailForm):
     parent_page_types = ['home.HomePage', 'vcssa.SubUnionHomePage']
+    subpage_types = []
     show_in_menus_default = True
     background_image = models.ForeignKey(
         'wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
@@ -484,7 +489,7 @@ class NewsPageTag(TaggedItemBase):
 
 class NewsTagIndexPage(Page):
     parent_page_types = ['home.HomePage', 'vcssa.SubUnionHomePage']
-
+    subpage_types = []
     theme = models.ForeignKey(Theme, on_delete=models.SET_NULL, null=True, blank=False,
                               related_name="news_tag_index_theme",
                               limit_choices_to={'type': "NEWS_TAGS_INDEX"})
@@ -514,6 +519,7 @@ class NewsTagIndexPage(Page):
 
 class NewsPage(Page):
     parent_page_types = ['vcssa.NewsIndexPage']
+    subpage_types = []
     author = models.CharField(max_length=30, null=True, blank=True)
     date = models.DateTimeField(auto_now=True)
     cover_image = models.ForeignKey(
@@ -552,6 +558,7 @@ class NewsPage(Page):
 
 class NewsIndexPage(Page):
     parent_page_types = ['home.HomePage', 'vcssa.SubUnionHomePage']
+    subpage_types = ['vcssa.NewsPage']
     show_in_menus_default = True
     intro = models.CharField(max_length=500, blank=True)
     background_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')

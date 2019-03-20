@@ -5,8 +5,8 @@
         {% for subunion in subunions %}
             <div class="col-md-4 col-xs-6">
                 <div class="card">
-                    {% if subunion.logo != None %}
-                        {% image subunion.logo original as temp_photo %}
+                    {% if subunion.logo_image != None %}
+                        {% image subunion.logo_image original as temp_photo %}
                     {% endif %}
                     <img class="card-img-top img-fluid" src="{{ temp_photo.url }}" alt="{{ temp_photo.alt }}"/>
                     <div class="middle">

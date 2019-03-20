@@ -44,6 +44,8 @@ def auto_load_theme(request):
         count += 1
     # theme_index = request.site.hostname + "/admin/home/theme"
     # print(theme_index)
+
+    print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     return redirect('/admin/home/theme/')
 
 

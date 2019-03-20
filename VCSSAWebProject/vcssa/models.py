@@ -333,7 +333,7 @@ class ActivityPage(Page):
         context = super().get_context(request)
         context['theme'] = self.theme.template_path
         favorite = False
-        if request.user:
+        if not request.user.is_anonymous:
             for page in request.user.favorite_activities.all():
                 if self.id == page.id:
                     favorite = True

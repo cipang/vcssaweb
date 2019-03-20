@@ -20,7 +20,7 @@
                 {% if page.activity_info %}
                     <p>{{ page.timezone }} Time </p>
                     {% for block in page.activity_info %}
-{#                        <p>{{ block.value.label }}</p>#}
+                        {#                        <p>{{ block.value.label }}</p>#}
                         {% with block.value.starting_time|date:"d" as start_date %}
                             {% with block.value.ending_time|date:"d" as end_date %}
                                 {% if start_date == end_date %}
@@ -43,7 +43,10 @@
                     {% endfor %}
                 {% endif %}
             </article>
-            <p>Add to Collections: <a class="fa fa-star" id="collection" style="font-size: 20px"></a></p>
+            {% current_user as user %}
+            {% if user %}
+                <p>Add to Collections: <a class="fa fa-star" id="collection" style="font-size: 20px"></a></p>
+            {% endif %}
             {% if page.application_form_link %}
                 <p>Of Interest? Click here to register:
                     <a class="promo" target="_blank" href="{{ page.application_form_link }}">Application Form</a>

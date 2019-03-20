@@ -21,8 +21,8 @@ SUBUNION_MENU_TEMPLATE = '{% load menu_tags global_tags %}{% subunion_home as ro
 NONE_PAGE_MENU_TEMPLATE = '{% include "menus/custom_main_menu.html" %}'
 
 
-MEDIA_DIR = 'media\\previews\\'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media\\previews\\')
+MEDIA_DIR = 'media/previews/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/previews/')
 
 ADMIN_PERMISSIONS = ['access_admin', 'add_user', 'change_user', 'delete_user', 'view_user']
 EDITOR_PERMISSIONS = ['access_admin']

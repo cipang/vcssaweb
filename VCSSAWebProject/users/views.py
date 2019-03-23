@@ -195,7 +195,6 @@ def create(request):
                         user.groups.add(Group.objects.get(name=group.name.replace("Admin", "Editor")))
                     except:
                         messages.error(request, "Cannot add the new user to the editor group of your union")
-            print(user.groups.all())
 
             messages.success(request, _("User '{0}' created.").format(user), buttons=[
                 messages.button(reverse('wagtailusers_users:edit', args=(user.pk,)), _('Edit'))
@@ -210,7 +209,6 @@ def create(request):
     else:
         form = get_user_creation_form()()
 
-    print(is_admin)
     return render(request, 'wagtailusers/users/create.html',
                   {'form': form, 'is_admin': is_admin, 'is_superuser': is_superuser})
 
@@ -222,8 +220,6 @@ def edit(request, user_id):
     editing_self = request.user == user
     previous_groups = user.groups.all()
     previous_subunion = user.subunions
-    print(previous_subunion)
-    print(previous_groups)
     for fn in hooks.get_hooks('before_edit_user'):
         result = fn(request, user)
         if hasattr(result, 'status_code'):

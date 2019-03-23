@@ -118,7 +118,6 @@ def signup(request):
             user.save()
             # for subunion in form.cleaned_data.get('subunions'):
             #     user.subunions.add(subunion)
-            print(user.subunions)
             to_email = form.cleaned_data.get('email')
             if send_validation_email(request, user, to_email, 'register'):
                 host_link = get_email_host_link(to_email)
@@ -229,7 +228,6 @@ def accounthome(request):
         user = request.user
         profile = get_user_profile(request, user)
         favorites = user.favorite_activities.all()
-        print(favorites)
         firstname = user.first_name
         return render_to_response('account_home.html',
                                   {'profile': profile, 'firstname': firstname, 'favorites': favorites})
@@ -298,7 +296,6 @@ def mark_activities(request, page_id):
     activity = ActivityPage.objects.get(id=page_id)
     try:
         request.user.favorite_activities.add(activity)
-        print(request.user.favorite_activities.all())
         messages.success(request, "Activity saved successfully!")
     except:
         messages.error(request, "Cannot save this activity due to errors")
@@ -311,7 +308,6 @@ def unmark_activities(request, page_id):
     activity = ActivityPage.objects.get(id=page_id)
     try:
         request.user.favorite_activities.remove(activity)
-        print(request.user.favorite_activities.all())
         messages.success(request, "Activity removed successfully!")
     except:
         messages.error(request, "Cannot remove this activity due to errors")

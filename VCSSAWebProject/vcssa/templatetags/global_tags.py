@@ -10,7 +10,7 @@ from django.core.files import File
 from django.template import Template
 from wagtail.core.models import Collection, CollectionViewRestriction
 
-from home.models import HomePage,Theme,THEME_CHOICES, BASE_THEME_PATH, BASE_DIR
+from home.models import HomePage, Theme, THEME_CHOICES, BASE_THEME_PATH, BASE_DIR
 from users.models import Subunions
 from vcssa.models import SubUnionHomePage, ContactUsPage
 
@@ -20,8 +20,7 @@ VCSSA_MENU_TEMPLATE = '{% load menu_tags %}{% section_menu max_levels=3 use_spec
 SUBUNION_MENU_TEMPLATE = '{% load menu_tags global_tags %}{% subunion_home as rootpage%}{% children_menu parent_page=rootpage max_levels=2 use_specific=USE_SPECIFIC_TOP_LEVEL template="menus/custom_main_menu.html" %}'
 NONE_PAGE_MENU_TEMPLATE = '{% include "menus/custom_main_menu.html" %}'
 
-
-MEDIA_DIR = 'media/previews/'
+MEDIA_DIR = os.path.join("media", "previews", "")
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/previews/')
 
 ADMIN_PERMISSIONS = ['access_admin', 'add_user', 'change_user', 'delete_user', 'view_user']
@@ -139,7 +138,6 @@ def is_child_of_subunion(context):
         return child_of_subunion
 
 
-
 @register.simple_tag(takes_context=True)
 def auto_load_theme(context):
     """Load all pre-stored themes. Put the directory of html files in BASE_THEME_PATH,
@@ -161,7 +159,8 @@ def auto_load_theme(context):
                     preview_file_name = name + '.jpg'  # preview .jpg name must be the same as html file
                     preview_path = MEDIA_DIR + preview_file_name
                     if not Theme.objects.filter(template_path=html_path).exists():  # if the theme is not added
-                        new_theme = Theme.objects.create(name=name, template_path=html_path, type=THEME_CHOICES[count][0])
+                        new_theme = Theme.objects.create(name=name, template_path=html_path,
+                                                         type=THEME_CHOICES[count][0])
                         if os.path.exists(preview_path):
                             try:  # store preview photo in db
                                 with open(preview_path, "rb") as f:

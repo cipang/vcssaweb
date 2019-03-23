@@ -21,40 +21,40 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_USE_TLS = True
 
 
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "filters": {
-        "require_debug_false": {
-            "()": "django.utils.log.RequireDebugFalse"
-        },
-        "require_debug_true": {
-            "()": "django.utils.log.RequireDebugTrue"
-        }
-    },
-    "formatters": {
-        "simple": {"format": "[%(levelname)s] %(asctime)s: %(message)s"},
-        "sql": {"format": "[SQL] %(message)s"},
-    },
-    "handlers": {
-        "console": {
-            "level": "DEBUG" if DEBUG else "INFO",
-            "class": "logging.StreamHandler",
-            "formatter": "simple",
-        },
-    },
-    "loggers": {
-        "django": {
-            "handlers": ["console"],
-            "level": "DEBUG",
-        },
-        "django.server": {
-            "handlers": ["console"],
-            "level": "DEBUG",
-            "propagate": False,
-        },
-    }
-}
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "filters": {
+#         "require_debug_false": {
+#             "()": "django.utils.log.RequireDebugFalse"
+#         },
+#         "require_debug_true": {
+#             "()": "django.utils.log.RequireDebugTrue"
+#         }
+#     },
+#     "formatters": {
+#         "simple": {"format": "[%(levelname)s] %(asctime)s: %(message)s"},
+#         "sql": {"format": "[SQL] %(message)s"},
+#     },
+#     "handlers": {
+#         "console": {
+#             "level": "DEBUG" if DEBUG else "INFO",
+#             "class": "logging.StreamHandler",
+#             "formatter": "simple",
+#         },
+#     },
+#     "loggers": {
+#         "django": {
+#             "handlers": ["console"],
+#             "level": "DEBUG",
+#         },
+#         "django.server": {
+#             "handlers": ["console"],
+#             "level": "DEBUG",
+#             "propagate": False,
+#         },
+#     }
+# }
 
 try:
     from .local import *

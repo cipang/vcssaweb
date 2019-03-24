@@ -1,0 +1,29 @@
+{% load wagtailcore_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/account_home_activity.css' %}">
+<div class="account-home-activity-container">
+    {#    {% if activity %}#}
+    <h2>Collections of Activities</h2>
+    <table id="customers">
+        <tr>
+            <th>Activity</th>
+            <th>Time</th>
+            <th>Location</th>
+        </tr>
+        {% for activity in favorites %}
+            <tr>
+                <td><a href="{{ activity.url }}">{{ activity }}</a></td>
+                {% for info in activity.activity_info %}
+                    <td>{{ info.value.starting_time }}，{{info.value.ending_time }}</td>
+                    <td>{{ info.value.venue }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    {#    {% endif %}#}
+</div>
+<script>
+    {#    {% for activity in favorites %}#}
+    {#        console.log('{{ activity.activity_info }}');#}
+    {#    {% endfor %}#}
+
+</script>

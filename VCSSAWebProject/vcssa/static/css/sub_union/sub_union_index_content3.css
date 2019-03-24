@@ -1,0 +1,54 @@
+/*union logo layout and effect*/
+.row > div[class*='col-'] {
+    display: flex;
+    flex: 1 0 auto;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.middle > a {
+    /*text-decoration: none;*/
+    color: unset;
+}
+
+.card {
+    border: 0;
+    margin-bottom: 10px;
+}
+
+.card:hover .card-img-top {
+    filter: brightness(70%);
+}
+
+.card:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    background-color: rgba(255, 255, 255, 0.8);
+    /*color: red;*/
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    mix-blend-mode: screen;
+}
+
+.card-img-top {
+    width: 320px;
+    height: 320px;
+}
+
+@media screen and (max-width: 1024px) {
+    .card-img-top {
+        width: 100%;
+        height: auto;
+    }
+}

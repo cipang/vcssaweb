@@ -1,0 +1,35 @@
+.container-fluid {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid .background {
+    vertical-align: middle;
+    width: 100%;
+    height: 500px;
+}
+
+.container-fluid .content {
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*background: rgb(0, 0, 0); !* Fallback color *!*/
+    /*background: rgba(0, 0, 0, 0.5); !* Black backgrounds with 0.5 opacity *!*/
+    /*color: #f1f1f1;*/
+    /*width: 100%;*/
+    /*padding: 20px;*/
+    padding: 20px 80px 20px 80px;
+    border: solid black;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-family: 'Andale Mono';
+}
+
+.container-fluid-body {
+    width: 100%;
+    padding: 20px 5% 20px 5%;
+}

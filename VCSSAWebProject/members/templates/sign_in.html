@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load global_tags wagtailcore_tags static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/sign_in.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        let list = [];
+        let placeholder = [];
+
+        {# get all form input label info #}
+        {% for field in form %}
+            list.push('{{ field.auto_id }}');
+            placeholder.push('{{ field.label}}');
+        {% endfor%}
+
+        {# set all form input property #}
+        for (let i = 0; i < list.length; i += 1) {
+            let temp = document.getElementById(list[i]);
+            temp.className = "form-control form-control-lg";
+            temp.style.fontSize = "20px";
+            temp.style.fontFamily = "Trebuchet MS";
+            temp.placeholder = placeholder[i];
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="topnav" id="myTopnav">
+        {% load_menu %}
+    </div>
+
+    {#logo#}
+    <div class="text-center">
+        <img class="logo" src="{% static "images/logo.png" %}" alt="logo">
+        <h2>Victoria Chinese Student and Scholar Association</h2>
+    </div>
+    <hr>
+    <div class="sign-in-block">
+        <div class="title">To continue, please login in</div>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <small style="color: grey">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <br>
+            {% endfor %}
+            {% for nf_error in form.non_field_errors %}
+                <p style="color: red">{{ nf_error }}</p>
+            {% endfor %}
+
+            {#resend activation email#}
+            <div>
+                {% if resend %}
+                    <a href="{% url 'members:resend' %}">Resend activation email</a>
+                {% endif %}
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary text-uppercase" type="submit">Log in</button>
+            </div>
+        </form>
+        <br>
+        <hr>
+        <div class="text-center">
+            <div class="title">
+                Don't have an account?
+            </div>
+            {# Both button/href are ok #}
+            <input class="btn btn-success text-uppercase" type="button" value="Sign Up"
+                   onclick="location.href='{% url 'members:signup' %}'"/>
+            {#        <button class="btn btn-success text-uppercase" href="{% url 'signup' %}">Sign Up</button>#}
+        </div>
+    </div>
+
+{% endblock %}

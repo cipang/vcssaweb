@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+
+{% block body_class %}template-subunionindexpage{% endblock %}
+
+{% block extra_js %}
+    <script>
+        loadCssFile("{% static 'css/sub_union/sub_union.css' %}", "css");
+    </script>
+{% endblock %}
+
+{% block content %}
+    <!--background image-->
+    {% include theme_background %}
+
+    <!--sub union content-->
+    {% include theme_content %}
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static widget_tweaks %}
+
+{% block body_class %}template-contactuspage{% endblock %}'
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+{% block extra_js %}
+    <script type="text/javascript">
+        // Get the modal
+        let modal = document.getElementById('myModal');
+
+        // Get the button that opens the modal
+        let btn = document.getElementById("wechat_btn");
+
+        // Get the <span> element that closes the modal
+        let span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        };
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+        let imageUrl = document.getElementById('background').title;
+        document.getElementById('background').style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))," + "url(" + imageUrl + ")";
+        {#change body bg color to gray#}
+        {#document.body.className = "bg-light";#}
+        loadCssFile("{% static 'css/contact_us/contact.css' %}", "css");
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+{#    {% logo as logo%}#}
+{#    {% if logo is not None %}#}
+{#        {% image logo fill-400x400 %}#}
+{#    {% endif %}#}
+
+    {#menu is here#}
+{#    <div class="topnav" id="myTopnav">#}
+{#        {% load_menu %}#}
+{#    </div>#}
+
+    {#form message display#}
+    {% include 'vcssa/message.html' %}
+
+    <!--contact us form and layout -->
+    {% include theme %}
+
+    {#icon bar#}
+    <div class="icon-bar">
+        <a href=" " class="facebook"><i class="fa fa-facebook"></i></a>
+        <a href="{{ page.weibo }}" class="weibo"><i class="fa fa-weibo"></i></a>
+        <a href="#" class="wechat" id="wechat_btn"><i class="fa fa-wechat"></i>
+            <span class="tooltiptext">Scan QR Code</span></a>
+        <a href="{{ page.instagram }}" class="instagram"><i class="fa fa-instagram"></i></a>
+    </div>
+
+    {#modal#}
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Scan QR code to know more details.</p>
+            {% image page.weChat original as side_image %}
+            <img class="wechat-img" src="{{ side_image.url }}" alt="{{ side_image.alt }}"/>
+        </div>
+    </div>
+
+
+
+    {#    <img src="{{ logo.url }}" alt="{{ logo.alt }}"/>#}
+
+{% endblock %}
+

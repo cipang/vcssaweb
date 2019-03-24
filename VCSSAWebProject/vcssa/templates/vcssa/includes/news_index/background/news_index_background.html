@@ -1,0 +1,16 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/news_index/news_index_background.css' %}">
+{#menu is here#}
+<div class="topnav" id="myTopnav">
+    {% load_menu %}
+</div>
+{# backgrounds image #}
+<div class="container-fluid">
+    {% image page.background_image original as background %}
+    <img src="{{ background.url }}" alt="{{ background.alt }}"/>
+    <div class="content">
+        <h1>{{ page.title }}</h1>
+        <p>{{ page.intro| richtext }}</p>
+    </div>
+</div>
+<br>

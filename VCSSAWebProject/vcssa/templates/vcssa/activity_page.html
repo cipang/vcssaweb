@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+
+{% block body_class %}template-activitypage{% endblock %}
+
+{% block extra_js %}
+    <script>
+        loadCssFile("{% static 'css/activity/activity.css' %}", "css");
+    </script>
+
+    <script>
+        {# collection star click #}
+        document.getElementById("collection").addEventListener('click', check);
+
+        {# check the current user is already marked the activity #}
+        if ('{{ favorite }}'.toString() === "True") {
+            document.getElementById("collection").style.color = "orange";
+        }
+
+        function check() {
+            {# change the color #}
+            const currentColor = document.getElementById("collection").style.color;
+            if (currentColor !== "orange") {
+                fetch('{% url 'members:mark_activities' page_id=page.id %}')
+                    .then(() => {
+                        document.getElementById("collection").style.color = "orange";
+                    });
+            } else {
+                fetch('{% url 'members:unmark_activities' page_id=page.id %}').then(() => {
+                    document.getElementById("collection").style.color = "gray";
+                });
+            }
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    {% include "vcssa/message.html" %}
+
+    {#menu is here#}
+    {#    <div class="topnav" id="myTopnav">#}
+    {#        {% load_menu %}#}
+    {#    </div>#}
+
+    <!-- activity content-->
+    {% include theme %}
+
+{% endblock %}

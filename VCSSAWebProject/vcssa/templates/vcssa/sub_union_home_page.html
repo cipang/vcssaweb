@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags wagtailsettings_tags static %}
+
+{% block body_class %}template-subunionhomepage{% endblock %}
+
+{% block content %}
+    {% include "home/home_page.html" %}
+{% endblock %}

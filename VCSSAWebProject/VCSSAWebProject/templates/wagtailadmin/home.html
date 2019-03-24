@@ -1,0 +1,25 @@
+{% extends "wagtailadmin/home.html" %}
+{% load wagtailadmin_tags staticfiles i18n global_tags%}
+
+{% block content %}
+{#    <p hidden>{% auto_load_theme %}</p>#}
+    <header class="merged nice-padding">
+        <div class="row row-flush">
+            <div class="col1">
+                <div class="avatar"><img src="{% avatar_url user %}" alt="" /></div>
+            </div>
+            <div class="col9">
+                <h1>{% block branding_welcome %}{% blocktrans %}Welcome to the {{ site_name }} Wagtail CMS{% endblocktrans %}{% endblock %}</h1>
+                <h2>{{ user.get_full_name|default:user.get_username }}</h2>
+            </div>
+        </div>
+    </header>
+{#    {% include 'vcssa/message.html' %}#}
+    {% if panels %}
+        {% for panel in panels %}
+            {{ panel.render }}
+        {% endfor %}
+    {% else %}
+        <p>{% trans "This is your dashboard on which helpful information about content you've created will be displayed." %}</p>
+    {% endif %}
+{% endblock %}

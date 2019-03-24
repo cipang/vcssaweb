@@ -1,0 +1,7 @@
+Django>=2.1,<2.2
+wagtail>=2.3,<2.4
+boto3 == 1.9.111
+gunicorn == 19.9.0
+wagtailmenus == 2.12
+django-widget-tweaks == 1.4.3
+django-messages-extends == 0.6.0

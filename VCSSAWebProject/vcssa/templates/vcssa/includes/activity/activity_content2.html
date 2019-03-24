@@ -1,0 +1,73 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/activity/activity_content2.css' %}">
+{#menu is here#}
+<div class="topnav" id="myTopnav">
+    {% load_menu %}
+</div>
+
+<div class="activity-container">
+    {% image page.background_image original as activity_image %}
+    <div class="activity-head-block" title="{{ activity_image.url }}" id="background">
+        <div class="activity-title">
+            {{ page.name }}
+        </div>
+        <div class="activity-intro">
+            {{ page.intro }}
+        </div>
+    </div>
+</div>
+
+<div class="activity-body">
+    {{ page.body |richtext }}
+</div>
+
+<div class="activity-footer">
+    <article>
+        {% if page.activity_info %}
+            <p>{{ page.timezone }} Time </p>
+            {% for block in page.activity_info %}
+                {#                        <p>{{ block.value.label }}</p>#}
+                {% with block.value.starting_time|date:"d" as start_date %}
+                    {% with block.value.ending_time|date:"d" as end_date %}
+                        {% if start_date == end_date %}
+                            <p>{{ block.value.starting_time|date:"Y-M-d H:iA " }}
+                                {% if block.value.ending_time %}
+                                    - {{ block.value.ending_time|date:"H:iA " }}
+                                {% endif %}</p>
+                        {% endif %}
+                        {% if start_date != end_date %}
+                            <p class="expire">From: {{ block.value.starting_time|date:"Y-M-d H:iA " }}</p>
+                            {% if end_date %}
+                                <p class="expire">To: {{ block.value.ending_time|date:"Y-M-d H:iA " }}</p>
+                            {% endif %}
+                        {% endif %}
+                    {% endwith %}
+                {% endwith %}
+                {% if block.value.venue %}
+                    <p>Venue: {{ block.value.venue }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </article>
+    {% current_user as user %}
+    {% if user %}
+        <p>Add to Collections: <a class="fa fa-star" id="collection" style="font-size: 20px"></a></p>
+    {% endif %}
+    {% if page.application_form_link %}
+        <p>Of Interest? Click here to register:
+            <a class="activity-link" target="_blank" href="{{ page.application_form_link }}">Application Form</a>
+        </p>
+    {% endif %}
+    <p class="expire">Published On: {{ page.date }}</p>
+    {% contact_us_page as contact %}
+    {% if contact %}
+        <p>Have questions? <a class="promo" target="_blank" href="{{ contact.url }}">Contact Us</a></p>
+    {% endif %}
+</div>
+
+
+<script>
+    let bk = document.getElementById("background");
+    let imageUrl = bk.title;
+    bk.style.backgroundImage = "linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2))," + "url(" + imageUrl + ")";
+</script>

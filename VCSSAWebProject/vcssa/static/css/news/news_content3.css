@@ -1,0 +1,60 @@
+/*news container*/
+.container {
+    color: black;
+    font-size: 1rem;
+    margin-top: 4%;
+    width: 70%;
+}
+
+.news-title {
+    text-align: center;
+    /*width: auto;*/
+    font-weight: bold;
+    /*background-color: gray;*/
+    color: black;
+    font-size: 4em;
+}
+
+.news-second-title-wrapper {
+    width: auto;
+    font-weight: bold;
+    background-color: gray;
+    padding: 2%;
+    /*color: white;*/
+}
+
+.news-second-title {
+    width: 90%;
+    margin: auto;
+    background-color: rgba(255,255,255,0.9);
+    mix-blend-mode: screen;
+
+    font-size: 1.5em;
+    /*color: darkgray;*/
+    line-height: 1.5;
+}
+
+/*news author and time*/
+.news-author {
+    font-size: 1.2em;
+    color: darkgray;
+    margin-bottom: 12px;
+}
+
+.news-time {
+    font-size: 1.2em;
+    color: rgb(220, 59, 48);
+    margin-bottom: 12px;
+}
+
+.news-body {
+    font-size: 1.3em;
+    margin-top: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 80%;
+        font-size: 0.8rem;
+    }
+}

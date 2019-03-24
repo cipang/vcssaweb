@@ -1,0 +1,36 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/home_background2.css' %}">
+{#logo#}
+<div class="container-fluid text-center">
+    <br>
+    <a href="#">
+        {% image page.logo_image original as logo %}
+        <img class="logo" src="{{ logo.url }}" alt="logo" href="#"/>
+    </a>
+    <br>
+    <br>
+    <h2 class="association-title text-center" style="color: rgb(50,50,50);">
+        {{ page.page_full_title }}
+    </h2>
+    <br>
+</div>
+
+<!--nav bar-->
+<div class="topnav" id="myTopnav">
+    {% load_menu %}
+</div>
+
+{% image page.background_image original as background %}
+<!--background image-->
+<div class="background-image-container">
+    <div class="hero-text">
+        <div class="page-title text-uppercase">{{ page.title }}</div>
+        <div class="welcome">{{ page.welcome }}</div>
+    </div>
+    <div class="hero-image" id="background" title="{{ background.url }}">
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,176 @@
+.cards-container {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 100px;
+}
+
+/* Float four columns side by side */
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 5px;
+}
+
+.row-icon {
+    margin: 50px -5px;
+}
+
+/* Clear floats after the columns */
+.row-icon:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the counter cards */
+.card-icon {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    text-align: center;
+    /*backgrounds-color: rgb(205,54,44);*/
+    color: rgb(220, 59, 48);
+    /*color: rgb(50,50,50);*/
+    background-color: white;
+    /*height: 200px;*/
+}
+
+.card-icon p {
+    font-size: 24px;
+}
+
+p .fa {
+    font-size: 60px;
+}
+
+/*layout for image wall*/
+.image-wall {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.image-wall:hover {
+    opacity: 0.7;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 65%;
+    max-width: 1000px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Responsive columns */
+@media screen and (max-width: 1024px) {
+
+    .cards-container {
+        width: 100%;
+        padding-left: 1%;
+        padding-right: 1%;
+        /*padding: 0;*/
+        margin-bottom: 30px;
+
+    }
+
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .card-icon {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        text-align: center;
+        /*backgrounds-color: rgb(205,54,44);*/
+        color: rgb(220, 59, 48);
+        /*color: rgb(50,50,50);*/
+        background-color: white;
+        /*height: 200px;*/
+    }
+
+    .card-icon p {
+        font-size: 16px;
+    }
+
+    p .fa {
+        font-size: 30px;
+    }
+
+    .modal-content {
+        padding: 1%;
+        width: 100%;
+    }
+}

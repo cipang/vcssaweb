@@ -1,0 +1,61 @@
+{% load wagtailimages_tags wagtailcore_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/menu1.css' %}">
+
+<script>
+    //responsive navbar according to screen size
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+<!--only the content of the menu no layout-->
+{% vcssa_home as home %}
+<a href="{% pageurl home %}" class="nav-link">
+    <i class="fa fa-fw fa-home"></i>
+    {{ home.title }}
+</a>
+
+{#if the page is under subunion, load subunion home page menu#}
+{% is_child_of_subunion as is_child %}
+{% if is_child %}
+    {% subunion_home as subunion_homemenu %}
+    <a href="{% pageurl subunion_homemenu %}" class="nav-link">
+        {{ subunion_homemenu.title }}
+    </a>
+{% endif %}
+
+{% for item in menu_items %}
+    {# first level menu#}
+    <a href="{{ item.url }}">{{ item }}</a>
+    {#    <a href="{{ item.href }}" style="">{{ item.text }}#}
+    {#        {% if item.has_children_in_menu %}#}
+    {# second level menu#}
+    {#            <a> {% sub_menu item %}</a>#}
+    {#            {% endif %}#}
+{% endfor %}
+
+{% current_user as user %}
+
+{% if user %}
+    {# user name #}
+    <a href="{% url 'members:account_home' %}">Hello
+        <span style="font-style: italic">{{ user }}
+        </span>
+    </a>
+
+    <a href="{% url 'members:logout' %}">Log Out</a>
+{% endif %}
+
+{% if not user %}
+    <a href="{% url 'members:signin' %}">Sign In</a>
+{% endif %}
+
+<a href="javascript:void(0);" class="icon" id="close_icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+</a>

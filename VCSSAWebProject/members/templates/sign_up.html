@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load global_tags wagtailcore_tags static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/sign_up.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        let list = [];
+        let placeholder = [];
+
+        {# get all form input tag #}
+        {% for field in form %}
+            list.push('{{ field.auto_id }}');
+            placeholder.push('{{ field.label}}');
+        {% endfor%}
+
+        {# change all form input property except for subunion #}
+        for (let i = 0; i < list.length; i += 1) {
+            let temp = document.getElementById(list[i]);
+            temp.className = "form-control form-control-lg";
+            temp.style.fontSize = "20px";
+            temp.style.fontFamily = "Trebuchet MS";
+            temp.placeholder = placeholder[i];
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="topnav" id="myTopnav">
+        {% load_menu %}
+    </div>
+
+    {#logo#}
+    <div class="text-center">
+        <img class="logo" src="{% static "images/logo.png" %}" alt="logo">
+        <h2>Victoria Chinese Student and Scholar Association</h2>
+    </div>
+    <hr>
+
+    <div class="signup-block">
+        <div class="title"> Sign up with your email address</div>
+        <br>
+        {% include "vcssa/message.html" %}
+        <form id="sign_up_form" class="form-group" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                {{ field }}
+                {% if field.help_text %}
+                    <div class="help-text">{{ field.help_text }}</div>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p class="error-text">{{ error }}</p>
+                {% endfor %}
+                <br>
+            {% endfor %}
+
+            <div class="text-center">
+                <button id="sign_up" class="text-center btn btn-success form-control text-uppercase" type="submit"
+                        onclick="window.open({% url 'members:signin' %})">
+                    Sign up
+                </button>
+                <div class="sign-in-link">
+                    Already have an account?
+                    <a href="{% url 'members:signin' %}">Sign in</a>
+                </div>
+            </div>
+            {# Both button/href are ok #}
+            {#            <input class="btn btn-success" type="button" value="Sign In" onclick="location.href='{% url 'signin' %}'"/>#}
+        </form>
+    </div>
+{% endblock %}

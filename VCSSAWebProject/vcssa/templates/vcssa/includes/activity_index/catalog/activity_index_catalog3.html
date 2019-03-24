@@ -1,0 +1,36 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/activity_index/activity_catalog3.css' %}">
+
+<div class="container">
+    {% for activity in activities %}
+        <div class="activity-card">
+            {% image activity.specific.background_image original as tmp_photo %}
+            <div class="card-left" title="{{ tmp_photo.url }}">
+                <div class="card-title">
+                    <a href= {% pageurl activity.specific %}>
+                        {{ activity.specific.title }}
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-right">
+                <div class="card-intro">
+                    <div class="card-date">
+                        {{ activity.specific.date }}
+                    </div>
+                    <hr class="card-line">
+                    {{ activity.specific.intro }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{# set background image for all activity cards #}
+<script>
+    let cards = document.getElementsByClassName("card-left");
+    for (let card of cards) {
+        let imageUrl = card.title;
+        card.style.backgroundImage = "url(" + imageUrl + ")";
+    }
+</script>

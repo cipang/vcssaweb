@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+
+{% block body_class %}template-aboutpage{% endblock %}'
+
+{% block extra_js %}
+    <script>
+        loadCssFile("{% static 'css/about/about.css' %}", "css");
+    </script>
+{% endblock %}
+
+{% block content %}
+    <!--about background and content-->
+    {% include theme %}
+{% endblock %}
+

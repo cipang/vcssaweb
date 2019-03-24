@@ -1,0 +1,97 @@
+
+.newsBlock {
+    /*backgrounds: #EEE;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+}
+
+.newsBlock-cell {
+    width: 100%;
+    /*height: 100%;*/
+    /*height: 1000px;*/
+    height: auto;
+    /*height: ;*/
+    /*min-height: 600px;*/
+    /*max-width: 800px;*/
+
+    /*border-radius: 10px;*/
+    counter-increment: gallery-cell;
+    padding: 0 25% 0 25%;
+}
+
+/* cell number */
+.newsBlock-cell:before {
+    display: block;
+    text-align: center;
+    content: counter(gallery-cell);
+    line-height: 0;
+    font-size: 80px;
+    color: white;
+
+
+}
+
+.newsBlock-cell-title {
+    font-size: 40px;
+    color: rgb(220, 59, 48);
+    padding: 6%;
+}
+
+.newsBlock-cell-content {
+    font-size: 24px;
+    color: rgb(50, 50, 50);
+    line-height: 2;
+}
+
+.newsBlock-cell-link {
+
+}
+
+.newsBlock-image {
+    border-radius: 50%;
+    height: 400px;
+    width: 400px;
+
+}
+
+/* position dots up a bit */
+.flickity-page-dots {
+    bottom: -22px;
+}
+
+/* dots are lines */
+.flickity-page-dots .dot {
+    height: 4px;
+    width: 40px;
+    margin: 0;
+    border-radius: 0;
+}
+
+@media screen and (max-width: 1024px) {
+    .newsBlock{
+        margin: 10px;
+        height: auto;
+    }
+    .newsBlock-cell {
+        width: 100%;
+        height: auto;
+        padding: 0;
+    }
+
+    .newsBlock-cell-title {
+        font-size: 24px;
+        padding: 3%;
+    }
+
+    .newsBlock-image {
+        height: 150px;
+        width: 150px;
+    }
+
+    .newsBlock-cell-content {
+        font-size: 16px;
+        line-height: 1;
+        padding: 2%;
+    }
+
+}

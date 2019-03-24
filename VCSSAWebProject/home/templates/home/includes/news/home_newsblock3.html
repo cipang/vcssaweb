@@ -1,0 +1,31 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/home_newsblock3.css' %}">
+
+<br>
+<div class="newsblock-container">
+    {% if page.index_pages %}
+        <h2 class="block-title-md">Recent news and activities</h2>
+        <br>
+    {% endif %}
+
+    <div class="card-columns">
+        {% for block in page.index_pages %}
+            {% image block.value.specific.cover_image fill-600x350 as coverimage %}
+            <div class="card" style="
+                    background-image:url({{ coverimage.url }})">
+                <div class="card-body">
+                    <div class="card-title">
+                        {% include_block block.value.specific.title %}
+                    </div>
+                    <div class="card-text">
+                        {{ block.value.specific.intro | richtext }}
+                    </div>
+                    <div class="card-link">
+                        <a class="news-link" href={% pageurl block.value.specific %}>
+                            LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

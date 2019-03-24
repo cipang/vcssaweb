@@ -1,0 +1,72 @@
+.card {
+@extend . card;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.card-title {
+    text-align: center;
+    color: white;
+    opacity: 1;
+}
+
+.card-content {
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    font-size: 22px;
+    color: #EDEAE5;
+    padding: 2% 2% 2% 2%;
+}
+
+.card-body {
+    font-size: 22px;
+    color: white;
+    padding: 5% 10% 5% 10%;
+}
+
+.card-link {
+
+}
+
+/*card link*/
+.news-link {
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #EDEAE5;
+    font-weight: bold;
+    border: 2px solid #EDEAE5;
+
+    padding: 0.5em 1em;
+    bottom: 20px;
+}
+
+.news-link:hover {
+    text-decoration: none;
+    background-color: #EDEAE5;
+    color: black;
+    border: solid black;
+
+}
+
+.news-link:active {
+    text-decoration: none;
+    background-color: #EDEAE5;
+}
+
+@media screen and (max-width: 1024px) {
+    .card-title {
+        font-size: 32px;
+    }
+
+    .card-content {
+        font-size: 18px;
+    }
+
+}

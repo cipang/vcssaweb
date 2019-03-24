@@ -1,0 +1,143 @@
+
+.index-body {
+    padding: 20px;
+}
+
+/*hero image */
+.container-fluid {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid img {
+    vertical-align: middle;
+    width: 100%;
+    height: 500px;
+}
+
+.container-fluid .content {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black backgrounds with 0.5 opacity */
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+
+/*index page layout*/
+.news-index-title {
+    margin: 30px 0 0 20px;
+    font-size: 46px;
+}
+
+.left-column {
+    float: left;
+    width: 65%;
+}
+
+.right-column {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+}
+
+.fakeimg {
+    /*backgrounds-color: #aaa;*/
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+
+/*card layout*/
+.news-card {
+    /*backgrounds: rgb(247, 247, 247);*/
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border: thin solid black
+}
+
+.news-card-title a {
+    color: black;
+}
+
+.news-card-intro {
+    margin-top: 10px;
+    font-size: 22px;
+
+}
+
+.news-card-time {
+    font-style: italic;
+    font-size: 20px;
+    color: black;
+}
+
+/*tags*/
+.tag {
+    background: lightgrey;
+    border-radius: 3px 0 0 3px;
+    color: black;
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 20px 0 23px;
+    position: relative;
+    margin: 0 10px 10px 0;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+}
+
+.tag::before {
+    background: white;
+    border-radius: 10px;
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+    content: '';
+    height: 6px;
+    left: 10px;
+    position: absolute;
+    width: 6px;
+    top: 10px;
+}
+
+.tag::after {
+    background: rgb(247, 247, 247);
+    border-bottom: 13px solid transparent;
+    border-left: 10px solid lightgrey;
+    border-top: 13px solid transparent;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.tag:hover {
+    background-color: dodgerblue;
+    color: lightgrey;
+}
+
+.tag:hover::after {
+    border-left-color: dodgerblue;
+}
+
+@media screen and (max-width: 800px) {
+    .left-column {
+        width: 100%;
+        padding: 0;
+    }
+
+    .news-card-title {
+        font-size: 32px;
+    }
+
+    .fakeimg {
+        /*backgrounds-color: #aaa;*/
+        border-radius: 50%;
+        height: 300px;
+        width: 300px;
+        padding: 0;
+    }
+
+}

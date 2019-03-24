@@ -1,0 +1,73 @@
+.card {
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /*max-width: 300px;*/
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    padding: 5%;
+}
+
+.title {
+    color: grey;
+    font-size: 18px;
+}
+
+button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: rgb(174, 45, 43);
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.btn {
+    background-color: rgb(174, 45, 43);
+}
+
+
+a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+button:hover, a:hover {
+    opacity: 0.7;
+}
+
+.profile {
+    font-size: 25px;
+
+}
+
+.profile-title {
+    width: 10%;
+}
+
+.profile-content {
+    width: 90%;
+}
+
+@media screen and (max-width: 1024px) {
+    .card {
+        width: 100%;
+    }
+
+    .profile {
+        font-size: 20px;
+    }
+
+    .profile-title {
+        width: 10%;
+    }
+
+    .profile-content {
+        width: 90%;
+    }
+}

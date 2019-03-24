@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags global_tags static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/account_home.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+    {# pay attention this page is no p tag#}
+    <script>
+        let info = {};
+
+        {% for attrname, value in profile.items %}
+            info['{{ attrname }}'] = '{{ value | safe }}';
+        {% endfor %}
+
+        {# set info data #}
+        document.getElementById("firstName").innerText = info["First Name"];
+        document.getElementById("lastName").innerText = info["Last Name"];
+        document.getElementById("subUnion").innerText = info["Member of Unions"];
+        document.getElementById("number").innerText = document.getElementById("number").innerText.concat(" " + info["Membership Number"]);
+
+        {# set member profile info it is on account_home_profile page#}
+        document.getElementById("username").innerText = info["Username"];
+        document.getElementById("email").innerText = info["Email"];
+        document.getElementById("birthday").innerText = info["Birthday"];
+        document.getElementById("profile-union").innerText = info["Member of Unions"];
+    </script>
+{% endblock %}
+
+{% block content %}
+    {#menu#}
+    <div class="topnav" id="myTopnav">
+        {% load_menu %}
+    </div>
+    <div class="account-container">
+        <div class="account-container-left">
+            {# include member profile page #}
+            {% include "account_home_profile.html" %}
+        </div>
+        <div class="account-container-right">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="flip-card-front-container">
+                            <div class="flip-card-font-wrapper">
+                                {# logo#}
+                                <div class="flip-card-left">
+                                    <div class="flip-card-logo">
+                                        <img class="logo" src="{% static "images/logo.png" %}" alt="logo">
+                                        <div class="logo-title">
+                                            Victoria Chinese Student and Scholar Association
+                                        </div>
+                                    </div>
+                                </div>
+                                {# membership info#}
+                                <div class="flip-card-right">
+                                    <p id="firstName" class="text-uppercase"></p>
+                                    <p id="lastName" class="text-uppercase"></p>
+                                    <p id="subUnion" class="text-uppercase"></p>
+                                </div>
+                            </div>
+                            <div class="flip-card-front-bottom">
+                                <p id="number"> Membership Number : </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card-back">
+                        <div class="flip-card-back-info text-center">
+                            <h2>VCSSA</h2>
+                            <div>Welcome to be a member of us !</div>
+                            <div>Let's start a new journey.</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {# activity that member applied #}
+    {% include "account_home_activity.html" %}
+
+{% endblock %}

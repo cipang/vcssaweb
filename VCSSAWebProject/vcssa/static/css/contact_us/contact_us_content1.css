@@ -1,0 +1,61 @@
+/*backgrounds image*/
+.body {
+
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.hero-image {
+    /*backgrounds-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));*/
+    height: auto;
+    width: auto;
+    /*width: 100%;*/
+    /*height: 100%;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-text {
+    font-size: 50px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+
+}
+
+/*address phone and email*/
+.contact-info {
+    /*color: white;*/
+    width: 100%;
+    color: black;
+    font-size: 24px;
+}
+
+/*comments form submit btn*/
+.btn {
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    .display-3 {
+        font-size: 32px;
+    }
+
+    .contact-info {
+        /*color: white;*/
+        color: black;
+        font-size: 22px;
+    }
+
+    .form-group {
+        font-size: 22px;
+    }
+}

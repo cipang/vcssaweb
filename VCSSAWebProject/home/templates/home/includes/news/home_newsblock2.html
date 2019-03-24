@@ -1,0 +1,18 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/home_newsblock2.css' %}">
+
+{% if page.index_pages %}
+    <div class="newsBlock"
+         data-flickity='{ "freeScroll": true, "wrapAround": true }'>
+        {% for block in page.index_pages %}
+            <div class="newsBlock-cell text-center">
+                {% image block.value.specific.cover_image original as coverimage %}
+                <img class="newsBlock-image" src="{{ coverimage.url }}" alt="{{ coverimage.alt }}">
+                <div class="newsBlock-cell-title"> {% include_block block.value.specific.title %}</div>
+                <div class="newsBlock-cell-content">{{ block.value.specific.intro | richtext }} </div>
+                <a href={% pageurl block.value.specific %}>
+                    LEARN MORE</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

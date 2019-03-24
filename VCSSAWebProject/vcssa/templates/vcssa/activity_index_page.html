@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+
+{% block body_class %}template-activityindexpage{% endblock %}
+
+{% block extra_js %}
+    <script>
+        loadCssFile("{% static 'css/activity_index/activity_index.css' %}", "css");
+    </script>
+{% endblock %}
+
+{% block content %}
+    {#menu is here#}
+    {#    <div class="topnav" id="myTopnav">#}
+    {#        {% load_menu %}#}
+    {#    </div>#}
+
+    <!--background image-->
+    {% include background_theme %}
+
+    {#activity index layout#}
+    {% include catalog_theme %}
+{% endblock %}

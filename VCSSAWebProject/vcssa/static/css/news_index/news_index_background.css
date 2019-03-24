@@ -1,0 +1,28 @@
+/*hero image */
+.container-fluid {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid img {
+    vertical-align: middle;
+    width: 100%;
+    height: 500px;
+}
+
+.container-fluid .content {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black backgrounds with 0.5 opacity */
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+    .container-fluid img {
+        width: 100%;
+    }
+}

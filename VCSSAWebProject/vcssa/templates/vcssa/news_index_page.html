@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+
+{% block body_class %}template-newsindexpage{% endblock %}
+
+{% block extra_js %}
+    <script>
+        loadCssFile("{% static 'css/news_index/news_index.css' %}", "css");
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    {#menu is here#}
+    {#    <div class="topnav" id="myTopnav">#}
+    {#        {% load_menu %}#}
+    {#    </div>#}
+
+    <!--background image and intro-->
+    {% include background_theme %}
+
+    <!--news index body-->
+    {% include content_theme %}
+
+{% endblock %}

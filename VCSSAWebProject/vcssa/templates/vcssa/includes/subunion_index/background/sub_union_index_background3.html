@@ -1,0 +1,17 @@
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+<link rel="stylesheet" href="{% static 'css/sub_union/sub_union_index_background3.css' %}">
+{#menu is here#}
+<div class="topnav" id="myTopnav">
+    {% load_menu %}
+</div>
+
+<div class="container-fluid">
+    {% image page.background_image original as background %}
+    <img src="{{ background.url }}" alt="{{ background.alt }}"/>
+    <div class="content">
+        <div class="subunion-title">{{ page.title }}</div>
+        <div class="subunion-intro">{{ page.intro|richtext }}</div>
+    </div>
+</div>
+
+<br>

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+    {#    slide show css#}
+    <link rel="stylesheet" href="{% static 'css/flickity.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/home.js' %}"></script>
+    {#  slide show js   #}
+    <script type="text/javascript" src="{% static 'js/flickity.pkgd.js' %}"></script>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div style="display: none" id="theme">{{ page.title }}</div>
+    <!--background image-->
+    {% include  background_theme %}
+
+    <!--slide show-->
+    {% include  slide_theme %}
+
+    <!--News Index-->
+    {% include news_theme %}
+
+{% endblock %}

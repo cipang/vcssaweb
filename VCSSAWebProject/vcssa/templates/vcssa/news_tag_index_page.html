@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags menu_tags global_tags static %}
+
+{% block body_class %}template-newstagindexpage{% endblock %}
+
+{% block extra_js %}
+    <script>
+        loadCssFile("{% static 'css/news_tag/news_tag.css' %}", "css");
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    <!--news tag index content-->
+    {% include theme %}
+{% endblock %}
